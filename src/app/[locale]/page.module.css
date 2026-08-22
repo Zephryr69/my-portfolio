@@ -1,0 +1,17 @@
+/* page.module.css — porté depuis .home-wrapper de Home.css.
+   C'est ce conteneur, oublié dans le premier jet, qui centre le Hero
+   (et les sections suivantes) à 1200px et les espace de 3rem — sans lui
+   tout s'étalait bord à bord. Le padding-top mobile est déjà géré
+   globalement par `.content` dans globals.css, pas besoin de le dupliquer
+   ici (contrairement à l'original qui le faisait deux fois, en CSS ET en
+   style inline). */
+
+.homeWrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  box-sizing: border-box;
+}

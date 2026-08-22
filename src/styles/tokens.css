@@ -1,0 +1,87 @@
+/* ==========================================================================
+   tokens.css — Source unique de vérité pour les variables de design
+   Reconstruit à partir de l'audit de mon-portfolio (Vite).
+
+   ⚠️ Ce fichier remplace TOUS les :root dispersés qui existaient dans
+   index.css, Header.css et Home.css. Il ne doit plus y en avoir ailleurs.
+
+   ⚠️ POINTS À VÉRIFIER TOI-MÊME (conflits trouvés entre fichiers, résolus
+   ici par choix raisonné — à comparer avec le rendu réel de ton site) :
+   - --navbar-height : Header.css et index.css disaient 70px, Home.css
+     disait 80px. J'ai gardé 70px (la source la plus probable, car
+     Header.css est le propriétaire logique de cette valeur).
+   - --transition-normal : 0.4s dans Header.css/index.css, 0.9s dans
+     Home.css. J'ai gardé 0.4s. Si tes animations de la page d'accueil
+     te semblaient plus lentes/douces, c'était peut-être intentionnel
+     côté Home — dis-le-moi et je remets 0.9s pour cette page-là.
+   - --color-text-secondary : Header.css et Home.css donnaient deux
+     valeurs différentes en dark mode (#e6eef8 vs #cbd5e1) pour un rôle
+     similaire. J'ai gardé celle de Header.css.
+   Je n'ai pas pu lire main.jsx (fichier vide dans ton zip), donc je n'ai
+   pas pu vérifier l'ordre d'import réel qui aurait tranché ces conflits
+   avec certitude.
+   ========================================================================== */
+
+:root {
+  /* ---------- Couleurs de marque ---------- */
+  --color-primary: #ff8c00;          /* orange — CTA, accents */
+  --color-primary-hover: #ffb347;    /* orange doux — hover / dark mode primary */
+
+  /* ---------- Texte ---------- */
+  --color-text: #1f2d3d;
+  --color-text-secondary: #1f2d3d;
+  --color-text-light: #ffffff;
+
+  /* ---------- Fonds & surfaces ---------- */
+  --color-bg: #fff6e9;               /* fond général clair (Home.css --color-light) */
+  --color-surface: rgba(255, 255, 255, 0.72);  /* cartes / header (Header.css --background-card) */
+  --color-surface-muted: #f8f7f5;    /* zones secondaires claires */
+
+  /* ---------- Typographie ---------- */
+  --font-primary: 'Rubik', sans-serif;
+  --font-body: 'Outfit', sans-serif;
+  --font-fancy: 'Updock', cursive;   /* usage ponctuel : nom en hero */
+
+  /* ---------- Layout ---------- */
+  --navbar-height: 70px;
+
+  /* ---------- Transitions ---------- */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ---------- Échelle de z-index ----------
+     Les valeurs d'origine (3000, 3100, 3500...) étaient arbitraires et
+     accompagnées de commentaires manuels pour s'y retrouver. L'ordre
+     relatif ci-dessous reproduit exactement le même empilement visuel,
+     juste avec une échelle propre et documentée une seule fois. */
+  --z-decor: 0;         /* fond animé décoratif */
+  --z-content: 1;        /* contenu normal */
+  --z-sidebar: 500;       /* menu mobile — sous la navbar, comme dans l'original (1000 < 3000) */
+  --z-header: 800;        /* navbar */
+  --z-header-panel: 810;  /* sous-éléments de la navbar (burger, dropdown) */
+  --z-scroll-top-btn: 900; /* bouton "remonter en haut", doit rester au-dessus de tout */
+}
+
+/* ---------- Thème sombre ---------- */
+[data-theme="dark"] {
+  --color-primary: #ffb347;
+  --color-primary-hover: #ff8c00;
+
+  --color-text: #f5f5f5;
+  --color-text-secondary: #e6eef8;
+  --color-text-light: #ffffff;
+
+  --color-bg: #0a1a2f;               /* index.css --primary-bg */
+  --color-surface: rgba(20, 30, 48, 0.85);   /* index.css --card-bg */
+  --color-surface-muted: #0f172a;
+}
+
+/* ---------- Breakpoints (référence — pas utilisables via var() dans @media) ----------
+   mobile-s   : max-width: 360px
+   mobile     : max-width: 480px
+   mobile-l   : max-width: 600px
+   tablet-s   : max-width: 768px
+   tablet     : max-width: 980px
+   desktop-s  : max-width: 1024px
+   Utilise ces mêmes valeurs en dur dans chaque media query — ce fichier
+   sert juste de référence commune pour ne pas en inventer de nouvelles. */

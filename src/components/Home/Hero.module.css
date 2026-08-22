@@ -1,0 +1,119 @@
+/* ==========================================================================
+   Hero.module.css — section hero de Home.css
+
+   Retiré : `body.dark-mode .hero-title` (jamais appliqué, voir chat).
+   Remappé : --accent-hover → --color-primary-hover (nom unifié tokens.css).
+   ========================================================================== */
+
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4rem 2rem;
+  border-radius: 2rem;
+  gap: 2rem;
+  flex-wrap: wrap;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(255, 140, 0, 0.18), rgba(31, 45, 61, 0.85));
+}
+
+.heroText {
+  max-width: 600px;
+  z-index: 1;
+}
+
+.heroTitle {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.fancy { display: inline-block; }
+
+.firstName {
+  font-family: var(--font-fancy);
+  font-size: 1.4em;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-text-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.lastName {
+  font-family: var(--font-primary);
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+.lastName:hover {
+  transform: scale(1.05);
+  color: var(--color-primary-hover);
+}
+
+.heroSubtitle {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  margin-bottom: 1.5rem;
+}
+
+.ctaGroup {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.heroBtn {
+  margin-top: 1.2rem;
+  padding: 0.9rem 2rem;
+  border: none;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.25s ease-in-out;
+}
+
+.primary {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-hover));
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+}
+.primary:hover {
+  background: linear-gradient(135deg, var(--color-primary-hover), var(--color-primary));
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.secondary {
+  background: transparent;
+  border: 2px solid var(--color-primary);
+  color: var(--color-primary);
+}
+.secondary:hover {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.heroImage img,
+.heroImg {
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+  .hero { flex-direction: column-reverse; text-align: center; }
+  .heroText { max-width: 100%; }
+  .ctaGroup { justify-content: center; }
+  .heroImage img { max-width: 240px; }
+}

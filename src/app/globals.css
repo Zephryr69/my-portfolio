@@ -1,26 +1,122 @@
-@import "tailwindcss";
+/* Une seule fois, ici — au lieu des 3 imports dupliqués qu'on avait
+   trouvés dans index.css / Header.css / Home.css. Doit rester AVANT
+   l'import de tokens.css : les @import doivent tous précéder toute
+   règle CSS normale, et tokens.css en contient. */
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Rubik&family=Updock&display=swap");
+@import "../styles/tokens.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* En Next.js il n'y a plus de <div id="root"> ni de <div class="containner">
+   — <body> joue directement ce rôle de conteneur flex + fond thémé.
+   Le thème est piloté par [data-theme] sur <html> (voir ThemeContext.tsx). */
+body {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  background: var(--color-bg);
+  color: var(--color-text);
+  transition:
+    background var(--transition-normal),
+    color var(--transition-normal);
+}
+
+/* Décor animé en fond (identique à l'original) */
+body::before {
+  content: "";
+  position: fixed;
+  inset: -50% -50% auto auto;
+  width: 200%;
+  height: 200%;
+  background:
+    radial-gradient(
+      circle at 30% 30%,
+      rgba(255, 255, 255, 0.05),
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 70% 70%,
+      rgba(255, 255, 255, 0.05),
+      transparent 40%
+    );
+  animation: floatBg 15s infinite alternate ease-in-out;
+  z-index: var(--z-decor);
+  pointer-events: none;
+}
+
+@keyframes floatBg {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    transform: translate(20px, 20px) scale(1.05);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.content {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+@media (max-width: 768px) {
+  .content {
+    padding-top: var(--navbar-height);
+  }
+}
+
+/* -------------------------
+   Composants génériques (portés depuis index.css)
+   ------------------------- */
+.card {
+  background: var(--color-surface);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+.btn {
+  background: var(--color-primary);
+  color: #fff;
+  padding: 12px 25px;
+  border-radius: 30px;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+  /* L'original faisait `box-shadow: var(--button-glow)`, une variable
+     jamais définie dans tout le projet → aucun glow ne s'affichait
+     réellement. Je garde ce comportement (pas de glow) pour rester
+     fidèle au rendu actuel. Dis-moi si tu veux que j'en active un vrai. */
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.3s ease;
+}
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
+}
+
+.scroll-to-top {
+  z-index: var(--z-scroll-top-btn);
 }

@@ -1,0 +1,218 @@
+{
+  "Header": {
+    "brand": "Mon Portfolio",
+    "backHome": "Retour à l'accueil",
+    "nav": {
+      "home": "Accueil",
+      "projects": "Projets",
+      "about": "À propos",
+      "contact": "Contact"
+    },
+    "themeToggle": "Changer le thème du site",
+    "openMenu": "Ouvrir le menu de navigation",
+    "languageSwitcherLabel": "Changer de langue"
+  },
+  "Sidebar": {
+    "title": "Menu",
+    "closeButton": "Fermer la barre latérale"
+  },
+  "ScrollToTop": {
+    "label": "Remonter en haut de la page"
+  },
+  "Footer": {
+    "brandSub": "— Design & Développement",
+    "slogan": "Projets soignés, code propre, expérience utilisateur.",
+    "socialLabel": "Réseaux sociaux",
+    "contactTitle": "Contact",
+    "navTitle": "Navigation",
+    "aboutTitle": "À propos",
+    "aboutText": "Je suis <strong>Amandino AIMINASSO</strong>, développeur Full-Stack & UI/UX designer. J'aide les petites entreprises et revendeurs à lancer des sites clairs, rapides et convertissants — du site vitrine aux applications métiers.",
+    "aboutTextSmall": "Disponible pour missions à distance ou sur Porto-Novo (Bénin). Livraison rapide, communication claire et livrables documentés.",
+    "rights": "Tous droits réservés."
+  },
+  "Home": {
+    "hero": {
+      "greeting": "Salut, je suis",
+      "subtitle": "Développeur Full Stack freelance, passionné par le design moderne, la performance et l'expérience utilisateur.",
+      "ctaPrimary": "Démarrer un projet",
+      "ctaSecondary": "Voir mes projets",
+      "imageAlt": "Photo d'Amandino"
+    },
+    "skills": {
+      "title": "Mes Compétences clés",
+      "cardAriaLabel": "{title} — niveau {level}%",
+      "items": {
+        "react": {
+          "title": "React",
+          "description": "Création d'interfaces web dynamiques, modernes et performantes."
+        },
+        "laravel": {
+          "title": "Laravel",
+          "description": "Développement backend robuste et sécurisé pour des applications web."
+        },
+        "javascript": {
+          "title": "JavaScript",
+          "description": "Automatisation, enrichissement d'interactivité et fonctionnalités web avancées."
+        },
+        "git": {
+          "title": "Git & gestion de versions",
+          "description": "Suivi et coordination efficaces des versions de projets collaboratifs."
+        },
+        "english": {
+          "title": "Anglais intermédiaire (conversation, lecture)",
+          "description": "Communication fluide en contexte professionnel et lecture technique."
+        },
+        "video": {
+          "title": "Montage vidéo & création d'affiches (amateur)",
+          "description": "Production de contenus visuels attrayants pour supports digitaux et imprimés."
+        },
+        "maintenance": {
+          "title": "Maintenance logicielle & OS (Windows, Linux)",
+          "description": "Diagnostic et résolution rapide de problèmes logiciels et systèmes."
+        },
+        "search": {
+          "title": "Recherche web & réseaux sociaux",
+          "description": "Veille informationnelle précise et exploitation optimale des ressources en ligne."
+        },
+        "htmlCss": {
+          "title": "HTML (avancé) & CSS (maîtrisé)",
+          "description": "Création de pages web responsives, esthétiques et accessibles."
+        },
+        "csharp": {
+          "title": "C#",
+          "description": "Développement d'applications desktop et logiques métier solides."
+        }
+      }
+    },
+    "projects": {
+      "title": "Projets récents",
+      "thumbnailAlt": "Aperçu : {title}",
+      "ctaLabel": "Voir le projet →",
+      "seeMore": "Voir plus de projets →",
+      "items": {
+        "ecole": {
+          "title": "Site promotionnel – École",
+          "brief": "Site responsive pour mettre en avant les offres et l'attractivité d'une école."
+        },
+        "iphone": {
+          "title": "Site vitrine – Revendeur iPhones",
+          "brief": "Vitrine élégante pour un revendeur, avec galerie produits et prise de contact."
+        },
+        "cantine": {
+          "title": "Application C# – Gestion cantine",
+          "brief": "App desktop en C# pour gérer inscriptions, paiements et menus en cantine scolaire."
+        }
+      }
+    }
+  },
+  "AboutPage": {
+    "metaTitle": "À propos",
+    "greeting": "Bonjour — moi c'est",
+    "lead": "Développeur Full-Stack & UI/UX designer. J'aide les petites entreprises et les professions locales à gagner en visibilité et efficacité grâce à des sites rapides, clairs et convertissants.",
+    "ctaGroupLabel": "Actions principales",
+    "ctaPrimary": "Démarrer un projet",
+    "ctaSecondary": "Voir mes projets",
+    "portraitAlt": "Portrait d'Amandino",
+    "availability": "Disponible pour missions freelance — Porto-Novo / Remote",
+    "storyAriaLabel": "Parcours et méthode",
+    "storyTitle": "Mon parcours",
+    "storyText": "Depuis un an, j'ai conçu 3 projets concrets, allant de sites vitrines à des applications desktop en C#. Je mets un point d'honneur à allier performance, accessibilité et clarté du produit final — chaque site ou application doit réellement parler à vos clients et faciliter leur expérience.",
+    "methodTitle": "Ma méthode en 3 étapes",
+    "step1Title": "Découverte",
+    "step1Text": "Brief, objectifs et indicateurs de succès.",
+    "step2Title": "Prototype",
+    "step2Text": "Maquettes interactives, validation UX rapide.",
+    "step3Title": "Livraison",
+    "step3Text": "Déploiement, documentation et support.",
+    "stat1Label": "Projets réalisés",
+    "stat2Value": "1 an",
+    "stat2Label": "Expérience pratique",
+    "stat3Value": "Front & UI",
+    "stat3Label": "Design et développement web",
+    "skillsAriaLabel": "Compétences",
+    "skillsTitle": "Compétences",
+    "skillsSubtitle": "Tech, outils et savoir-faire que j'utilise au quotidien",
+    "skillItems": {
+      "react": {
+        "title": "React",
+        "subtitle": "UI modernes, SPA performantes"
+      },
+      "laravel": {
+        "title": "Laravel",
+        "subtitle": "Back-end structuré & APIs"
+      },
+      "javascript": {
+        "title": "JavaScript",
+        "subtitle": "Interactions & logique client"
+      },
+      "git": {
+        "title": "Git",
+        "subtitle": "Workflow, CI/CD & collaboration"
+      },
+      "english": {
+        "title": "Anglais (interm.)",
+        "subtitle": "Lecture technique & échanges pro"
+      },
+      "video": {
+        "title": "Montage & Visuel",
+        "subtitle": "Supports marketing & démos"
+      },
+      "maintenance": {
+        "title": "Maintenance",
+        "subtitle": "Déploiement & debugging rapide"
+      },
+      "search": {
+        "title": "Recherche & Veille",
+        "subtitle": "Approche data-driven"
+      },
+      "htmlCss": {
+        "title": "HTML & CSS",
+        "subtitle": "Pages responsives, accessibles"
+      },
+      "csharp": {
+        "title": "C#",
+        "subtitle": "Applications desktop & logique métier"
+      }
+    },
+    "whyMeTitle": "Pourquoi travailler avec moi ?",
+    "whyMeIntro": "Trois raisons concrètes qui font la différence sur un projet, au-delà de la simple liste de compétences.",
+    "whyMeItems": {
+      "clean": {
+        "title": "Code propre & documenté",
+        "description": "Un code maintenable, commenté et pensé pour durer — pas du bricolage qu'il faudra tout reprendre dans six mois."
+      },
+      "fast": {
+        "title": "Livraison rapide",
+        "description": "Communication claire à chaque étape, des délais respectés et pas de silence radio pendant que vous attendez des nouvelles."
+      },
+      "design": {
+        "title": "Design orienté conversion",
+        "description": "Une UX et une UI pensées pour que vos visiteurs passent à l'action, pas seulement pour être jolies sur une maquette."
+      }
+    },
+    "whyMeCta": "Contactez-moi pour une estimation"
+  },
+  "ContactPage": {
+    "metaTitle": "Contact",
+    "title": "Contactez-moi",
+    "intro": "Une question, un projet ou une mission freelance ? Je suis à votre écoute.",
+    "whatsappLabel": "Discuter sur WhatsApp",
+    "formAriaLabel": "Formulaire de contact",
+    "nameLabel": "Nom",
+    "namePlaceholder": "Votre nom complet",
+    "phoneFieldLabel": "Numéro WhatsApp",
+    "messageLabel": "Message",
+    "messagePlaceholder": "Décrivez votre projet ou votre demande...",
+    "errorRequired": "Ce champ est requis.",
+    "submitLabel": "Envoyer le message →",
+    "sendingLabel": "Ouverture de votre client mail...",
+    "sentTitle": "Message prêt !",
+    "sentText": "Ton client mail devrait s'être ouvert avec le message pré-rempli. S'il ne s'est rien passé, écris-moi directement à amandinoaiminasso@gmail.com.",
+    "sendAnother": "Envoyer un autre message",
+    "mailSubject": "Contact depuis votre site",
+    "mailName": "Nom",
+    "mailWhatsapp": "WhatsApp",
+    "mailMessage": "Message",
+    "responseTime": "Je réponds généralement sous 24h."
+  }
+}

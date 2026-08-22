@@ -1,0 +1,171 @@
+/* ==========================================================================
+   Header.module.css — version CSS Module de Header.css
+
+   Ce que j'ai changé par rapport à l'original :
+   1. Suppression du @import de police + du bloc :root / [data-theme="dark"]
+      → tout vient maintenant de tokens.css (une seule source).
+   2. Suppression du reset global (*, html/body/#root) → ça n'a rien à faire
+      dans un fichier scopé à un seul composant, ça part dans globals.css.
+   3. Suppression de code mort que j'ai vérifié dans Header.jsx :
+      - .logo-container / .logo-bracket / .logo-prefix / .logo-main /
+        .logo-cursor + @keyframes blink → aucune de ces classes n'est
+        utilisée dans le JSX (le composant affiche juste un <h2> texte brut).
+      - .sidebar-nav / .overlay / .nav-links → classes "legacy"/"fallback"
+        (dixit tes propres commentaires) jamais posées sur un élément JSX.
+        Le vrai panneau mobile est Sidebar.jsx / Sidebar.css, séparé.
+      - .navbar.scrolled, .toggle-btn, .sr-only → jamais référencées non plus.
+      Rien de tout ça n'était visible à l'écran : les retirer ne change
+      RIEN au rendu, ça enlève juste ~90 lignes mortes.
+   4. z-index remplacés par l'échelle de tokens.css, en gardant le même
+      ORDRE relatif qu'avant (navbar < burger), donc même empilement visuel.
+   5. Noms de variables remappés vers tokens.css :
+      --color-secondary → --color-text-secondary
+      --accent-hover     → --color-primary-hover
+      --background-card  → --color-surface
+   ========================================================================== */
+
+.navbar {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: var(--z-header);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  height: var(--navbar-height, 70px);
+  /* Couleur fixe (ne suit plus le thème) — c'était déjà comme ça dans
+     l'original : le bloc [data-theme="dark"] de Header.css n'a jamais
+     pu s'appliquer, donc le Header n'a jamais réellement changé de
+     couleur en mode sombre. */
+  background-color: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(128, 128, 128, 0.12);
+  transition: background-color var(--transition-normal, 0.4s), transform var(--transition-fast, 0.2s);
+  gap: 12px;
+}
+
+.headerLink {
+  text-decoration: none;
+  display: inline-flex;
+  transition: transform var(--transition-fast);
+}
+.headerLink:hover { transform: scale(1.05); }
+
+.header { display: flex; align-items: center; gap: 0.5rem; }
+
+/* Remplace le rendu par défaut du <h2> d'origine (gras, ~1.5rem) —
+   le logo n'est plus un titre de section, juste du texte de marque. */
+.brand {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: inherit;
+}
+
+.navList {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  list-style: none;
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 30px;
+  color: #1f2d3d;
+  background: linear-gradient(90deg, rgba(255, 140, 0, 0.08), rgba(255, 140, 0, 0.03));
+  box-shadow: inset 0 -6px 18px rgba(0, 0, 0, 0.06);
+  opacity: 0.95;
+  min-height: 40px;
+  transition:
+    color var(--transition-fast),
+    background-color var(--transition-fast),
+    opacity var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.navLink:hover,
+.navLink:focus-visible {
+  opacity: 1;
+  transform: translateY(-2px);
+  color: #ffffff;
+  background: linear-gradient(90deg, #ff8c00, #ffb347);
+}
+
+.navLinkActive {
+  color: #ffffff;
+  background: linear-gradient(90deg, #ff8c00, #ffb347);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+.navLink:focus {
+  outline: 3px solid rgba(255, 140, 0, 0.12);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+.toggleIcon {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  /* Reset du style natif de <button> (fond gris + bordure du navigateur) —
+     c'était le cadre que tu voyais. Le burger juste en dessous avait déjà
+     ce reset, il manquait ici. */
+  background: none;
+  border: none;
+  padding: 0;
+  transition: transform var(--transition-normal);
+}
+.toggleIcon:hover { transform: rotate(15deg) scale(1.05); }
+
+.burger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  z-index: var(--z-header-panel);
+  border-radius: 10px;
+  transition: background var(--transition-fast), transform var(--transition-fast);
+}
+.burger:hover { background: rgba(0, 0, 0, 0.04); transform: translateY(-2px); }
+
+.customMenuIcon {
+  width: 28px;
+  height: 28px;
+  transition: transform var(--transition-fast);
+}
+.burger:hover .customMenuIcon { transform: scale(1.15); }
+
+@media (max-width: 768px) {
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: var(--z-header);
+    will-change: transform;
+  }
+
+  .navList { display: none; }
+  .burger { display: flex; }
+}
+
+@media (max-width: 420px) {
+  .toggleIcon,
+  .customMenuIcon {
+    width: 26px;
+    height: 26px;
+  }
+  .navbar {
+    padding: 8px 12px;
+    height: calc(var(--navbar-height) - 8px);
+  }
+}

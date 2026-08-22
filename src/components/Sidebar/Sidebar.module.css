@@ -1,0 +1,198 @@
+/* ==========================================================================
+   Sidebar.module.css — version CSS Module de Sidebar.css
+
+   Changement principal : l'original recevait `isDarkMode` en prop pour
+   choisir la classe .light/.dark — c'est justement le bug qu'on avait
+   trouvé (App.jsx ne passait plus cette prop après la migration vers
+   ThemeContext, donc la Sidebar restait figée en clair). Ici, plus besoin
+   de prop du tout : le thème est lu directement via l'attribut
+   [data-theme] posé sur <html> par ThemeContext.tsx, avec :global() pour
+   sortir du scope local du CSS Module. Le bug ne peut plus exister.
+   ========================================================================== */
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 260px;
+  height: 100vh;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  z-index: var(--z-sidebar);
+  transform-style: preserve-3d;
+  transition: transform 0.45s cubic-bezier(0.2, 0.9, 0.3, 1), box-shadow 0.45s ease;
+  will-change: transform;
+  transform: translateZ(0);
+  border-top-right-radius: 14px;
+  border-bottom-right-radius: 14px;
+  overflow: hidden;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  /* Juste sous le panneau, au-dessus de tout le reste. */
+  z-index: calc(var(--z-sidebar) - 1);
+}
+
+@media (min-width: 769px) {
+  .overlay {
+    display: none;
+  }
+}
+
+/* Garde-fou : si le state React dit encore "ouverte" au moment où l'écran
+   repasse en largeur desktop (redimensionnement de fenêtre, rotation...),
+   ce media query force la disparition — sinon la Sidebar restait visible
+   EN PLUS de la navbar desktop, qui réapparaît elle via son propre
+   media query dans Header.module.css. */
+@media (min-width: 769px) {
+  .sidebar {
+    display: none;
+  }
+}
+
+.sidebar::before,
+.sidebar::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  transform-origin: left center;
+  transition: transform 0.45s cubic-bezier(0.2, 0.9, 0.3, 1), opacity 0.45s ease;
+  z-index: 0;
+}
+
+.sidebar::before {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.02));
+  transform: translateZ(-20px) scale(1.02);
+  opacity: 0.9;
+  border-top-right-radius: 14px;
+  border-bottom-right-radius: 14px;
+}
+
+.sidebar::after {
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.025), rgba(0, 0, 0, 0));
+  mix-blend-mode: overlay;
+  transform: translateZ(10px) scale(1);
+  opacity: 0.7;
+  border-top-right-radius: 14px;
+  border-bottom-right-radius: 14px;
+}
+
+/* Thèmes — pilotés par [data-theme] sur <html>, plus par une prop */
+:global([data-theme="light"]) .sidebar {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.88), rgba(245, 245, 250, 0.82));
+  color: #111;
+  box-shadow: 0 6px 18px rgba(20, 20, 30, 0.06), 0 30px 60px rgba(20, 20, 30, 0.06);
+}
+
+:global([data-theme="dark"]) .sidebar {
+  background: linear-gradient(145deg, #0f1113 0%, #141416 60%);
+  color: #eee;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5), 0 40px 80px rgba(0, 0, 0, 0.45);
+}
+
+.sidebarHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  z-index: 2;
+}
+
+.sidebarTitle {
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  transform: translateZ(30px);
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.2rem;
+  transform: translateZ(28px);
+}
+
+.customCloseIcon {
+  width: 22px;
+  height: 22px;
+  display: block;
+  color: var(--color-primary, #ff8c00);
+}
+
+.sidebarLinks {
+  list-style: none;
+  margin: 1.4rem 0 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  z-index: 2;
+}
+
+.sidebarLinks li {
+  padding: 0.35rem;
+  border-radius: 10px;
+  transition: transform 0.28s ease, box-shadow 0.28s ease, background 0.28s ease;
+  transform-style: preserve-3d;
+}
+
+.sidebarLinks a {
+  display: block;
+  text-decoration: none;
+  padding: 0.6rem 0.85rem;
+  border-radius: 8px;
+  font-weight: 600;
+  color: inherit;
+  transform: translateZ(22px);
+  transition: transform 0.28s cubic-bezier(0.2, 0.9, 0.3, 1), color 0.2s ease, background 0.2s ease;
+}
+
+.sidebarLinks li:hover {
+  transform: translateX(6px) translateZ(14px) scale(1.01);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+}
+
+/* Glow orange au survol — manquait, contrairement à la navbar desktop
+   qui a le même effet sur .navLink:hover dans Header.module.css. */
+.sidebarLinks a:hover {
+  color: #ffffff;
+  background: linear-gradient(90deg, #ff8c00, #ffb347);
+}
+
+.linkActive {
+  color: #ffffff;
+  background: linear-gradient(90deg, #ff8c00, #ffb347);
+  box-shadow: inset 0 -6px 18px rgba(0, 0, 0, 0.06);
+  transform: translateZ(30px) scale(1.01);
+}
+
+@media (max-width: 980px) {
+  .sidebar { width: 220px; padding: 1rem; }
+  .sidebarTitle { font-size: 1.2rem; }
+  .sidebarLinks a { font-size: 1rem; padding: 0.55rem 0.7rem; }
+}
+
+@media (max-width: 600px) {
+  .sidebar {
+    width: 100%;
+    height: 100vh;
+    border-radius: 0;
+    left: 0;
+    top: 0;
+  }
+  .sidebar::before { transform: translateZ(-10px) scale(1.01); opacity: 0.95; }
+  .sidebar::after { transform: translateZ(6px); opacity: 0.6; }
+  .sidebarLinks { padding-top: 1.2rem; }
+  .sidebarLinks li { padding-left: 0.3rem; padding-right: 0.3rem; }
+}
+
+.sidebarLinks a:focus {
+  outline: 3px solid rgba(255, 140, 0, 0.14);
+  outline-offset: 4px;
+}

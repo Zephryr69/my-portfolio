@@ -1,0 +1,40 @@
+.switcher {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 3px;
+  border-radius: 20px;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.localeLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  padding: 4px 8px;
+  border-radius: 16px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  text-decoration: none;
+  /* Couleur fixe, comme le reste du Header (gelé, ne suit pas le thème). */
+  color: #1f2d3d;
+  opacity: 0.6;
+  transition: opacity var(--transition-fast), background var(--transition-fast), color var(--transition-fast);
+}
+
+.localeLink:hover {
+  opacity: 1;
+}
+
+.active {
+  opacity: 1;
+  color: #ffffff;
+  background: linear-gradient(90deg, #ff8c00, #ffb347);
+}
+
+.localeLink:focus-visible {
+  outline: 2px solid rgba(255, 140, 0, 0.5);
+  outline-offset: 2px;
+}

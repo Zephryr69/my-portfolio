@@ -1,0 +1,182 @@
+/* ==========================================================================
+   SkillsSection.module.css — section compétences de Home.css
+
+   Changements :
+   - `.skill-level` n'a plus d'animation CSS ni de dépendance à la variable
+     --level-width jamais définie (c'était le bug des barres toutes à 70%,
+     voir chat) — la largeur est maintenant animée par Framer Motion dans
+     SkillCard.tsx, avec la vraie valeur `level`.
+   - `!important` retirés : plus nécessaires une fois qu'il n'y a plus de
+     règle contradictoire à écraser.
+   - `var(--text-secondary, #666)` → `var(--color-text-secondary)`, qui
+     existe réellement dans tokens.css maintenant.
+   ========================================================================== */
+
+.skillsSection {
+  padding: 4rem 2rem;
+  text-align: center;
+  /* Avant : max-width: 1000px, ce qui rendait la section plus étroite
+     que Hero et Projets (tous deux calés sur les 1200px du homeWrapper)
+     — d'où l'impression d'espace gaspillé sur les côtés. Elle remplit
+     maintenant la même largeur que le reste de la page. */
+  margin: 2rem 0;
+  border-radius: 16px;
+  backdrop-filter: blur(12px);
+  transition: background 0.5s ease, color 0.5s ease;
+  box-sizing: border-box;
+  scroll-margin-top: var(--navbar-height);
+  position: relative;
+  overflow: hidden;
+}
+
+:global([data-theme="light"]) .skillsSection {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(240, 240, 255, 0.12));
+  color: var(--color-text-secondary);
+}
+:global([data-theme="dark"]) .skillsSection {
+  background: linear-gradient(135deg, rgba(20, 30, 48, 0.7), rgba(10, 20, 40, 0.9));
+  color: var(--color-primary);
+}
+
+.skillsSection h2 {
+  font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+  margin-bottom: 2rem;
+  user-select: none;
+  position: relative;
+  z-index: 1;
+}
+
+.sectionTitle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.skillsGrid {
+  display: grid;
+  /* 10 compétences en 5 colonnes = 2 rangées pleines et régulières,
+     au lieu de auto-fit qui pouvait laisser une dernière rangée
+     incomplète collée à gauche avec du vide à droite. */
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.skillCard {
+  position: relative;
+  border-radius: 16px;
+  padding: 1.2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.85rem;
+  font-weight: 600;
+  font-size: 1rem;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.04), 0 12px 30px rgba(0, 0, 0, 0.06);
+  transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+  transform-style: preserve-3d;
+  overflow: hidden;
+}
+
+:global([data-theme="light"]) .skillCard {
+  background: linear-gradient(180deg, rgba(101, 3, 3, 0.1), rgba(240, 240, 255, 0.08));
+  backdrop-filter: blur(10px);
+  color: var(--color-primary);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+:global([data-theme="dark"]) .skillCard {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+  color: #ffcd06;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.skillCard::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  transform: rotate(45deg) translateX(-100%);
+  pointer-events: none;
+  animation: shine 3s infinite ease-in-out;
+  z-index: 0;
+}
+:global([data-theme="light"]) .skillCard::before {
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.25), rgba(220, 220, 220, 0.05));
+}
+:global([data-theme="dark"]) .skillCard::before {
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0));
+}
+@keyframes shine {
+  0%, 100% { transform: rotate(45deg) translateX(-100%); }
+  50% { transform: rotate(45deg) translateX(100%); }
+}
+
+.skillCard:hover {
+  transform: translateY(-8px) rotateX(3deg) rotateY(3deg) scale(1.04);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08), 0 24px 50px rgba(0, 0, 0, 0.12);
+}
+:global([data-theme="light"]) .skillCard:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(245, 245, 255, 0.2));
+}
+:global([data-theme="dark"]) .skillCard:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.12));
+}
+
+.skillIcon {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+  align-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.4s ease, color 0.4s ease;
+  z-index: 1;
+}
+.skillCard:hover .skillIcon { transform: rotate(-10deg) scale(1.15); }
+:global([data-theme="light"]) .skillCard:hover .skillIcon { color: #ff8c00; }
+:global([data-theme="dark"]) .skillCard:hover .skillIcon { color: #fed003; }
+
+.skillTextLevel {
+  width: 100%;
+  z-index: 1;
+}
+.skillTextLevel span {
+  display: block;
+  margin-bottom: 0.4rem;
+}
+
+.skillLevel {
+  height: 6px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #ff8c00, #ffcc01);
+}
+
+.skillTitle {
+  font-size: 1rem;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.skillDescription {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .skillsGrid { grid-template-columns: 1fr; }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  /* 10 / 2 = 5 rangées pleines, au lieu de auto-fit qui pouvait
+     déséquilibrer la dernière rangée à cette taille intermédiaire. */
+  .skillsGrid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+  .skillTextLevel span { white-space: normal; overflow: visible; text-overflow: unset; }
+  .skillCard { font-size: 0.95rem; }
+}

@@ -1,0 +1,181 @@
+/* ==========================================================================
+   ProjectsSection.module.css — section projets de Home.css
+
+   Changements :
+   - `.container.dark ...` → `:global([data-theme="dark"]) ...` : l'original
+     ciblait une classe "container" qui ne correspondait jamais à la vraie
+     classe posée par React ("containner", coquille d'origine) — ces styles
+     sombres (glow violet, dégradé sur le titre) n'avaient jamais pu
+     s'afficher. Rebranchés proprement sur le vrai attribut de thème.
+   - `.tech-badge:hover` (singulier) → `.techBadges:hover` : la vraie
+     classe posée dans le JSX est au pluriel, l'effet de survol ne s'était
+     donc jamais déclenché non plus.
+   - `var(--color-muted)` → `var(--color-text-secondary)` (jamais définie
+     dans l'original).
+   - `.glassmorphic` n'avait qu'une règle mobile (aucune règle de base) :
+     repliée directement dans le media query de .projectCard, plus besoin
+     d'une classe séparée pour un seul override.
+   ========================================================================== */
+
+.projectsSection {
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.sectionTitle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: clamp(1.6rem, 2.4vw, 2.2rem);
+  font-weight: 700;
+  /* Espacement augmenté (0 0 2rem → 0 0 3rem) : encore trop collé aux
+     cartes en dessous avec la valeur précédente. */
+  margin: 0 0 3rem;
+  /* Couleur pleine et fiable dans les deux thèmes, au lieu de l'effet
+     dégradé (-webkit-background-clip: text) qui pouvait retomber sur la
+     couleur héritée — blanche en mode sombre — si le navigateur ne le
+     rendait pas comme prévu. */
+  color: var(--color-primary);
+}
+
+.projectsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.projectCard {
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  overflow: hidden;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+  transform-style: preserve-3d;
+}
+
+:global([data-theme="dark"]) .projectCard {
+  box-shadow: 0 0 15px rgba(128, 80, 255, 0.3);
+}
+
+/* Couleurs de carte — pensées séparément pour chaque thème plutôt qu'un
+   seul jeu de couleurs figé (l'orange/marine à plat rendait mal en clair
+   ET en sombre à la fois). En clair : teintes chaudes et douces sur fond
+   clair. En sombre : teintes plus saturées, pensées pour ressortir sur
+   fond marine profond. */
+:global([data-theme="light"]) .cardColor1 { background: linear-gradient(135deg, rgba(255, 140, 0, 0.14), rgba(255, 246, 233, 0.6)); }
+:global([data-theme="light"]) .cardColor2 { background: linear-gradient(135deg, rgba(255, 179, 71, 0.16), rgba(255, 246, 233, 0.55)); }
+:global([data-theme="light"]) .cardColor3 { background: linear-gradient(135deg, rgba(31, 45, 61, 0.08), rgba(255, 140, 0, 0.12)); }
+:global([data-theme="light"]) .cardColor4 { background: linear-gradient(135deg, rgba(255, 140, 0, 0.1), rgba(31, 45, 61, 0.06)); }
+
+:global([data-theme="dark"]) .cardColor1 { background: linear-gradient(135deg, rgba(255, 140, 0, 0.28), rgba(10, 26, 47, 0.75)); }
+:global([data-theme="dark"]) .cardColor2 { background: linear-gradient(135deg, rgba(255, 179, 71, 0.22), rgba(10, 26, 47, 0.8)); }
+:global([data-theme="dark"]) .cardColor3 { background: linear-gradient(135deg, rgba(31, 45, 61, 0.9), rgba(255, 140, 0, 0.14)); }
+:global([data-theme="dark"]) .cardColor4 { background: linear-gradient(135deg, rgba(10, 26, 47, 0.85), rgba(255, 179, 71, 0.18)); }
+
+:global([data-theme="light"]) .projectCard.cardColor1:hover { background: linear-gradient(135deg, rgba(255, 140, 0, 0.24), rgba(255, 246, 233, 0.75)); box-shadow: 0 0 22px rgba(255, 140, 0, 0.22); }
+:global([data-theme="light"]) .projectCard.cardColor2:hover { background: linear-gradient(135deg, rgba(255, 179, 71, 0.26), rgba(255, 246, 233, 0.7)); box-shadow: 0 0 22px rgba(255, 179, 71, 0.24); }
+:global([data-theme="light"]) .projectCard.cardColor3:hover { background: linear-gradient(135deg, rgba(31, 45, 61, 0.14), rgba(255, 140, 0, 0.2)); box-shadow: 0 0 22px rgba(31, 45, 61, 0.14); }
+:global([data-theme="light"]) .projectCard.cardColor4:hover { background: linear-gradient(135deg, rgba(255, 140, 0, 0.18), rgba(31, 45, 61, 0.1)); box-shadow: 0 0 22px rgba(255, 140, 0, 0.18); }
+
+:global([data-theme="dark"]) .projectCard.cardColor1:hover { background: linear-gradient(135deg, rgba(255, 140, 0, 0.4), rgba(10, 26, 47, 0.9)); box-shadow: 0 0 28px rgba(255, 140, 0, 0.35); }
+:global([data-theme="dark"]) .projectCard.cardColor2:hover { background: linear-gradient(135deg, rgba(255, 179, 71, 0.32), rgba(10, 26, 47, 0.92)); box-shadow: 0 0 28px rgba(255, 179, 71, 0.3); }
+:global([data-theme="dark"]) .projectCard.cardColor3:hover { background: linear-gradient(135deg, rgba(31, 45, 61, 1), rgba(255, 140, 0, 0.22)); box-shadow: 0 0 28px rgba(31, 45, 61, 0.4); }
+:global([data-theme="dark"]) .projectCard.cardColor4:hover { background: linear-gradient(135deg, rgba(10, 26, 47, 0.95), rgba(255, 179, 71, 0.28)); box-shadow: 0 0 28px rgba(255, 179, 71, 0.28); }
+
+.projectCard:hover {
+  transform: translateY(-10px) rotateX(2deg) rotateY(2deg) scale(1.03);
+}
+
+.projectImg {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+.projectCard:hover .projectImg { transform: scale(1.05); }
+
+.projectInfo {
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  flex-grow: 1;
+}
+.projectInfo h3 { font-size: 1.15rem; margin: 0; }
+.projectInfo p { font-size: 0.9rem; color: var(--color-text-secondary); flex-grow: 1; }
+
+.projectTech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.techBadges {
+  padding: 4px 10px;
+  border-radius: 14px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: white;
+  background: var(--color-primary);
+  transition: all 0.3s ease;
+}
+.techBadges:hover {
+  box-shadow: 0 0 12px rgba(255, 199, 77, 0.7);
+}
+
+.projectLinks {
+  margin-top: auto;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.projectCta {
+  font-weight: 600;
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.projectCta:hover {
+  text-decoration: underline;
+  transform: translateY(-2px);
+}
+
+.projectsMore {
+  display: flex;
+  justify-content: center;
+  margin-top: 2.5rem;
+}
+
+.projectsBtn {
+  background: var(--color-primary);
+  color: white;
+  font-weight: 600;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.projectsBtn:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+  .projectsGrid { grid-template-columns: 1fr; }
+  .projectCard {
+    max-width: 95%;
+    margin: 0 auto;
+    padding: 1.1rem;
+    border-radius: 12px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .projectsGrid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+}

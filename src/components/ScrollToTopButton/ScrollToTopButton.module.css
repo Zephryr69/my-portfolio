@@ -1,0 +1,32 @@
+.scrollToTop {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+
+  background: linear-gradient(90deg, #ff8c00, #ffcc01);
+  color: var(--color-text-light);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  font-size: 1.1rem;
+  transition: transform 0.25s ease;
+
+  /* Doit rester au-dessus de tout, y compris la navbar — voir l'échelle
+     dans tokens.css (--z-scroll-top-btn est la valeur la plus haute). */
+  z-index: var(--z-scroll-top-btn);
+}
+
+.scrollToTop:hover {
+  transform: scale(1.2) rotate(10deg);
+}
+
+.scrollToTop:focus-visible {
+  outline: 3px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 3px;
+}
