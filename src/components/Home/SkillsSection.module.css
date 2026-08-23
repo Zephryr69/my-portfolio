@@ -21,6 +21,7 @@
      maintenant la même largeur que le reste de la page. */
   margin: 2rem 0;
   border-radius: 16px;
+  -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
   transition: background 0.5s ease, color 0.5s ease;
   box-sizing: border-box;
@@ -80,12 +81,14 @@
 
 :global([data-theme="light"]) .skillCard {
   background: linear-gradient(180deg, rgba(101, 3, 3, 0.1), rgba(240, 240, 255, 0.08));
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   color: var(--color-primary);
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 :global([data-theme="dark"]) .skillCard {
   background: rgba(255, 255, 255, 0.04);
+  -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
   color: #ffcd06;
   border: 1px solid rgba(255, 255, 255, 0.1);

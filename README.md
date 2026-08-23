@@ -40,7 +40,7 @@ Cette refonte migre vers **Next.js (App Router)**, introduit **TypeScript** part
 ## Stack technique
 
 | Domaine | Choix |
-|---|---|
+| --- | --- |
 | Framework | [Next.js 16](https://nextjs.org/) (App Router, Turbopack) |
 | Langage | TypeScript |
 | Style | CSS Modules + fichier de tokens centralisé (pas de Tailwind — voir [Architecture CSS](#architecture-css)) |
@@ -53,7 +53,7 @@ Cette refonte migre vers **Next.js (App Router)**, introduit **TypeScript** part
 ### Typographie
 
 | Police | Usage | Pourquoi |
-|---|---|---|
+| --- | --- | --- |
 | **Outfit** | Corps de texte | Sans-serif géométrique, très lisible à petite taille, look moderne sans être froid |
 | **Rubik** | Titres de section | Formes légèrement arrondies, apporte du caractère sur les titres sans nuire à la lisibilité |
 | **Updock** | Accent ponctuel (prénom en hero) | Police manuscrite, réservée à un seul mot pour une touche personnelle — jamais utilisée pour du texte long |
@@ -63,7 +63,7 @@ Les trois sont chargées **une seule fois** dans `src/app/globals.css`. Dans l'a
 ### Couleurs
 
 | Rôle | Clair | Sombre |
-|---|---|---|
+| --- | --- | --- |
 | Accent principal | `#ff8c00` (orange) | `#ffb347` (orange doux) |
 | Fond | `#fff6e9` | `#0a1a2f` |
 | Texte | `#1f2d3d` | `#f5f5f5` |
@@ -90,7 +90,7 @@ Le site est disponible en **français** (langue par défaut) et **anglais**, via
 
 ## Structure du projet
 
-```
+```text
 my-portfolio/
 ├── messages/                  # Traductions (fr.json, en.json)
 ├── src/
@@ -132,7 +132,7 @@ Le site est ensuite accessible sur [http://localhost:3000](http://localhost:3000
 ## Scripts disponibles
 
 | Commande | Effet |
-|---|---|
+| --- | --- |
 | `npm run dev` | Lance le serveur de développement (Turbopack) |
 | `npm run build` | Build de production |
 | `npm run start` | Sert le build de production |
@@ -155,6 +155,6 @@ Quelques bugs réels trouvés pendant la migration, corrigés au passage :
 
 ## Contact
 
-- **Email :** amandinoaiminasso@gmail.com
+- **Email :** [amandinoaiminasso@gmail.com](mailto:amandinoaiminasso@gmail.com)
 - **WhatsApp :** +229 01 69 11 87 45
 - **GitHub :** [@Zephryr69](https://github.com/Zephryr69)
