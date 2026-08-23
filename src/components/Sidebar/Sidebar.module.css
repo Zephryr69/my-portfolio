@@ -100,29 +100,45 @@
   align-items: center;
   justify-content: space-between;
   gap: 0.5rem;
-  z-index: 2;
+  /* position:relative : nécessaire pour que z-index ait un effet réel. */
+  position: relative;
+  z-index: 5;
+}
+
+.closeButton {
+  /* Reconstruit en cercle plein et opaque, sans aucun transform 3D.
+     L'ancienne version (transparente + translateZ) pouvait disparaître
+     selon le navigateur : preserve-3d + overflow:hidden sans perspective
+     définie est une combinaison fragile. Ici, impossible à manquer. */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  background: var(--color-primary, #ff8c00);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+.closeButton:hover {
+  transform: scale(1.08);
+  background: var(--color-primary-hover, #ffb347);
+}
+
+.customCloseIcon {
+  width: 18px;
+  height: 18px;
+  display: block;
+  color: #ffffff;
 }
 
 .sidebarTitle {
   font-size: 1.35rem;
   font-weight: 700;
   letter-spacing: 0.6px;
-  transform: translateZ(30px);
-}
-
-.closeButton {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0.2rem;
-  transform: translateZ(28px);
-}
-
-.customCloseIcon {
-  width: 22px;
-  height: 22px;
-  display: block;
-  color: var(--color-primary, #ff8c00);
 }
 
 .sidebarLinks {

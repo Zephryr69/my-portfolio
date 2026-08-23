@@ -2,7 +2,7 @@
    trouvés dans index.css / Header.css / Home.css. Doit rester AVANT
    l'import de tokens.css : les @import doivent tous précéder toute
    règle CSS normale, et tokens.css en contient. */
-@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Rubik&family=Updock&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Rubik&family=Updock&display=swap');
 @import "../styles/tokens.css";
 
 * {
@@ -29,9 +29,7 @@ body {
   overflow-x: hidden;
   background: var(--color-bg);
   color: var(--color-text);
-  transition:
-    background var(--transition-normal),
-    color var(--transition-normal);
+  transition: background var(--transition-normal), color var(--transition-normal);
 }
 
 /* Décor animé en fond (identique à l'original) */
@@ -42,28 +40,16 @@ body::before {
   width: 200%;
   height: 200%;
   background:
-    radial-gradient(
-      circle at 30% 30%,
-      rgba(255, 255, 255, 0.05),
-      transparent 40%
-    ),
-    radial-gradient(
-      circle at 70% 70%,
-      rgba(255, 255, 255, 0.05),
-      transparent 40%
-    );
+    radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.05), transparent 40%),
+    radial-gradient(circle at 70% 70%, rgba(255, 255, 255, 0.05), transparent 40%);
   animation: floatBg 15s infinite alternate ease-in-out;
   z-index: var(--z-decor);
   pointer-events: none;
 }
 
 @keyframes floatBg {
-  0% {
-    transform: translate(0, 0) scale(1);
-  }
-  100% {
-    transform: translate(20px, 20px) scale(1.05);
-  }
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(20px, 20px) scale(1.05); }
 }
 
 .content {
@@ -82,14 +68,11 @@ body::before {
    ------------------------- */
 .card {
   background: var(--color-surface);
-  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   border-radius: 15px;
   padding: 20px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .card:hover {
   transform: translateY(-5px) scale(1.02);
@@ -108,9 +91,7 @@ body::before {
      jamais définie dans tout le projet → aucun glow ne s'affichait
      réellement. Je garde ce comportement (pas de glow) pour rester
      fidèle au rendu actuel. Dis-moi si tu veux que j'en active un vrai. */
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.3s ease;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
 }
 .btn:hover {
   transform: translateY(-3px);

@@ -14,6 +14,7 @@ interface ProjectCardProps {
   tech: string[];
   colorClass: "cardColor1" | "cardColor2" | "cardColor3" | "cardColor4";
   ctaLabel: string;
+  noDemoLabel: string;
   delay: number;
 }
 
@@ -26,6 +27,7 @@ export default function ProjectCard({
   tech,
   colorClass,
   ctaLabel,
+  noDemoLabel,
   delay,
 }: ProjectCardProps) {
   return (
@@ -53,9 +55,15 @@ export default function ProjectCard({
         </div>
 
         <div className={styles.projectLinks}>
-          <a href={link} className={styles.projectCta} target="_blank" rel="noopener noreferrer">
-            {ctaLabel}
-          </a>
+          {link ? (
+            <a href={link} className={styles.projectCta} target="_blank" rel="noopener noreferrer">
+              {ctaLabel}
+            </a>
+          ) : (
+            /* Pas de lien = pas de démo possible (app desktop, par ex.) —
+               un badge neutre plutôt qu'un bouton cassé menant nulle part. */
+            <span className={styles.noDemoBadge}>{noDemoLabel}</span>
+          )}
         </div>
       </div>
     </motion.div>

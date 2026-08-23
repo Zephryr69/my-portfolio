@@ -10,7 +10,8 @@
     },
     "themeToggle": "Toggle site theme",
     "openMenu": "Open navigation menu",
-    "languageSwitcherLabel": "Switch language"
+    "languageSwitcherLabel": "Switch language",
+    "closeMenu": "Close navigation menu"
   },
   "Sidebar": {
     "title": "Menu",
@@ -101,8 +102,13 @@
         "cantine": {
           "title": "C# app – Cafeteria management",
           "brief": "Desktop app in C# to manage enrollments, payments, and menus for a school cafeteria."
+        },
+        "madatours": {
+          "title": "MadaTours — Tourism platform",
+          "brief": "Tourism discovery platform for Madagascar, featuring excursions and tours, available in French, English, and Malagasy."
         }
-      }
+      },
+      "noDemoLabel": "Desktop app — no live demo"
     }
   },
   "AboutPage": {

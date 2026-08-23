@@ -25,6 +25,7 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/routing";
 import { useTheme } from "@/contexts/ThemeContext";
+import { FaXmark } from "react-icons/fa6";
 import LanguageSwitcher from "./LanguageSwitcher";
 import styles from "./Header.module.css";
 
@@ -36,6 +37,7 @@ import menuIcon from "../../assets/menu-icon.png";
 
 interface HeaderProps {
   onMenuClick?: () => void;
+  isMenuOpen?: boolean;
 }
 
 const NAV_ITEMS = [
@@ -45,7 +47,7 @@ const NAV_ITEMS = [
   { href: "/contact", key: "contact" },
 ] as const;
 
-export default function Header({ onMenuClick = () => {} }: HeaderProps) {
+export default function Header({ onMenuClick = () => {}, isMenuOpen = false }: HeaderProps) {
   const { isDarkMode, toggleTheme } = useTheme();
   const t = useTranslations("Header");
   const pathname = usePathname();
@@ -90,14 +92,23 @@ export default function Header({ onMenuClick = () => {} }: HeaderProps) {
         />
       </button>
 
-      <button className={styles.burger} onClick={onMenuClick} aria-label={t("openMenu")}>
-        <Image
-          src={menuIcon}
-          alt=""
-          width={28}
-          height={28}
-          className={styles.customMenuIcon}
-        />
+      <button
+        className={styles.burger}
+        onClick={onMenuClick}
+        aria-label={isMenuOpen ? t("closeMenu") : t("openMenu")}
+        aria-expanded={isMenuOpen}
+      >
+        {isMenuOpen ? (
+          <FaXmark className={styles.customMenuIcon} aria-hidden="true" />
+        ) : (
+          <Image
+            src={menuIcon}
+            alt=""
+            width={28}
+            height={28}
+            className={styles.customMenuIcon}
+          />
+        )}
       </button>
     </header>
   );

@@ -145,6 +145,13 @@
   transform: translateY(-2px);
 }
 
+.noDemoBadge {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  font-style: italic;
+}
+
 .projectsMore {
   display: flex;
   justify-content: center;

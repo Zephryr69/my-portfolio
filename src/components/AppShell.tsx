@@ -22,7 +22,10 @@ export default function AppShell({ children }: { children: ReactNode }) {
 
   return (
     <>
-      <Header onMenuClick={() => setIsSidebarOpen(true)} />
+      <Header
+        onMenuClick={() => setIsSidebarOpen((open) => !open)}
+        isMenuOpen={isSidebarOpen}
+      />
       <AnimatePresence>
         {isSidebarOpen && <Sidebar closeSidebar={() => setIsSidebarOpen(false)} />}
       </AnimatePresence>

@@ -1,11 +1,15 @@
 import ecoleImg from "../assets/ecole.png";
 import iphoneImg from "../assets/iphone.png";
 import cantineImg from "../assets/cantine.png";
+import madatoursImg from "../assets/madatours.jpeg";
 import type { StaticImageData } from "next/image";
 
 /* projectsData.ts — données structurelles des projets (image, lien, tech,
    couleur de carte). Le texte (titre, description) vient de
-   messages/*.json sous Home.projects.items.<key> — voir ProjectsSection.tsx. */
+   messages/*.json sous Home.projects.items.<key> — voir ProjectsSection.tsx.
+
+   thumbnail : importe "../assets/madatours.jpeg" — le fichier doit
+   exister sous ce nom exact dans src/assets/. */
 
 export interface ProjectDefinition {
   key: string;
@@ -36,5 +40,12 @@ export const projectsData: ProjectDefinition[] = [
     link: "",
     tech: ["C#", "WinForms", "SQL Server"],
     colorClass: "cardColor3",
+  },
+  {
+    key: "madatours",
+    thumbnail: madatoursImg,
+    link: "https://madatours-eight.vercel.app/fr",
+    tech: ["Next.js", "TypeScript", "next-intl", "Framer Motion"],
+    colorClass: "cardColor4",
   },
 ];

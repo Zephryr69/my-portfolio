@@ -10,7 +10,8 @@
     },
     "themeToggle": "Changer le thème du site",
     "openMenu": "Ouvrir le menu de navigation",
-    "languageSwitcherLabel": "Changer de langue"
+    "languageSwitcherLabel": "Changer de langue",
+    "closeMenu": "Fermer le menu de navigation"
   },
   "Sidebar": {
     "title": "Menu",
@@ -101,8 +102,13 @@
         "cantine": {
           "title": "Application C# – Gestion cantine",
           "brief": "App desktop en C# pour gérer inscriptions, paiements et menus en cantine scolaire."
+        },
+        "madatours": {
+          "title": "MadaTours — Plateforme touristique",
+          "brief": "Plateforme de découverte touristique pour Madagascar, avec excursions et circuits, en français, anglais et malgache."
         }
-      }
+      },
+      "noDemoLabel": "Application desktop — pas de démo en ligne"
     }
   },
   "AboutPage": {

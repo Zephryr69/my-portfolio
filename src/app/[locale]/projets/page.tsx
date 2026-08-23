@@ -42,6 +42,7 @@ export default function ProjectsPage() {
             tech={tech}
             colorClass={colorClass}
             ctaLabel={t("ctaLabel")}
+            noDemoLabel={t("noDemoLabel")}
             delay={idx * 0.15}
           />
         ))}
