@@ -1,8 +1,7 @@
-/* Une seule fois, ici — au lieu des 3 imports dupliqués qu'on avait
-   trouvés dans index.css / Header.css / Home.css. Doit rester AVANT
-   l'import de tokens.css : les @import doivent tous précéder toute
-   règle CSS normale, et tokens.css en contient. */
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Rubik&family=Updock&display=swap');
+/* Les polices (Outfit, Rubik, Updock) ne sont plus chargées ici via
+   @import (bloquant pour l'affichage) — elles viennent maintenant de
+   next/font/google dans layout.tsx, qui les auto-héberge et les charge
+   sans bloquer le rendu de la page. Voir la note LCP dans layout.tsx. */
 @import "../styles/tokens.css";
 
 * {

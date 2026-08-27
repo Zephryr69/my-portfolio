@@ -38,9 +38,13 @@
   --color-surface-muted: #f8f7f5;    /* zones secondaires claires */
 
   /* ---------- Typographie ---------- */
-  --font-primary: 'Rubik', sans-serif;
-  --font-body: 'Outfit', sans-serif;
-  --font-fancy: 'Updock', cursive;   /* usage ponctuel : nom en hero */
+  /* Ces trois variables sont désormais alimentées par next/font/google
+     (voir layout.tsx), pas par un nom de police en dur — next/font
+     génère lui-même une variable CSS par police, plus fiable et plus
+     rapide qu'un chargement CSS classique. */
+  --font-primary: var(--font-rubik), sans-serif;
+  --font-body: var(--font-outfit), sans-serif;
+  --font-fancy: var(--font-updock), cursive;   /* usage ponctuel : nom en hero */
 
   /* ---------- Layout ---------- */
   --navbar-height: 70px;

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
+import { Outfit, Rubik, Updock } from "next/font/google";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
@@ -8,6 +9,30 @@ import { ThemeProvider } from "@/contexts/ThemeContext";
 import AppShell from "@/components/AppShell";
 import { siteConfig } from "@/lib/siteConfig";
 import "../globals.css";
+
+/* next/font/google : télécharge les polices UNE FOIS au moment du build,
+   les héberge directement sur ton site (plus de requête vers Google à
+   chaque visite), et les précharge sans bloquer l'affichage — contrairement
+   à l'ancien @import CSS qui obligeait le navigateur à attendre la
+   réponse de fonts.googleapis.com avant de continuer à dessiner la page.
+   C'était la cause principale du mauvais score LCP sur la photo du Hero. */
+const outfit = Outfit({
+  subsets: ["latin"],
+  weight: ["300", "400", "600"],
+  variable: "--font-outfit",
+  display: "swap",
+});
+const rubik = Rubik({
+  subsets: ["latin"],
+  variable: "--font-rubik",
+  display: "swap",
+});
+const updock = Updock({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-updock",
+  display: "swap",
+});
 
 /* generateMetadata (au lieu d'un simple export const metadata statique) :
    permet de générer un titre/description traduits selon la locale, et
@@ -84,7 +109,11 @@ export default async function LocaleLayout({
     // suppressHydrationWarning : ThemeContext pose l'attribut data-theme
     // côté client après le premier rendu (voir ThemeContext.tsx), donc un
     // écart HTML serveur/client est attendu ici, pas une vraie erreur.
-    <html lang={locale} suppressHydrationWarning>
+    <html
+      lang={locale}
+      suppressHydrationWarning
+      className={`${outfit.variable} ${rubik.variable} ${updock.variable}`}
+    >
       <body>
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider>

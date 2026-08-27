@@ -67,22 +67,22 @@ export default function Hero() {
         </div>
       </div>
 
-      <motion.div
-        className={styles.heroImage}
-        initial={{ opacity: 0, x: 40 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.9, delay: 0.25 }}
-        aria-hidden="true"
-      >
+      {/* Plus de délai ni de fondu d'opacité ici : c'est l'élément LCP
+          (le plus gros contenu visible de la page), donc il doit
+          s'afficher tout de suite. L'ancien fondu (opacity 0 → 1 sur
+          0,9s avec 0,25s de délai) retardait le moment où le navigateur
+          considère la photo comme "affichée", même une fois chargée. */}
+      <div className={styles.heroImage}>
         <Image
           src={profileImg}
           alt={t("imageAlt")}
           width={320}
           height={400}
           priority
+          sizes="(max-width: 768px) 240px, 320px"
           className={styles.heroImg}
         />
-      </motion.div>
+      </div>
     </section>
   );
 }

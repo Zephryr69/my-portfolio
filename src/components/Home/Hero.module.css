@@ -109,6 +109,32 @@
   object-fit: cover;
   border-radius: 20px;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+
+  /* Animation d'entrée en CSS pur (pas de Framer Motion ici) : elle
+     démarre dès que le navigateur affiche l'image, sans attendre le
+     chargement du JavaScript. Courte et sans délai, pour rester
+     compatible avec un bon score LCP tout en gardant l'effet visuel. */
+  animation: heroImageIn 0.6s ease-out both;
+}
+
+@keyframes heroImageIn {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Si le visiteur a activé "réduire les animations" dans son système
+   (accessibilité), on respecte ce choix et on n'anime pas du tout. */
+@media (prefers-reduced-motion: reduce) {
+  .heroImage img,
+  .heroImg {
+    animation: none;
+  }
 }
 
 @media (max-width: 768px) {
