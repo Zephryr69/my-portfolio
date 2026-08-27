@@ -108,7 +108,8 @@
           "brief": "Tourism discovery platform for Madagascar, featuring excursions and tours, available in French, English, and Malagasy."
         }
       },
-      "noDemoLabel": "Desktop app — no live demo"
+      "noDemoLabel": "Desktop app — no live demo",
+      "metaDescription": "Discover the web and desktop projects built by Amandino AIMINASSO: showcase sites, tourism platforms, and business applications in React, Next.js, and C#."
     }
   },
   "AboutPage": {
@@ -196,7 +197,8 @@
         "description": "UX and UI built so your visitors actually take action, not just something that looks nice in a mockup."
       }
     },
-    "whyMeCta": "Contact me for a quote"
+    "whyMeCta": "Contact me for a quote",
+    "metaDescription": "Amandino AIMINASSO, Full-Stack developer and UI/UX designer based in Porto-Novo, Benin. Learn about my background, my working method, and my technical skills."
   },
   "ContactPage": {
     "metaTitle": "Contact",
@@ -219,6 +221,7 @@
     "mailName": "Name",
     "mailWhatsapp": "WhatsApp",
     "mailMessage": "Message",
-    "responseTime": "I usually reply within 24 hours."
+    "responseTime": "I usually reply within 24 hours.",
+    "metaDescription": "Get in touch with Amandino AIMINASSO to discuss your web project: showcase site, business application, or custom platform. Response within 24 hours."
   }
 }

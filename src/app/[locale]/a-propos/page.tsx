@@ -1,4 +1,6 @@
+import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
+import { siteConfig } from "@/lib/siteConfig";
 import AboutView from "./AboutView";
 
 /* page.tsx (/a-propos) — Server Component.
@@ -7,9 +9,23 @@ import AboutView from "./AboutView";
    on sépare : ce fichier gère juste le <title> de l'onglet, AboutView.tsx
    porte tout le contenu animé. */
 
-export async function generateMetadata() {
-  const t = await getTranslations("AboutPage");
-  return { title: t("metaTitle") };
+export const dynamic = "force-static";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "AboutPage" });
+  const url = `${siteConfig.url}/${locale}/a-propos`;
+
+  return {
+    title: t("metaTitle"),
+    description: t("metaDescription"),
+    alternates: { canonical: url },
+    openGraph: { title: t("metaTitle"), description: t("metaDescription"), url },
+  };
 }
 
 export default function AboutPage() {

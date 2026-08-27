@@ -40,7 +40,12 @@ export default function ProjectCard({
       aria-label={title}
       role="region"
     >
-      <Image src={thumbnail} alt={thumbnailAlt} className={styles.projectImg} />
+      <Image
+        src={thumbnail}
+        alt={thumbnailAlt}
+        className={styles.projectImg}
+        sizes="(max-width: 768px) 95vw, (max-width: 1024px) 45vw, 30vw"
+      />
 
       <div className={styles.projectInfo}>
         <h3>{title}</h3>

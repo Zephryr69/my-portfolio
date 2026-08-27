@@ -1,8 +1,10 @@
 import { useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
+import type { Metadata } from "next";
 import { FaRocket } from "react-icons/fa";
 import { projectsData } from "@/data/projectsData";
 import ProjectCard from "@/components/Home/ProjectCard";
+import { siteConfig } from "@/lib/siteConfig";
 import styles from "@/components/Home/ProjectsSection.module.css";
 
 /* page.tsx (/projets) — liste complète des projets.
@@ -15,9 +17,23 @@ import styles from "@/components/Home/ProjectsSection.module.css";
    Cette page réutilise donc la version déjà corrigée et cohérente avec
    le reste du site plutôt que de reproduire ces deux problèmes. */
 
-export async function generateMetadata() {
-  const t = await getTranslations("Home.projects");
-  return { title: t("title") };
+export const dynamic = "force-static";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "Home.projects" });
+  const url = `${siteConfig.url}/${locale}/projets`;
+
+  return {
+    title: t("title"),
+    description: t("metaDescription"),
+    alternates: { canonical: url },
+    openGraph: { title: t("title"), description: t("metaDescription"), url },
+  };
 }
 
 export default function ProjectsPage() {
