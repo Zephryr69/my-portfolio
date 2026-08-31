@@ -4,6 +4,7 @@ import { Outfit, Rubik, Updock } from "next/font/google";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
+import Script from "next/script";
 import { routing } from "@/i18n/routing";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import AppShell from "@/components/AppShell";
@@ -102,7 +103,19 @@ export default async function LocaleLayout({
     notFound();
   }
 
-  const messages = await getMessages();
+  // `getMessages()` sans argument s'appuie sur un contexte de requête
+  // implicite (AsyncLocalStorage côté next-intl) pour deviner la locale —
+  // et dans cette combinaison Next.js 16 (Turbopack) + next-intl 4.13, ce
+  // contexte retombe systématiquement sur `defaultLocale` ("fr") côté
+  // client, MÊME sur /en : le <html lang="en"> et le <title> restent
+  // corrects (générés via generateMetadata, qui reçoit `locale` en
+  // paramètre explicite), mais tout ce qui passe par useTranslations /
+  // useLocale côté client (Header, LanguageSwitcher, Hero...) recevait le
+  // français quelle que soit l'URL — d'où le sélecteur de langue qui
+  // semblait "ne rien faire" en anglais.
+  // Fix : on passe `locale` explicitement, à la fois à getMessages() et
+  // au provider, pour ne plus dépendre de cette déduction implicite.
+  const messages = await getMessages({ locale });
 
   return (
     // suppressHydrationWarning : ThemeContext pose l'attribut data-theme
@@ -114,23 +127,23 @@ export default async function LocaleLayout({
       className={`${outfit.variable} ${rubik.variable} ${updock.variable}`}
     >
       <head>
-        {/* Script bloquant (s'exécute avant le premier paint, avant même
-            l'hydratation React) : lit isDarkMode dans localStorage et pose
-            data-theme sur <html> immédiatement. Sans ça, la page s'affiche
-            d'abord en clair (état par défaut de ThemeContext), puis bascule
-            en sombre une fois React monté → flash visible. C'est la même
-            technique que la lib next-themes. */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `try {
-              var saved = localStorage.getItem("isDarkMode");
-              if (saved === "true") document.documentElement.setAttribute("data-theme", "dark");
-            } catch (e) {}`,
-          }}
-        />
+        {/* next/script avec strategy="beforeInteractive" (au lieu d'une
+            balise <script> brute) : s'exécute avant l'hydratation React,
+            comme voulu pour lire isDarkMode et poser data-theme sans flash
+            — mais via le mécanisme officiel de Next.js, qui sait où
+            l'insérer correctement. Une <script> brute directement dans le
+            JSX déclenche l'avertissement React "Encountered a script tag
+            while rendering" (React ne l'exécute jamais lui-même côté
+            client), alors que next/script est prévu précisément pour ça. */}
+        <Script id="theme-init" strategy="beforeInteractive">
+          {`try {
+            var saved = localStorage.getItem("isDarkMode");
+            if (saved === "true") document.documentElement.setAttribute("data-theme", "dark");
+          } catch (e) {}`}
+        </Script>
       </head>
       <body>
-        <NextIntlClientProvider messages={messages}>
+        <NextIntlClientProvider locale={locale} messages={messages}>
           <ThemeProvider>
             <AppShell>{children}</AppShell>
           </ThemeProvider>
