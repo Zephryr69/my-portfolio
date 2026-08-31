@@ -27,14 +27,14 @@
     "contactTitle": "Contact",
     "navTitle": "Navigation",
     "aboutTitle": "À propos",
-    "aboutText": "Je suis <strong>Amandino AIMINASSO</strong>, développeur Full-Stack & UI/UX designer. J'aide les petites entreprises et revendeurs à lancer des sites clairs, rapides et convertissants — du site vitrine aux applications métiers.",
+    "aboutText": "Je suis <strong>Amandino AIMINASSO</strong>, développeur Front-end & UI/UX designer. J'aide les petites entreprises et revendeurs à lancer des sites clairs, rapides et convertissants — du site vitrine aux applications métiers.",
     "aboutTextSmall": "Disponible pour missions à distance ou sur Porto-Novo (Bénin). Livraison rapide, communication claire et livrables documentés.",
     "rights": "Tous droits réservés."
   },
   "Home": {
     "hero": {
       "greeting": "Salut, je suis",
-      "subtitle": "Développeur Full Stack freelance, passionné par le design moderne, la performance et l'expérience utilisateur.",
+      "subtitle": "Développeur Front-end freelance, passionné par le design moderne, la performance et l'expérience utilisateur.",
       "ctaPrimary": "Démarrer un projet",
       "ctaSecondary": "Voir mes projets",
       "imageAlt": "Photo d'Amandino"
@@ -115,7 +115,7 @@
   "AboutPage": {
     "metaTitle": "À propos",
     "greeting": "Bonjour — moi c'est",
-    "lead": "Développeur Full-Stack & UI/UX designer. J'aide les petites entreprises et les professions locales à gagner en visibilité et efficacité grâce à des sites rapides, clairs et convertissants.",
+    "lead": "Développeur Front-end & UI/UX designer. J'aide les petites entreprises et les professions locales à gagner en visibilité et efficacité grâce à des sites rapides, clairs et convertissants.",
     "ctaGroupLabel": "Actions principales",
     "ctaPrimary": "Démarrer un projet",
     "ctaSecondary": "Voir mes projets",
@@ -198,7 +198,7 @@
       }
     },
     "whyMeCta": "Contactez-moi pour une estimation",
-    "metaDescription": "Amandino AIMINASSO, développeur Full-Stack et UI/UX designer basé à Porto-Novo, Bénin. Découvrez mon parcours, ma méthode de travail et mes compétences techniques."
+    "metaDescription": "Amandino AIMINASSO, développeur Front-end et UI/UX designer basé à Porto-Novo, Bénin. Découvrez mon parcours, ma méthode de travail et mes compétences techniques."
   },
   "ContactPage": {
     "metaTitle": "Contact",
@@ -223,5 +223,12 @@
     "mailMessage": "Message",
     "responseTime": "Je réponds généralement sous 24h.",
     "metaDescription": "Contactez Amandino AIMINASSO pour discuter de votre projet web : site vitrine, application métier ou plateforme sur mesure. Réponse sous 24h."
+  },
+  "OpenGraph": {
+    "roleTag": "Développeur Front-end & UI/UX Designer"
+  },
+  "NotFound": {
+    "title": "Page introuvable",
+    "description": "La page que tu cherches n'existe pas ou a été déplacée."
   }
 }

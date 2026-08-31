@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import { FaRocket } from "react-icons/fa";
 import { projectsData } from "@/data/projectsData";
 import ProjectCard from "@/components/Home/ProjectCard";
-import { siteConfig } from "@/lib/siteConfig";
+import { siteConfig, baseOpenGraph } from "@/lib/siteConfig";
 import styles from "@/components/Home/ProjectsSection.module.css";
 
 /* page.tsx (/projets) — liste complète des projets.
@@ -32,7 +32,13 @@ export async function generateMetadata({
     title: t("title"),
     description: t("metaDescription"),
     alternates: { canonical: url },
-    openGraph: { title: t("title"), description: t("metaDescription"), url },
+    openGraph: {
+      ...baseOpenGraph,
+      title: t("title"),
+      description: t("metaDescription"),
+      url,
+      locale: locale === "fr" ? "fr_FR" : "en_US",
+    },
   };
 }
 

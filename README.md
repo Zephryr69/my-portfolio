@@ -1,6 +1,6 @@
 # My Portfolio
 
-Portfolio personnel d'**Amandino AIMINASSO**, développeur Full-Stack & UI/UX designer basé à Porto-Novo, Bénin.
+Portfolio personnel d'**Amandino AIMINASSO**, développeur Front-end & UI/UX designer basé à Porto-Novo, Bénin.
 
 Refonte complète de la version précédente (Vite + React) vers **Next.js 16** avec TypeScript, pensée pour être plus rapide, plus accessible, correctement internationalisée, et bâtie sur une architecture CSS qui ne se marche plus dessus.
 

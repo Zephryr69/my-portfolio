@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
-import { siteConfig } from "@/lib/siteConfig";
+import { siteConfig, baseOpenGraph } from "@/lib/siteConfig";
 import ContactView from "./ContactView";
 
 /* page.tsx (/contact) — Server Component, même split que About :
@@ -21,7 +21,13 @@ export async function generateMetadata({
     title: t("metaTitle"),
     description: t("metaDescription"),
     alternates: { canonical: url },
-    openGraph: { title: t("metaTitle"), description: t("metaDescription"), url },
+    openGraph: {
+      ...baseOpenGraph,
+      title: t("metaTitle"),
+      description: t("metaDescription"),
+      url,
+      locale: locale === "fr" ? "fr_FR" : "en_US",
+    },
   };
 }
 

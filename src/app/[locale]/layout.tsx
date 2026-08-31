@@ -7,7 +7,7 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import AppShell from "@/components/AppShell";
-import { siteConfig } from "@/lib/siteConfig";
+import { siteConfig, baseOpenGraph } from "@/lib/siteConfig";
 import "../globals.css";
 
 /* next/font/google : télécharge les polices UNE FOIS au moment du build,
@@ -64,12 +64,11 @@ export async function generateMetadata({
       },
     },
     openGraph: {
+      ...baseOpenGraph,
       title,
       description,
       url,
-      siteName: title,
       locale: locale === "fr" ? "fr_FR" : "en_US",
-      type: "website",
     },
     twitter: {
       card: "summary_large_image",
@@ -114,6 +113,22 @@ export default async function LocaleLayout({
       suppressHydrationWarning
       className={`${outfit.variable} ${rubik.variable} ${updock.variable}`}
     >
+      <head>
+        {/* Script bloquant (s'exécute avant le premier paint, avant même
+            l'hydratation React) : lit isDarkMode dans localStorage et pose
+            data-theme sur <html> immédiatement. Sans ça, la page s'affiche
+            d'abord en clair (état par défaut de ThemeContext), puis bascule
+            en sombre une fois React monté → flash visible. C'est la même
+            technique que la lib next-themes. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try {
+              var saved = localStorage.getItem("isDarkMode");
+              if (saved === "true") document.documentElement.setAttribute("data-theme", "dark");
+            } catch (e) {}`,
+          }}
+        />
+      </head>
       <body>
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider>

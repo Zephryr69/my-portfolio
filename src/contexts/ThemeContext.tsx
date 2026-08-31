@@ -4,12 +4,19 @@
 
    Ce qui a dû changer par rapport à l'original, et pourquoi :
 
-   1. `useState(() => localStorage.getItem(...))` cassait en SSR :
-      Next.js exécute ce composant une première fois côté SERVEUR, où
-      `localStorage` n'existe pas → ça aurait fait planter le rendu.
-      Solution : on part sur `false` par défaut, puis on lit
-      `localStorage` dans un `useEffect` (qui, lui, ne tourne que côté
-      navigateur, après l'hydratation).
+   1. La lecture de localStorage se fait maintenant en DEUX temps :
+      - un script bloquant posé dans <head> (voir layout.tsx) lit
+        localStorage et pose data-theme sur <html> AVANT le premier
+        rendu React → plus de flash clair→sombre au chargement.
+      - useState(() => ...) ci-dessous relit cet attribut au montage
+        pour initialiser isDarkMode. C'est un *lazy initializer*, il ne
+        s'exécute qu'une fois, au premier rendu client — contrairement à
+        un setState dans un useEffect, il ne déclenche pas de re-render
+        supplémentaire après l'hydratation (c'est ce qu'ESLint
+        react-hooks signalait).
+      - Le rendu serveur, lui, n'a pas accès à `document` : l'initializer
+        ne tourne jamais côté serveur (useState ne l'appelle qu'au
+        montage client), donc pas de crash SSR.
 
    2. On applique le thème via `data-theme="dark"` sur <html>, pas via
       une classe "containner dark" sur une div — ça correspond au
@@ -30,14 +37,14 @@ interface ThemeContextValue {
 const ThemeContext = createContext<ThemeContextValue | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
-  // Lit la préférence sauvegardée une fois que le composant est monté
-  // côté navigateur (localStorage n'existe pas pendant le rendu serveur).
-  useEffect(() => {
-    const saved = localStorage.getItem("isDarkMode");
-    if (saved === "true") setIsDarkMode(true);
-  }, []);
+  // Lazy initializer : ne s'exécute qu'au montage côté client, jamais
+  // pendant le rendu serveur. Le script bloquant dans <head> (layout.tsx)
+  // a déjà posé data-theme sur <html> avant que React n'hydrate, donc on
+  // se contente de le relire ici pour que isDarkMode soit correct dès le
+  // tout premier rendu — pas besoin d'un useEffect qui re-render juste après.
+  const [isDarkMode, setIsDarkMode] = useState(
+    () => typeof document !== "undefined" && document.documentElement.getAttribute("data-theme") === "dark",
+  );
 
   // Répercute isDarkMode sur <html data-theme="..."> à chaque changement,
   // pour que tokens.css applique la bonne palette.

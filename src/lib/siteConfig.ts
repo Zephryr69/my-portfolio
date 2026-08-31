@@ -14,3 +14,15 @@ export const siteConfig = {
 };
 
 export type Locale = (typeof siteConfig.locales)[number];
+
+/* baseOpenGraph — champs OpenGraph qui ne varient PAS d'une page à
+   l'autre (siteName, type). Next.js ne fusionne pas les objets `openGraph`
+   entre layout et page (un `openGraph` défini dans page.tsx REMPLACE
+   entièrement celui du layout, il ne le complète pas champ par champ).
+   Donc chaque generateMetadata qui définit `openGraph` doit spreader
+   cette base pour ne jamais perdre siteName/type — voir layout.tsx et
+   les page.tsx de chaque route. */
+export const baseOpenGraph = {
+  siteName: siteConfig.name,
+  type: "website" as const,
+};
