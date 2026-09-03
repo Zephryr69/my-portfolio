@@ -1,0 +1,81 @@
+/* AboutPreview.module.css — aperçu "À propos" de la page d'accueil.
+   Reprend les mêmes proportions/ombres que .portraitImg de la page
+   /a-propos (page.module.css), en plus compact, pour rester cohérent
+   visuellement avec le vrai portrait affiché sur la page complète. */
+
+.aboutPreview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  padding: 4rem 2rem;
+  text-align: left;
+}
+
+.portraitWrap {
+  flex-shrink: 0;
+}
+
+.portrait {
+  width: 220px;
+  height: 220px;
+  border-radius: 20px;
+  object-fit: cover;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.portraitWrap:hover .portrait {
+  transform: translateY(-6px) scale(1.05);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6);
+}
+
+.content {
+  max-width: 520px;
+}
+
+.greeting {
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+  margin: 0 0 0.3rem;
+}
+
+.title {
+  font-size: clamp(1.6rem, 2.4vw, 2.2rem);
+  font-weight: 700;
+  color: var(--color-primary);
+  margin: 0 0 1rem;
+}
+
+.lead {
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin: 0 0 1.5rem;
+}
+
+.cta {
+  display: inline-block;
+  font-weight: 600;
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: transform 0.25s ease;
+}
+.cta:hover {
+  text-decoration: underline;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .aboutPreview {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+    padding: 3rem 1.5rem;
+  }
+  .portrait {
+    width: 160px;
+    height: 160px;
+  }
+  .content {
+    max-width: 100%;
+  }
+}

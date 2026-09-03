@@ -15,7 +15,12 @@
   flex-wrap: wrap;
   position: relative;
   overflow: hidden;
-  background: linear-gradient(135deg, rgba(255, 140, 0, 0.18), rgba(31, 45, 61, 0.85));
+  /* Avant : linear-gradient(135deg, rgba(255, 140, 0, 0.18), rgba(31, 45, 61, 0.85))
+     — orange vers marine désaturé, dont le point milieu tombait sur un
+     ton brun-kaki terne. Remplacé par un dégradé mono-chaud orange→ambre
+     (mêmes tokens que les boutons CTA plus bas), qui reste dans une
+     seule famille de teintes donc pas de zone de mélange terne. */
+  background: linear-gradient(135deg, rgba(255, 140, 0, 0.18), rgba(255, 179, 71, 0.4));
 }
 
 .heroText {
@@ -35,7 +40,13 @@
 .firstName {
   font-family: var(--font-fancy);
   font-size: 1.4em;
-  background: linear-gradient(90deg, var(--color-primary), var(--color-text-secondary));
+  /* Avant : linear-gradient(90deg, var(--color-primary), var(--color-text-secondary))
+     — orange vers marine (couleur de texte), même souci de zone terne
+     que le fond du Hero. --color-primary-hover est déjà le ton ambre
+     utilisé sur les boutons CTA (voir .primary plus bas) : même famille
+     de couleur, et il s'inverse automatiquement en mode sombre puisque
+     c'est un token déjà géré par tokens.css. */
+  background: linear-gradient(90deg, var(--color-primary), var(--color-primary-hover));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }

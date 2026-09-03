@@ -4,6 +4,7 @@ import { siteConfig, baseOpenGraph } from "@/lib/siteConfig";
 import Hero from "@/components/Home/Hero";
 import SkillsSection from "@/components/Home/SkillsSection";
 import ProjectsSection from "@/components/Home/ProjectsSection";
+import AboutPreview from "@/components/Home/AboutPreview";
 import styles from "./page.module.css";
 
 export const dynamic = "force-static";
@@ -40,7 +41,7 @@ export default function HomePage() {
       <Hero />
       <SkillsSection />
       <ProjectsSection />
-      {/* AboutPreview arrive à l'étape suivante */}
+      <AboutPreview />
     </div>
   );
 }
