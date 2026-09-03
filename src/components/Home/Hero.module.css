@@ -23,6 +23,26 @@
   background: linear-gradient(135deg, rgba(255, 140, 0, 0.18), rgba(255, 179, 71, 0.4));
 }
 
+/* Motif de points décoratif, très discret (8% d'opacité), concentré en
+   haut à droite et qui s'estompe via mask-image plutôt que de couvrir
+   toute la section — évite l'effet "papier peint" derrière le texte.
+   Pur CSS (radial-gradient répété), donc aucune requête HTTP en plus et
+   ça s'adapte à var(--color-primary) selon le thème clair/sombre. En
+   z-index négatif (via --z-decor) : reste sous heroText/heroImage
+   (z-index: 1 tous les deux), jamais devant le contenu. */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: var(--z-decor);
+  pointer-events: none;
+  background-image: radial-gradient(circle, var(--color-primary) 1.5px, transparent 1.5px);
+  background-size: 26px 26px;
+  opacity: 0.08;
+  -webkit-mask-image: radial-gradient(circle at 85% 15%, black, transparent 55%);
+  mask-image: radial-gradient(circle at 85% 15%, black, transparent 55%);
+}
+
 .heroText {
   max-width: 600px;
   z-index: 1;
@@ -40,14 +60,27 @@
 .firstName {
   font-family: var(--font-fancy);
   font-size: 1.4em;
-  /* Avant : linear-gradient(90deg, var(--color-primary), var(--color-text-secondary))
-     — orange vers marine (couleur de texte), même souci de zone terne
-     que le fond du Hero. --color-primary-hover est déjà le ton ambre
-     utilisé sur les boutons CTA (voir .primary plus bas) : même famille
-     de couleur, et il s'inverse automatiquement en mode sombre puisque
-     c'est un token déjà géré par tokens.css. */
-  background: linear-gradient(90deg, var(--color-primary), var(--color-primary-hover));
+  /* color : filet de sécurité. Si le navigateur ne comprend pas
+     background-clip: text (ou si un mode sombre forcé façon Samsung
+     Internet perturbe le rendu du dégradé — voir tokens.css), le texte
+     retombe sur cet orange plein au lieu de devenir invisible ou
+     hérité d'une autre couleur. C'est la même leçon déjà tirée ailleurs
+     dans le projet (voir le commentaire sur .sectionTitle dans
+     ProjectsSection.module.css). */
+  color: var(--color-primary);
+  /* Dégradé à 3 arrêts (orange → ambre → orange) plutôt qu'un simple
+     dégradé à 2 tons : donne un reflet plus doux au milieu du mot,
+     plus proche d'un effet "métal brossé" que d'une simple transition
+     linéaire — tout en restant dans la même famille chaude que le
+     reste du site (pas de zone terne, cf. le fond du Hero ci-dessus). */
+  background: linear-gradient(
+    90deg,
+    var(--color-primary) 0%,
+    var(--color-primary-hover) 50%,
+    var(--color-primary) 100%
+  );
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -109,6 +142,17 @@
 .secondary:hover {
   background: var(--color-primary);
   color: #fff;
+}
+
+/* Cette règle sur .heroImage (le conteneur, pas l'image elle-même)
+   n'existait pas avant — seul .heroImage img était stylé plus bas. Sans
+   position+z-index explicites, ce conteneur reste un élément statique
+   normal, peint AVANT les éléments positionnés dans l'ordre d'empilement
+   CSS — donc le portrait se serait retrouvé sous le motif de points
+   décoratif (.hero::before, positionné) une fois celui-ci ajouté. */
+.heroImage {
+  position: relative;
+  z-index: 1;
 }
 
 .heroImage img,

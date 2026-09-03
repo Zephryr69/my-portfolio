@@ -127,6 +127,14 @@ export default async function LocaleLayout({
       className={`${outfit.variable} ${rubik.variable} ${updock.variable}`}
     >
       <head>
+        {/* Indique explicitement au navigateur que le site gère lui-même
+            le clair ET le sombre — complète color-scheme posé dans
+            tokens.css. Sans ça, Samsung Internet (et d'autres navigateurs
+            Android basés sur Chromium) peut activer son "mode sombre
+            forcé" et réinterpréter les couleurs du site avec son propre
+            algorithme, particulièrement agressif sur l'orange. */}
+        <meta name="color-scheme" content="light dark" />
+
         {/* next/script avec strategy="beforeInteractive" (au lieu d'une
             balise <script> brute) : s'exécute avant l'hydratation React,
             comme voulu pour lire isDarkMode et poser data-theme sans flash

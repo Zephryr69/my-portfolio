@@ -23,6 +23,20 @@
    ========================================================================== */
 
 :root {
+  /* color-scheme : indique au navigateur que le site gère lui-même le
+     clair ET le sombre (bascule via [data-theme] plus bas), pour qu'il
+     n'essaie pas de réinventer ses propres couleurs. Sans ça, Samsung
+     Internet (et d'autres navigateurs Android basés sur Chromium)
+     applique un "mode sombre forcé" qui réinterprète les couleurs du
+     site avec son propre algorithme — particulièrement agressif sur les
+     teintes vives comme l'orange, qui est justement la couleur de marque
+     ici. C'est un bug de navigateur documenté (pas quelque chose que le
+     CSS seul peut garantir de contourner à 100 % sur toutes ses versions),
+     mais color-scheme est la contre-mesure standard recommandée par
+     Samsung lui-même. Complète le <meta name="color-scheme"> posé dans
+     layout.tsx. */
+  color-scheme: light dark;
+
   /* ---------- Couleurs de marque ---------- */
   --color-primary: #ff8c00;          /* orange — CTA, accents */
   --color-primary-hover: #ffb347;    /* orange doux — hover / dark mode primary */
@@ -68,6 +82,8 @@
 
 /* ---------- Thème sombre ---------- */
 [data-theme="dark"] {
+  color-scheme: dark;
+
   --color-primary: #ffb347;
   --color-primary-hover: #ff8c00;
 
