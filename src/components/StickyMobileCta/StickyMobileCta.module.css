@@ -1,0 +1,35 @@
+/* Caché par défaut (desktop) — n'apparaît qu'en dessous de 768px, même
+   breakpoint que le reste du site (voir Hero.module.css, page.module.css
+   de /contact). Un CTA persistant en bas d'écran a du sens sur mobile où
+   le Hero défile vite hors champ ; en desktop le CTA du Hero reste
+   visible plus longtemps et la barre ferait doublon. */
+.stickyBar {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .stickyBar {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: var(--z-sticky-cta);
+    padding: 0.75rem 1rem calc(0.75rem + env(safe-area-inset-bottom));
+    background: var(--color-surface);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(127, 127, 127, 0.18);
+  }
+
+  .ctaButton {
+    flex: 1;
+    text-align: center;
+    padding: 0.85rem 1rem;
+    border-radius: 999px;
+    font-weight: 700;
+    text-decoration: none;
+    color: #fff;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-hover));
+  }
+}

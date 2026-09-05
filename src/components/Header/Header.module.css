@@ -57,12 +57,16 @@
 .header { display: flex; align-items: center; gap: 0.5rem; }
 
 /* Remplace le rendu par défaut du <h2> d'origine (gras, ~1.5rem) —
-   le logo n'est plus un titre de section, juste du texte de marque. */
+   le logo n'est plus un titre de section, juste du texte de marque.
+   color : violet fixe, volontairement identique en mode clair ET sombre
+   (demande explicite de l'utilisateur — j'avais d'abord mis une nuance
+   plus claire en mode sombre pour le contraste, mais il veut garder
+   exactement le même violet partout, en permanence). */
 .brand {
   font-size: 1.5rem;
   font-weight: 700;
   line-height: 1.2;
-  color: inherit;
+  color: #4c1d95;
 }
 
 .navList {

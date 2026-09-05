@@ -77,6 +77,7 @@
   --z-sidebar: 500;       /* menu mobile — sous la navbar, comme dans l'original (1000 < 3000) */
   --z-header: 800;        /* navbar */
   --z-header-panel: 810;  /* sous-éléments de la navbar (burger, dropdown) */
+  --z-sticky-cta: 850;     /* barre CTA fixe mobile — au-dessus de la navbar, sous le bouton scroll-to-top */
   --z-scroll-top-btn: 900; /* bouton "remonter en haut", doit rester au-dessus de tout */
 }
 

@@ -16,6 +16,7 @@ import Header from "@/components/Header/Header";
 import Sidebar from "@/components/Sidebar/Sidebar";
 import Footer from "@/components/Footer/Footer";
 import ScrollToTopButton from "@/components/ScrollToTopButton/ScrollToTopButton";
+import StickyMobileCta from "@/components/StickyMobileCta/StickyMobileCta";
 
 export default function AppShell({ children }: { children: ReactNode }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -32,6 +33,7 @@ export default function AppShell({ children }: { children: ReactNode }) {
       <main className="content">{children}</main>
       <Footer />
       <ScrollToTopButton />
+      <StickyMobileCta />
     </>
   );
 }

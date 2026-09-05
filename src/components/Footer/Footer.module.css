@@ -193,6 +193,12 @@
   .socialIcons a { width: 36px; height: 36px; border-radius: 8px; }
 }
 
+/* Dégage la barre CTA sticky (StickyMobileCta, fixe en bas d'écran sous
+   768px) pour qu'elle ne masque pas la dernière ligne du footer. */
+@media (max-width: 768px) {
+  .footer { padding-bottom: calc(1.2rem + 4.5rem); }
+}
+
 @media (max-width: 600px) {
   .footerContent { display: flex; flex-direction: column; gap: 1.8rem; padding: 0 1rem; }
   .footerSection { width: 100%; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 1rem; }

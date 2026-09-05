@@ -30,3 +30,12 @@
   outline: 3px solid rgba(255, 255, 255, 0.5);
   outline-offset: 3px;
 }
+
+/* Remonté sur mobile pour ne pas chevaucher StickyMobileCta (barre fixe
+   en bas d'écran sous 768px, voir StickyMobileCta.module.css) — même
+   breakpoint que le reste du site. */
+@media (max-width: 768px) {
+  .scrollToTop {
+    bottom: 5.5rem;
+  }
+}
