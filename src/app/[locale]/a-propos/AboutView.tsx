@@ -26,6 +26,7 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
 import { FaTools, FaCode, FaBolt, FaPalette } from "react-icons/fa";
 import { skillsData } from "@/data/skillsData";
+import { projectsData } from "@/data/projectsData";
 import styles from "./page.module.css";
 import profileImg from "../../../assets/profile.png";
 
@@ -122,7 +123,11 @@ export default function AboutView() {
 
         <aside className={`${styles.stats} ${styles.glassmorphic}`}>
           <div className={styles.stat}>
-            <strong>3</strong>
+            {/* Avant : "3" en dur — périmé depuis l'ajout de MadaTours
+                (4e projet). Dérivé de projectsData.length maintenant,
+                donc ce nombre ne pourra plus se re-périmer tout seul
+                au prochain projet ajouté. */}
+            <strong>{projectsData.length}</strong>
             <span>{t("stat1Label")}</span>
           </div>
           <div className={styles.stat}>

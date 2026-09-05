@@ -19,6 +19,7 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
 import profileImg from "@/assets/profile.png";
+import { projectsData } from "@/data/projectsData";
 import styles from "./AboutPreview.module.css";
 
 const fadeInUp = {
@@ -59,7 +60,7 @@ export default function AboutPreview() {
             cohérent entre les deux endroits où il s'affiche. */}
         <div className={styles.statsRow}>
           <div className={styles.stat}>
-            <strong>3</strong>
+            <strong>{projectsData.length}</strong>
             <span>{t("stat1Label")}</span>
           </div>
           <div className={styles.stat}>

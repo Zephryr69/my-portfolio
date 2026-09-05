@@ -45,15 +45,15 @@
       "items": {
         "react": {
           "title": "React",
-          "description": "Building dynamic, modern, high-performance web interfaces."
+          "description": "Actively training to build modern, dynamic web interfaces."
         },
         "laravel": {
           "title": "Laravel",
-          "description": "Robust, secure backend development for web applications."
+          "description": "Solid foundations from training (MVC, APIs) — ready to apply them on a database-backed project."
         },
         "javascript": {
           "title": "JavaScript",
-          "description": "Automation and advanced interactivity for web features."
+          "description": "Actively training on interactivity and web functionality."
         },
         "git": {
           "title": "Git & version control",
@@ -115,7 +115,7 @@
   "AboutPage": {
     "metaTitle": "About",
     "greeting": "Hi — I'm",
-    "lead": "Front-End developer & UI/UX designer. I help small businesses and local professionals gain visibility and efficiency with fast, clear, converting websites.",
+    "lead": "Front-End Developer & UI/UX Designer, actively in training — I started with plain CSS and JavaScript and am now working my way toward React, Next.js, and TypeScript through real projects. Fluent in both French and English, I work just as comfortably with local clients as with international ones, building clear, conversion-focused websites.",
     "ctaGroupLabel": "Main actions",
     "ctaPrimary": "Start a project",
     "ctaSecondary": "See my projects",
@@ -124,7 +124,7 @@
     "availability": "Available for freelance work — Porto-Novo / Remote",
     "storyAriaLabel": "Background and method",
     "storyTitle": "My background",
-    "storyText": "Over the past year, I've built 3 concrete projects, ranging from showcase sites to desktop applications in C#. I make it a point of honor to combine performance, accessibility, and clarity in the final product — every site or app should genuinely speak to your customers and ease their experience.",
+    "storyText": "I hold a Bachelor's degree in SIL (Institut Universitaire Les Cours Sonou), and started with plain CSS and vanilla JavaScript before moving, through active training, toward React, Next.js, and TypeScript — building real projects at every step rather than stopping at theory. Alongside that, I run coding-challenge series for French-speaking learners on Facebook and WhatsApp — a way to stay sharp on the fundamentals while helping others grow. I'm actively continuing this training (internships, online courses) to strengthen these skills, always with the same goal: clear websites that genuinely speak to your customers.",
     "methodTitle": "My 3-step method",
     "step1Title": "Discovery",
     "step1Text": "Brief, goals, and success metrics.",
@@ -143,23 +143,23 @@
     "skillItems": {
       "react": {
         "title": "React",
-        "subtitle": "Modern UIs, performant SPAs"
+        "subtitle": "Actively training — components & SPAs"
       },
       "laravel": {
         "title": "Laravel",
-        "subtitle": "Structured back-end & APIs"
+        "subtitle": "MVC/API training — not yet applied on a real project"
       },
       "javascript": {
         "title": "JavaScript",
-        "subtitle": "Client-side interactions & logic"
+        "subtitle": "Actively training — solid fundamentals"
       },
       "git": {
         "title": "Git",
         "subtitle": "Workflow, CI/CD & collaboration"
       },
       "english": {
-        "title": "English (intermediate)",
-        "subtitle": "Technical reading & professional exchanges"
+        "title": "Bilingual FR / EN",
+        "subtitle": "Smooth client communication, in French and in English"
       },
       "video": {
         "title": "Editing & Visuals",
@@ -186,8 +186,8 @@
     "whyMeIntro": "Three concrete reasons that make a difference on a project, beyond a simple list of skills.",
     "whyMeItems": {
       "clean": {
-        "title": "Clean & documented code",
-        "description": "Maintainable, commented code built to last — not something you'll need to rebuild from scratch in six months."
+        "title": "Rigor and continuous improvement",
+        "description": "I pay close attention to fundamentals and clarity in every project, and I'm actively training (internships, courses) to keep improving — no sloppy shortcuts, even while learning."
       },
       "fast": {
         "title": "Fast delivery",
@@ -223,7 +223,30 @@
     "mailWhatsapp": "WhatsApp",
     "mailMessage": "Message",
     "responseTime": "I usually reply within 24 hours.",
-    "metaDescription": "Get in touch with Amandino AIMINASSO to discuss your web project: showcase site, business application, or custom platform. Response within 24 hours."
+    "metaDescription": "Get in touch with Amandino AIMINASSO to discuss your web project: showcase site, business application, or custom platform. Response within 24 hours.",
+    "faq": {
+      "item1": {
+        "question": "How are your rates set?",
+        "answer": "Every project is different, so there's no fixed price list: after an initial chat to understand your needs (number of pages, features, custom design or not), I send a clear quote before starting — no surprises along the way."
+      },
+      "item2": {
+        "question": "How long does a project take?",
+        "answer": "It depends on the scope: a simple showcase site is usually quicker to deliver than an application with a back-end or custom business logic. I give an estimated timeline with the quote, and keep you posted if anything shifts the schedule."
+      },
+      "item3": {
+        "question": "What technologies do you use?",
+        "answer": "Mainly React and Next.js (TypeScript) on the front-end, with close attention to performance, accessibility, and SEO. Depending on the project, I also work in more specific requirements — feel free to tell me about your technical constraints."
+      },
+      "item4": {
+        "question": "Do you work with remote clients?",
+        "answer": "Yes — based in Porto-Novo (Benin), I work with both local and remote clients, in French or English. Coordination happens over WhatsApp, email, or a call, whatever suits you best."
+      },
+      "item5": {
+        "question": "Do you offer support after launch?",
+        "answer": "Yes, I stay available after delivery for adjustments or questions — we figure out the details together depending on the project."
+      },
+      "title": "Frequently asked questions"
+    }
   },
   "OpenGraph": {
     "roleTag": "Front-End Developer & UI/UX Designer"

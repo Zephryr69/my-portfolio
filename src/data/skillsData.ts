@@ -30,9 +30,14 @@ export interface SkillDefinition {
 }
 
 export const skillsData: SkillDefinition[] = [
-  { key: "react", icon: FaReact, level: 60, delay: 0 },
+  // react/javascript : niveau baissé de 60 à 35 — l'utilisateur a précisé
+  // ne pas encore maîtriser ces deux technologies, être en formation
+  // active (stages, cours en ligne à venir). Les autres compétences
+  // (htmlCss, csharp, git...) n'ont pas été signalées comme concernées,
+  // donc laissées inchangées.
+  { key: "react", icon: FaReact, level: 35, delay: 0 },
   { key: "laravel", icon: SiLaravel, level: 30, delay: 0.12 },
-  { key: "javascript", icon: SiJavascript, level: 60, delay: 0.24 },
+  { key: "javascript", icon: SiJavascript, level: 35, delay: 0.24 },
   { key: "git", icon: FaGitAlt, level: 70, delay: 0.36 },
   { key: "english", icon: FaLanguage, level: 50, delay: 0.48 },
   { key: "video", icon: FaFilm, level: 40, delay: 0.6 },

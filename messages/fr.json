@@ -45,15 +45,15 @@
       "items": {
         "react": {
           "title": "React",
-          "description": "Création d'interfaces web dynamiques, modernes et performantes."
+          "description": "En formation active pour créer des interfaces web modernes et dynamiques."
         },
         "laravel": {
           "title": "Laravel",
-          "description": "Développement backend robuste et sécurisé pour des applications web."
+          "description": "Notions solides acquises en formation (MVC, APIs) — prêt à les appliquer sur un projet avec base de données."
         },
         "javascript": {
           "title": "JavaScript",
-          "description": "Automatisation, enrichissement d'interactivité et fonctionnalités web avancées."
+          "description": "En formation active sur l'interactivité et les fonctionnalités web."
         },
         "git": {
           "title": "Git & gestion de versions",
@@ -115,7 +115,7 @@
   "AboutPage": {
     "metaTitle": "À propos",
     "greeting": "Bonjour — moi c'est",
-    "lead": "Développeur Front-end & UI/UX designer. J'aide les petites entreprises et les professions locales à gagner en visibilité et efficacité grâce à des sites rapides, clairs et convertissants.",
+    "lead": "Développeur Front-end & UI/UX designer, en formation active — parti du CSS et du JavaScript pur, je progresse aujourd'hui vers React, Next.js et TypeScript à travers des projets réels. Bilingue français/anglais, j'accompagne aussi bien des clients locaux que des clients internationaux, avec des sites clairs et pensés pour convertir.",
     "ctaGroupLabel": "Actions principales",
     "ctaPrimary": "Démarrer un projet",
     "ctaSecondary": "Voir mes projets",
@@ -124,7 +124,7 @@
     "availability": "Disponible pour missions freelance — Porto-Novo / Remote",
     "storyAriaLabel": "Parcours et méthode",
     "storyTitle": "Mon parcours",
-    "storyText": "Depuis un an, j'ai conçu 3 projets concrets, allant de sites vitrines à des applications desktop en C#. Je mets un point d'honneur à allier performance, accessibilité et clarté du produit final — chaque site ou application doit réellement parler à vos clients et faciliter leur expérience.",
+    "storyText": "Titulaire d'une Licence en SIL (Institut Universitaire Les Cours Sonou), j'ai commencé par du CSS et du JavaScript vanille avant de me lancer, en formation active, vers React, Next.js et TypeScript — en construisant à chaque étape des projets réels plutôt qu'en m'arrêtant à la théorie. En parallèle, j'anime des séries de défis de code pour des apprenants francophones sur Facebook et WhatsApp : une manière de rester rigoureux sur les fondamentaux tout en aidant d'autres à progresser. Je poursuis activement cette formation (stages, cours en ligne) pour renforcer ces compétences, avec toujours le même objectif : des sites clairs, qui parlent vraiment à vos clients.",
     "methodTitle": "Ma méthode en 3 étapes",
     "step1Title": "Découverte",
     "step1Text": "Brief, objectifs et indicateurs de succès.",
@@ -143,23 +143,23 @@
     "skillItems": {
       "react": {
         "title": "React",
-        "subtitle": "UI modernes, SPA performantes"
+        "subtitle": "En formation active — composants & SPA"
       },
       "laravel": {
         "title": "Laravel",
-        "subtitle": "Back-end structuré & APIs"
+        "subtitle": "Formation MVC/API — pas encore appliqué en conditions réelles"
       },
       "javascript": {
         "title": "JavaScript",
-        "subtitle": "Interactions & logique client"
+        "subtitle": "En formation active — bases solides"
       },
       "git": {
         "title": "Git",
         "subtitle": "Workflow, CI/CD & collaboration"
       },
       "english": {
-        "title": "Anglais (interm.)",
-        "subtitle": "Lecture technique & échanges pro"
+        "title": "Bilingue FR / EN",
+        "subtitle": "Échanges clients fluides, en français comme en anglais"
       },
       "video": {
         "title": "Montage & Visuel",
@@ -186,8 +186,8 @@
     "whyMeIntro": "Trois raisons concrètes qui font la différence sur un projet, au-delà de la simple liste de compétences.",
     "whyMeItems": {
       "clean": {
-        "title": "Code propre & documenté",
-        "description": "Un code maintenable, commenté et pensé pour durer — pas du bricolage qu'il faudra tout reprendre dans six mois."
+        "title": "Rigueur et amélioration continue",
+        "description": "J'apporte une attention particulière aux fondamentaux et à la clarté de chaque projet, et je me forme activement (stages, cours) pour progresser en continu — pas de solution bâclée, même en cours d'apprentissage."
       },
       "fast": {
         "title": "Livraison rapide",
@@ -223,7 +223,30 @@
     "mailWhatsapp": "WhatsApp",
     "mailMessage": "Message",
     "responseTime": "Je réponds généralement sous 24h.",
-    "metaDescription": "Contactez Amandino AIMINASSO pour discuter de votre projet web : site vitrine, application métier ou plateforme sur mesure. Réponse sous 24h."
+    "metaDescription": "Contactez Amandino AIMINASSO pour discuter de votre projet web : site vitrine, application métier ou plateforme sur mesure. Réponse sous 24h.",
+    "faq": {
+      "item1": {
+        "question": "Comment sont fixés vos tarifs ?",
+        "answer": "Chaque projet est différent, donc pas de grille de prix figée : après un premier échange pour cerner vos besoins (nombre de pages, fonctionnalités, design sur-mesure ou non), je vous fais un devis clair avant de démarrer — pas de surprise en cours de route."
+      },
+      "item2": {
+        "question": "Combien de temps prend un projet ?",
+        "answer": "Ça dépend de la portée : un site vitrine simple se boucle en général plus vite qu'une application avec back-end ou logique métier. Je donne un délai estimé dès le devis, et je tiens informé si quelque chose fait bouger le calendrier."
+      },
+      "item3": {
+        "question": "Quelles technologies utilisez-vous ?",
+        "answer": "Principalement React et Next.js (TypeScript) côté front-end, avec une attention particulière à la performance, l'accessibilité et le référencement. Selon le projet, j'intègre aussi des besoins plus spécifiques — n'hésitez pas à me parler de vos contraintes techniques."
+      },
+      "item4": {
+        "question": "Travaillez-vous avec des clients à distance ?",
+        "answer": "Oui — basé à Porto-Novo (Bénin), je travaille aussi bien avec des clients locaux qu'à distance, en français ou en anglais. Toute la coordination se fait par WhatsApp, e-mail ou appel selon ce qui vous convient."
+      },
+      "item5": {
+        "question": "Proposez-vous un accompagnement après la mise en ligne ?",
+        "answer": "Oui, je reste disponible après la livraison pour des ajustements ou des questions — on en discute des modalités ensemble selon la nature du projet."
+      },
+      "title": "Questions fréquentes"
+    }
   },
   "OpenGraph": {
     "roleTag": "Développeur Front-end & UI/UX Designer"

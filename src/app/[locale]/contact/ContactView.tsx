@@ -5,8 +5,14 @@ import { useTranslations } from "next-intl";
 import { FaWhatsapp, FaEnvelope, FaPhoneAlt } from "react-icons/fa";
 import styles from "./page.module.css";
 
-export default function ContactView() {
+interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+export default function ContactView({ faqItems }: { faqItems: FaqItem[] }) {
   const t = useTranslations("ContactPage");
+  const tFaq = useTranslations("ContactPage.faq");
   const [formData, setFormData] = useState({ name: "", phone: "", message: "" });
   const [status, setStatus] = useState<"idle" | "sending" | "sent">("idle");
   const [touched, setTouched] = useState<Record<string, boolean>>({});
@@ -41,7 +47,8 @@ export default function ContactView() {
   };
 
   return (
-    <section className={styles.contactPage}>
+    <>
+      <section className={styles.contactPage}>
       <div className={styles.infoPanel}>
         <h1 id="contact-title" className={styles.contactTitle}>
           {t("title")}
@@ -137,6 +144,24 @@ export default function ContactView() {
           </form>
         )}
       </div>
-    </section>
+      </section>
+
+      {/* <details>/<summary> natif plutôt qu'un accordéon fait main :
+          accessible et navigable au clavier par défaut, sans state React
+          ni gestion ARIA à écrire — le navigateur s'en charge. */}
+      <section className={styles.faqSection} aria-labelledby="faq-title">
+        <h2 id="faq-title" className={styles.faqTitle}>
+          {tFaq("title")}
+        </h2>
+        <div className={styles.faqList}>
+          {faqItems.map((item, i) => (
+            <details key={i} className={styles.faqItem}>
+              <summary className={styles.faqQuestion}>{item.question}</summary>
+              <p className={styles.faqAnswer}>{item.answer}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+    </>
   );
 }
