@@ -52,10 +52,7 @@ export const projectsData: ProjectDefinition[] = [
   {
     key: "hamuz",
     thumbnail: hamuzImg,
-    // TODO(Aman) : lien live et/ou dépôt GitHub à ajouter dès que
-    // disponible — laissé vide pour l'instant (site en pré-lancement),
-    // même traitement que "cantine" en attendant (badge "pas de démo").
-    link: "",
+    link: "https://hamuz.vercel.app/",
     tech: ["Next.js", "TypeScript", "React", "Tailwind CSS"],
     colorClass: "cardColor5",
   },
