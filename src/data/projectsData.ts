@@ -2,6 +2,7 @@ import ecoleImg from "../assets/ecole.png";
 import iphoneImg from "../assets/iphone.png";
 import cantineImg from "../assets/cantine.png";
 import madatoursImg from "../assets/madatours.jpeg";
+import hamuzImg from "../assets/hamuz.png";
 import type { StaticImageData } from "next/image";
 
 /* projectsData.ts — données structurelles des projets (image, lien, tech,
@@ -16,7 +17,7 @@ export interface ProjectDefinition {
   thumbnail: StaticImageData;
   link: string;
   tech: string[];
-  colorClass: "cardColor1" | "cardColor2" | "cardColor3" | "cardColor4";
+  colorClass: "cardColor1" | "cardColor2" | "cardColor3" | "cardColor4" | "cardColor5";
 }
 
 export const projectsData: ProjectDefinition[] = [
@@ -47,5 +48,15 @@ export const projectsData: ProjectDefinition[] = [
     link: "https://madatours-eight.vercel.app/fr",
     tech: ["Next.js", "TypeScript", "next-intl", "Framer Motion"],
     colorClass: "cardColor4",
+  },
+  {
+    key: "hamuz",
+    thumbnail: hamuzImg,
+    // TODO(Aman) : lien live et/ou dépôt GitHub à ajouter dès que
+    // disponible — laissé vide pour l'instant (site en pré-lancement),
+    // même traitement que "cantine" en attendant (badge "pas de démo").
+    link: "",
+    tech: ["Next.js", "TypeScript", "React", "Tailwind CSS"],
+    colorClass: "cardColor5",
   },
 ];

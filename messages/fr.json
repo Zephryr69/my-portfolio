@@ -106,6 +106,10 @@
         "madatours": {
           "title": "MadaTours — Plateforme touristique",
           "brief": "Plateforme de découverte touristique pour Madagascar, avec excursions et circuits, en français, anglais et malgache."
+        },
+        "hamuz": {
+          "title": "HAMUZ — Maison de parfumerie de luxe",
+          "brief": "Site vitrine pour une marque de parfumerie de luxe béninoise en pré-lancement, avec présentation de la collection, histoire de marque et inscription à liste privée."
         }
       },
       "noDemoLabel": "Application desktop — pas de démo en ligne",

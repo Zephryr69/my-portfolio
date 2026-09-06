@@ -127,13 +127,15 @@ export default async function LocaleLayout({
       className={`${outfit.variable} ${rubik.variable} ${updock.variable}`}
     >
       <head>
-        {/* Indique explicitement au navigateur que le site gère lui-même
-            le clair ET le sombre — complète color-scheme posé dans
-            tokens.css. Sans ça, Samsung Internet (et d'autres navigateurs
-            Android basés sur Chromium) peut activer son "mode sombre
-            forcé" et réinterpréter les couleurs du site avec son propre
-            algorithme, particulièrement agressif sur l'orange. */}
-        <meta name="color-scheme" content="light dark" />
+        {/* "only light" plutôt que "light dark" : instruction stricte
+            plutôt qu'ambiguë (voir tokens.css pour le détail complet).
+            Ce meta tag ne peut pas connaître le thème réel de
+            l'utilisateur au moment du rendu serveur (préférence stockée
+            en localStorage, donc invisible côté serveur) — il reflète
+            le thème par défaut du site (clair). Le CSS de tokens.css
+            prend ensuite le relais avec "only dark" dès que le vrai
+            thème est déterminé côté client (via [data-theme="dark"]). */}
+        <meta name="color-scheme" content="only light" />
 
         {/* next/script avec strategy="beforeInteractive" (au lieu d'une
             balise <script> brute) : s'exécute avant l'hydratation React,

@@ -12,7 +12,7 @@ interface ProjectCardProps {
   thumbnailAlt: string;
   link: string;
   tech: string[];
-  colorClass: "cardColor1" | "cardColor2" | "cardColor3" | "cardColor4";
+  colorClass: "cardColor1" | "cardColor2" | "cardColor3" | "cardColor4" | "cardColor5";
   ctaLabel: string;
   noDemoLabel: string;
   delay: number;

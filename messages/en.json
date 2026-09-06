@@ -106,6 +106,10 @@
         "madatours": {
           "title": "MadaTours — Tourism platform",
           "brief": "Tourism discovery platform for Madagascar, featuring excursions and tours, available in French, English, and Malagasy."
+        },
+        "hamuz": {
+          "title": "HAMUZ — Luxury perfume house",
+          "brief": "Showcase site for a Beninese luxury perfume brand in pre-launch, featuring its collection, brand story, and private-list signup."
         }
       },
       "noDemoLabel": "Desktop app — no live demo",
