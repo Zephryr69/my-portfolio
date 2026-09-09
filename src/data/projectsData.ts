@@ -1,5 +1,5 @@
 import ecoleImg from "../assets/ecole.png";
-import iphoneImg from "../assets/iphone.png";
+import iphoneImg from "../assets/max-iphone.png";
 import cantineImg from "../assets/cantine.png";
 import madatoursImg from "../assets/madatours.jpeg";
 import hamuzImg from "../assets/hamuz.png";
@@ -31,7 +31,7 @@ export const projectsData: ProjectDefinition[] = [
   {
     key: "iphone",
     thumbnail: iphoneImg,
-    link: "https://zephryr69.github.io/max-iphone/",
+    link: "https://max-iphone.vercel.app/",
     tech: ["React", "CSS", "Framer Motion"],
     colorClass: "cardColor2",
   },
