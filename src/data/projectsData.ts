@@ -1,7 +1,7 @@
 import ecoleImg from "../assets/ecole.png";
 import iphoneImg from "../assets/max-iphone.png";
 import cantineImg from "../assets/cantine.png";
-import madatoursImg from "../assets/madatours.jpeg";
+import madatoursImg from "../assets/madatours.png";
 import hamuzImg from "../assets/hamuz.png";
 import type { StaticImageData } from "next/image";
 
@@ -9,7 +9,7 @@ import type { StaticImageData } from "next/image";
    couleur de carte). Le texte (titre, description) vient de
    messages/*.json sous Home.projects.items.<key> — voir ProjectsSection.tsx.
 
-   thumbnail : importe "../assets/madatours.jpeg" — le fichier doit
+   thumbnail : importe "../assets/madatours.png" — le fichier doit
    exister sous ce nom exact dans src/assets/. */
 
 export interface ProjectDefinition {
