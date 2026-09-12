@@ -1,13 +1,5 @@
-import {
-  FaReact,
-  FaGitAlt,
-  FaLanguage,
-  FaFilm,
-  FaHtml5,
-} from "react-icons/fa";
-import { FaScrewdriverWrench, FaMagnifyingGlass } from "react-icons/fa6";
-import { SiLaravel, SiJavascript } from "react-icons/si";
-import { TbBrandCSharp } from "react-icons/tb";
+import { FaReact, FaGitAlt, FaHtml5 } from "react-icons/fa";
+import { SiJavascript, SiNextdotjs, SiTypescript, SiFramer } from "react-icons/si";
 import type { IconType } from "react-icons";
 
 /* skillsData.ts — données structurelles des compétences (icône, niveau,
@@ -15,12 +7,15 @@ import type { IconType } from "react-icons";
    de traduction sous la clé Home.skills.items.<key> — voir SkillsSection.tsx.
    `key` doit correspondre exactement à une entrée de messages/fr.json et en.json.
 
-   Icônes choisies pour être précises : logos de marque exacts (Laravel,
-   JavaScript) plutôt que des icônes génériques approximatives, et
-   FaScrewdriverWrench pour "Maintenance" pour ne pas dupliquer FaTools
-   déjà utilisé dans le titre de la section. Pour C#, Simple Icons n'a pas
-   de logo officiel — TbBrandCSharp (Tabler Icons) affiche vraiment "C#"
-   de façon lisible, contrairement à FaHashtag qui était trop abstrait. */
+   Liste resserrée sur le front-end suite au retour du mentor : Laravel,
+   C#, montage vidéo, maintenance OS et recherche web retirés (hors sujet
+   pour un positionnement front-end, même si C# a sa place dans la
+   description d'Edudine). Next.js, TypeScript et Framer Motion ajoutés :
+   ils étaient absents alors qu'ils sont au cœur de 3 des 5 projets réels.
+   L'anglais est passé dans le texte de la page À propos plutôt que dans
+   cette grille technique. Icônes vérifiées une à une dans le package
+   react-icons avant usage (SiFramer représente Framer/Framer Motion,
+   pas de logo dédié séparé dans Simple Icons). */
 
 export interface SkillDefinition {
   key: string;
@@ -30,19 +25,13 @@ export interface SkillDefinition {
 }
 
 export const skillsData: SkillDefinition[] = [
-  // react/javascript : niveau baissé de 60 à 35 — l'utilisateur a précisé
-  // ne pas encore maîtriser ces deux technologies, être en formation
-  // active (stages, cours en ligne à venir). Les autres compétences
-  // (htmlCss, csharp, git...) n'ont pas été signalées comme concernées,
-  // donc laissées inchangées.
+  // react/javascript : niveau à 35, pas 90 — en formation active sur ces
+  // deux technos, pas encore maîtrisées (précision donnée par l'utilisateur).
   { key: "react", icon: FaReact, level: 35, delay: 0 },
-  { key: "laravel", icon: SiLaravel, level: 30, delay: 0.12 },
-  { key: "javascript", icon: SiJavascript, level: 35, delay: 0.24 },
-  { key: "git", icon: FaGitAlt, level: 70, delay: 0.36 },
-  { key: "english", icon: FaLanguage, level: 50, delay: 0.48 },
-  { key: "video", icon: FaFilm, level: 40, delay: 0.6 },
-  { key: "maintenance", icon: FaScrewdriverWrench, level: 70, delay: 0.72 },
-  { key: "search", icon: FaMagnifyingGlass, level: 80, delay: 0.84 },
-  { key: "htmlCss", icon: FaHtml5, level: 90, delay: 0.96 },
-  { key: "csharp", icon: TbBrandCSharp, level: 85, delay: 1.08 },
+  { key: "nextjs", icon: SiNextdotjs, level: 50, delay: 0.12 },
+  { key: "typescript", icon: SiTypescript, level: 45, delay: 0.24 },
+  { key: "javascript", icon: SiJavascript, level: 35, delay: 0.36 },
+  { key: "git", icon: FaGitAlt, level: 70, delay: 0.48 },
+  { key: "htmlCss", icon: FaHtml5, level: 90, delay: 0.6 },
+  { key: "framerMotion", icon: SiFramer, level: 55, delay: 0.72 },
 ];

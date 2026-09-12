@@ -27,7 +27,7 @@
     "contactTitle": "Contact",
     "navTitle": "Navigation",
     "aboutTitle": "À propos",
-    "aboutText": "Je suis <strong>Amandino AIMINASSO</strong>, développeur Front-end & UI/UX designer. J'aide les petites entreprises et revendeurs à lancer des sites clairs, rapides et convertissants — du site vitrine aux applications métiers.",
+    "aboutText": "Je suis <strong>Amandino AIMINASSO</strong>, développeur Front-end. J'aide les petites entreprises et revendeurs à lancer des sites clairs, rapides et convertissants — du site vitrine aux applications métiers.",
     "aboutTextSmall": "Disponible pour missions à distance ou sur Porto-Novo (Bénin). Livraison rapide, communication claire et livrables documentés.",
     "rights": "Tous droits réservés."
   },
@@ -45,43 +45,31 @@
       "items": {
         "react": {
           "title": "React",
-          "description": "En formation active pour créer des interfaces web modernes et dynamiques."
+          "description": "Création d'interfaces web dynamiques, modernes et performantes."
         },
-        "laravel": {
-          "title": "Laravel",
-          "description": "Notions solides acquises en formation (MVC, APIs) — prêt à les appliquer sur un projet avec base de données."
+        "nextjs": {
+          "title": "Next.js",
+          "description": "Applications React avec rendu serveur (SSR) et génération statique (SSG), routing avancé et optimisation SEO intégrée."
+        },
+        "typescript": {
+          "title": "TypeScript",
+          "description": "Typage strict du code pour limiter les bugs et faciliter la maintenance sur la durée."
         },
         "javascript": {
           "title": "JavaScript",
-          "description": "En formation active sur l'interactivité et les fonctionnalités web."
+          "description": "Automatisation, enrichissement d'interactivité et fonctionnalités web avancées."
         },
         "git": {
           "title": "Git & gestion de versions",
           "description": "Suivi et coordination efficaces des versions de projets collaboratifs."
         },
-        "english": {
-          "title": "Anglais intermédiaire (conversation, lecture)",
-          "description": "Communication fluide en contexte professionnel et lecture technique."
-        },
-        "video": {
-          "title": "Montage vidéo & création d'affiches (amateur)",
-          "description": "Production de contenus visuels attrayants pour supports digitaux et imprimés."
-        },
-        "maintenance": {
-          "title": "Maintenance logicielle & OS (Windows, Linux)",
-          "description": "Diagnostic et résolution rapide de problèmes logiciels et systèmes."
-        },
-        "search": {
-          "title": "Recherche web & réseaux sociaux",
-          "description": "Veille informationnelle précise et exploitation optimale des ressources en ligne."
-        },
         "htmlCss": {
           "title": "HTML (avancé) & CSS (maîtrisé)",
           "description": "Création de pages web responsives, esthétiques et accessibles."
         },
-        "csharp": {
-          "title": "C#",
-          "description": "Développement d'applications desktop et logiques métier solides."
+        "framerMotion": {
+          "title": "Framer Motion",
+          "description": "Animations fluides et transitions soignées pour enrichir l'expérience utilisateur."
         }
       }
     },
@@ -93,33 +81,34 @@
       "items": {
         "ecole": {
           "title": "Site promotionnel – École",
-          "brief": "Site responsive pour mettre en avant les offres et l'attractivité d'une école."
+          "brief": "Site responsive conçu pour renforcer l'attractivité d'un établissement scolaire et faciliter la prise de contact avec les familles, avec une mise en avant claire des programmes et de l'identité de l'école, et une expérience fluide sur mobile."
         },
         "iphone": {
           "title": "Max iPhone — Vente de téléphones à Cotonou",
-          "brief": "Site vitrine pour l'achat d'iPhones neufs ou reconditionnés, testés et garantis avant chaque vente, avec un conseiller joignable directement sur WhatsApp."
-        },
-        "cantine": {
-          "title": "Application C# – Gestion cantine",
-          "brief": "App desktop en C# pour gérer inscriptions, paiements et menus en cantine scolaire."
+          "brief": "Refonte du site vitrine d'un revendeur d'iPhones à Cotonou, axée sur la confiance et la conversion : garantie et tests des appareils mis en avant, prise de contact simplifiée via un accès direct à un conseiller WhatsApp."
         },
         "madatours": {
           "title": "MadaTours — Plateforme touristique",
-          "brief": "Plateforme de découverte touristique pour Madagascar, avec excursions et circuits, en français, anglais et malgache."
+          "brief": "Plateforme multilingue (français, anglais, malgache) conçue pour faciliter la découverte et la réservation d'excursions à Madagascar, développée avec un fort accent sur la performance, le SEO et l'expérience utilisateur pour une navigation fluide côté visiteurs internationaux."
         },
         "hamuz": {
-          "title": "HAMUZ — Maison de parfumerie de luxe",
-          "brief": "Site vitrine pour une marque de parfumerie de luxe béninoise en pré-lancement, avec présentation de la collection, histoire de marque et inscription à liste privée."
+          "title": "HAMUZ — Marque de luxe",
+          "brief": "Site vitrine premium réalisé pour une marque de luxe béninoise en phase de pré-lancement, pensé pour présenter la collection et l'histoire de la marque tout en captant les premiers clients via une liste d'inscription privée."
+        },
+        "edudine": {
+          "title": "Edudine — Gestion scolaire desktop",
+          "brief": "Application de bureau développée pour digitaliser la gestion administrative d'un établissement scolaire : inscriptions, paiements, élèves et années scolaires, avec un tableau de bord pour visualiser leur évolution dans le temps."
         }
       },
       "noDemoLabel": "Application desktop — pas de démo en ligne",
-      "metaDescription": "Découvrez les projets web et desktop réalisés par Amandino AIMINASSO : sites vitrines, plateformes touristiques et applications métier en React, Next.js et C#."
+      "metaDescription": "Découvrez les projets web et desktop réalisés par Amandino AIMINASSO : sites vitrines, plateformes touristiques et applications métier en React, Next.js et C#.",
+      "caseStudyLabel": "Voir le cas d'étude →"
     }
   },
   "AboutPage": {
     "metaTitle": "À propos",
     "greeting": "Bonjour — moi c'est",
-    "lead": "Développeur Front-end & UI/UX designer, en formation active — parti du CSS et du JavaScript pur, je progresse aujourd'hui vers React, Next.js et TypeScript à travers des projets réels. Bilingue français/anglais, j'accompagne aussi bien des clients locaux que des clients internationaux, avec des sites clairs et pensés pour convertir.",
+    "lead": "Développeur Front-end, en formation active — parti du CSS et du JavaScript pur, je progresse aujourd'hui vers React, Next.js et TypeScript à travers des projets réels. Bilingue français/anglais, j'accompagne aussi bien des clients locaux que des clients internationaux, avec des sites clairs et pensés pour convertir.",
     "ctaGroupLabel": "Actions principales",
     "ctaPrimary": "Démarrer un projet",
     "ctaSecondary": "Voir mes projets",
@@ -147,43 +136,31 @@
     "skillItems": {
       "react": {
         "title": "React",
-        "subtitle": "En formation active — composants & SPA"
+        "subtitle": "UI modernes, SPA performantes"
       },
-      "laravel": {
-        "title": "Laravel",
-        "subtitle": "Formation MVC/API — pas encore appliqué en conditions réelles"
+      "nextjs": {
+        "title": "Next.js",
+        "subtitle": "SSR, SSG & App Router"
+      },
+      "typescript": {
+        "title": "TypeScript",
+        "subtitle": "Code typé, plus fiable"
       },
       "javascript": {
         "title": "JavaScript",
-        "subtitle": "En formation active — bases solides"
+        "subtitle": "Interactions & logique client"
       },
       "git": {
         "title": "Git",
         "subtitle": "Workflow, CI/CD & collaboration"
       },
-      "english": {
-        "title": "Français natif, Anglais courant",
-        "subtitle": "Échanges clients fluides à l'oral, en français comme en anglais"
-      },
-      "video": {
-        "title": "Montage & Visuel",
-        "subtitle": "Supports marketing & démos"
-      },
-      "maintenance": {
-        "title": "Maintenance",
-        "subtitle": "Déploiement & debugging rapide"
-      },
-      "search": {
-        "title": "Recherche & Veille",
-        "subtitle": "Approche data-driven"
-      },
       "htmlCss": {
         "title": "HTML & CSS",
         "subtitle": "Pages responsives, accessibles"
       },
-      "csharp": {
-        "title": "C#",
-        "subtitle": "Applications desktop & logique métier"
+      "framerMotion": {
+        "title": "Framer Motion",
+        "subtitle": "Animations & transitions"
       }
     },
     "whyMeTitle": "Pourquoi travailler avec moi ?",
@@ -203,7 +180,7 @@
       }
     },
     "whyMeCta": "Contactez-moi pour une estimation",
-    "metaDescription": "Amandino AIMINASSO, développeur Front-end et UI/UX designer basé à Porto-Novo, Bénin. Découvrez mon parcours, ma méthode de travail et mes compétences techniques."
+    "metaDescription": "Amandino AIMINASSO, développeur Front-end basé à Porto-Novo, Bénin. Découvrez mon parcours, ma méthode de travail et mes compétences techniques."
   },
   "ContactPage": {
     "metaTitle": "Contact",
@@ -253,10 +230,39 @@
     }
   },
   "OpenGraph": {
-    "roleTag": "Développeur Front-end & UI/UX Designer"
+    "roleTag": "Développeur Front-end"
   },
   "NotFound": {
     "title": "Page introuvable",
     "description": "La page que tu cherches n'existe pas ou a été déplacée."
+  },
+  "CaseStudy": {
+    "backToProjects": "Retour aux projets",
+    "contextTitle": "Le contexte",
+    "choicesTitle": "Les choix techniques",
+    "viewCode": "Voir le code",
+    "privateRepoNote": "Code source privé pour ce projet",
+    "items": {
+      "hamuz": {
+        "context": "HAMUZ est une marque de luxe béninoise en phase de pré-lancement. L'enjeu principal était de donner immédiatement une image premium à la marque, avant même l'ouverture officielle, pour donner envie aux visiteurs de s'inscrire à la liste privée.",
+        "technicalChoices": "Développé en Next.js et TypeScript pour un code fiable et un bon référencement dès le lancement. Tailwind CSS a permis d'itérer rapidement sur un design soigné, avec une attention particulière portée aux animations pour renforcer le sentiment de qualité attendu d'une marque de luxe."
+      },
+      "iphone": {
+        "context": "Ce projet a été initialement commandé par un client actif dans la revente d'iPhones à Cotonou. Le client a abandonné le projet en cours de route — je l'ai repris à mon compte pour en faire une démonstration technique complète plutôt que de le laisser inachevé.",
+        "technicalChoices": "L'ancienne version en React a été entièrement reconstruite en Next.js et TypeScript. Le design a été repensé autour de deux leviers de confiance identifiés avec le client avant son départ : la garantie et le test des appareils, et un accès direct à un conseiller via WhatsApp pour réduire les frictions à l'achat."
+      },
+      "madatours": {
+        "context": "MadaTours m'a été confié par mon mentor : une plateforme de découverte touristique pour Madagascar, destinée à un public à la fois local et international.",
+        "technicalChoices": "Construit en Next.js et TypeScript, avec next-intl pour gérer trois langues (français, anglais, malgache) dès l'architecture du projet plutôt qu'en ajout après coup. Une attention particulière a été portée au référencement — métadonnées par page, sitemap, image de partage générée automatiquement — pour que la plateforme soit trouvable dès son lancement."
+      },
+      "ecole": {
+        "context": "Site réalisé pour un établissement scolaire bilingue à Porto-Novo, avec pour objectif de donner aux familles toutes les informations nécessaires pour s'inscrire sans avoir à contacter l'administration pour chaque question.",
+        "technicalChoices": "Construit en React, avec une attention portée à la clarté du contenu (programmes, philosophie pédagogique, résultats) et à l'expérience mobile, canal principal utilisé par les familles pour consulter le site."
+      },
+      "edudine": {
+        "context": "Le même établissement scolaire gérait ses inscriptions, paiements et suivis administratifs à la main. Edudine a été conçu pour centraliser ces données dans un seul outil.",
+        "technicalChoices": "Application de bureau développée en C# (WinForms), avec une base de données SQL Server pour stocker les données d'inscriptions, de paiements et d'années scolaires, et un tableau de bord pour suivre leur évolution dans le temps."
+      }
+    }
   }
 }

@@ -124,6 +124,7 @@ export default async function LocaleLayout({
     <html
       lang={locale}
       suppressHydrationWarning
+      data-scroll-behavior="smooth"
       className={`${outfit.variable} ${rubik.variable} ${updock.variable}`}
     >
       <head>

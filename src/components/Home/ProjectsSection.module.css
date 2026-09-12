@@ -159,6 +159,18 @@
   font-style: italic;
 }
 
+.caseStudyLink {
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  border-bottom: 1px dashed var(--color-text-secondary);
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+.caseStudyLink:hover {
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
 .projectsMore {
   display: flex;
   justify-content: center;

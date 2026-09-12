@@ -27,7 +27,7 @@
     "contactTitle": "Contact",
     "navTitle": "Navigation",
     "aboutTitle": "About",
-    "aboutText": "I'm <strong>Amandino AIMINASSO</strong>, a Front-End developer & UI/UX designer. I help small businesses and resellers launch clear, fast, converting websites — from showcase sites to business applications.",
+    "aboutText": "I'm <strong>Amandino AIMINASSO</strong>, a Front-End developer. I help small businesses and resellers launch clear, fast, converting websites — from showcase sites to business applications.",
     "aboutTextSmall": "Available for remote work or on-site in Porto-Novo (Benin). Fast delivery, clear communication, documented deliverables.",
     "rights": "All rights reserved."
   },
@@ -45,43 +45,31 @@
       "items": {
         "react": {
           "title": "React",
-          "description": "Actively training to build modern, dynamic web interfaces."
+          "description": "Building dynamic, modern, high-performance web interfaces."
         },
-        "laravel": {
-          "title": "Laravel",
-          "description": "Solid foundations from training (MVC, APIs) — ready to apply them on a database-backed project."
+        "nextjs": {
+          "title": "Next.js",
+          "description": "React applications with server-side rendering (SSR) and static generation (SSG), advanced routing, and built-in SEO optimization."
+        },
+        "typescript": {
+          "title": "TypeScript",
+          "description": "Strict typing to reduce bugs and make code easier to maintain over time."
         },
         "javascript": {
           "title": "JavaScript",
-          "description": "Actively training on interactivity and web functionality."
+          "description": "Automation and advanced interactivity for web features."
         },
         "git": {
           "title": "Git & version control",
           "description": "Efficient tracking and coordination of collaborative project versions."
         },
-        "english": {
-          "title": "Intermediate English (conversation, reading)",
-          "description": "Fluent communication in professional settings and technical reading."
-        },
-        "video": {
-          "title": "Video editing & poster design (amateur)",
-          "description": "Producing engaging visual content for digital and print media."
-        },
-        "maintenance": {
-          "title": "Software & OS maintenance (Windows, Linux)",
-          "description": "Fast diagnosis and resolution of software and system issues."
-        },
-        "search": {
-          "title": "Web research & social media",
-          "description": "Precise information monitoring and effective use of online resources."
-        },
         "htmlCss": {
           "title": "HTML (advanced) & CSS (proficient)",
           "description": "Building responsive, accessible, polished web pages."
         },
-        "csharp": {
-          "title": "C#",
-          "description": "Developing desktop applications and solid business logic."
+        "framerMotion": {
+          "title": "Framer Motion",
+          "description": "Smooth animations and polished transitions to enrich the user experience."
         }
       }
     },
@@ -93,33 +81,34 @@
       "items": {
         "ecole": {
           "title": "School promotional site",
-          "brief": "Responsive site showcasing a school's programs and appeal."
+          "brief": "Responsive site built to boost a school's appeal and make it easy for families to get in touch, with clear presentation of programs and school identity, and a smooth mobile experience."
         },
         "iphone": {
           "title": "Max iPhone — Phone reseller in Cotonou",
-          "brief": "Showcase site for buying new or refurbished iPhones, tested and guaranteed before each sale, with an advisor reachable directly on WhatsApp."
-        },
-        "cantine": {
-          "title": "C# app – Cafeteria management",
-          "brief": "Desktop app in C# to manage enrollments, payments, and menus for a school cafeteria."
+          "brief": "Redesign of a showcase site for an iPhone reseller in Cotonou, focused on trust and conversion: device testing and guarantees front and center, with streamlined contact through direct WhatsApp access to an advisor."
         },
         "madatours": {
           "title": "MadaTours — Tourism platform",
-          "brief": "Tourism discovery platform for Madagascar, featuring excursions and tours, available in French, English, and Malagasy."
+          "brief": "Multilingual platform (French, English, Malagasy) built to make discovering and booking excursions in Madagascar easier, with a strong focus on performance, SEO, and user experience for smooth browsing by international visitors."
         },
         "hamuz": {
-          "title": "HAMUZ — Luxury perfume house",
-          "brief": "Showcase site for a Beninese luxury perfume brand in pre-launch, featuring its collection, brand story, and private-list signup."
+          "title": "HAMUZ — Luxury brand",
+          "brief": "Premium showcase site built for a Beninese luxury brand in pre-launch phase, designed to present the collection and brand story while capturing early customers through a private signup list."
+        },
+        "edudine": {
+          "title": "Edudine — Desktop school management",
+          "brief": "Desktop application built to digitize a school's administrative management: enrollments, payments, students, and school years, with a dashboard to track their evolution over time."
         }
       },
       "noDemoLabel": "Desktop app — no live demo",
-      "metaDescription": "Discover the web and desktop projects built by Amandino AIMINASSO: showcase sites, tourism platforms, and business applications in React, Next.js, and C#."
+      "metaDescription": "Discover the web and desktop projects built by Amandino AIMINASSO: showcase sites, tourism platforms, and business applications in React, Next.js, and C#.",
+      "caseStudyLabel": "See case study →"
     }
   },
   "AboutPage": {
     "metaTitle": "About",
     "greeting": "Hi — I'm",
-    "lead": "Front-End Developer & UI/UX Designer, actively in training — I started with plain CSS and JavaScript and am now working my way toward React, Next.js, and TypeScript through real projects. Fluent in both French and English, I work just as comfortably with local clients as with international ones, building clear, conversion-focused websites.",
+    "lead": "Front-End Developer, actively in training — I started with plain CSS and JavaScript and am now working my way toward React, Next.js, and TypeScript through real projects. Fluent in both French and English, I work just as comfortably with local clients as with international ones, building clear, conversion-focused websites.",
     "ctaGroupLabel": "Main actions",
     "ctaPrimary": "Start a project",
     "ctaSecondary": "See my projects",
@@ -147,43 +136,31 @@
     "skillItems": {
       "react": {
         "title": "React",
-        "subtitle": "Actively training — components & SPAs"
+        "subtitle": "Modern UIs, performant SPAs"
       },
-      "laravel": {
-        "title": "Laravel",
-        "subtitle": "MVC/API training — not yet applied on a real project"
+      "nextjs": {
+        "title": "Next.js",
+        "subtitle": "SSR, SSG & App Router"
+      },
+      "typescript": {
+        "title": "TypeScript",
+        "subtitle": "Typed code, more reliable"
       },
       "javascript": {
         "title": "JavaScript",
-        "subtitle": "Actively training — solid fundamentals"
+        "subtitle": "Client-side interactions & logic"
       },
       "git": {
         "title": "Git",
         "subtitle": "Workflow, CI/CD & collaboration"
       },
-      "english": {
-        "title": "Native French, Fluent English",
-        "subtitle": "Smooth spoken client communication, in French and in English"
-      },
-      "video": {
-        "title": "Editing & Visuals",
-        "subtitle": "Marketing materials & demos"
-      },
-      "maintenance": {
-        "title": "Maintenance",
-        "subtitle": "Deployment & fast debugging"
-      },
-      "search": {
-        "title": "Research & Monitoring",
-        "subtitle": "Data-driven approach"
-      },
       "htmlCss": {
         "title": "HTML & CSS",
         "subtitle": "Responsive, accessible pages"
       },
-      "csharp": {
-        "title": "C#",
-        "subtitle": "Desktop applications & business logic"
+      "framerMotion": {
+        "title": "Framer Motion",
+        "subtitle": "Animations & transitions"
       }
     },
     "whyMeTitle": "Why work with me?",
@@ -203,7 +180,7 @@
       }
     },
     "whyMeCta": "Contact me for a quote",
-    "metaDescription": "Amandino AIMINASSO, Front-End developer and UI/UX designer based in Porto-Novo, Benin. Learn about my background, my working method, and my technical skills."
+    "metaDescription": "Amandino AIMINASSO, Front-End developer based in Porto-Novo, Benin. Learn about my background, my working method, and my technical skills."
   },
   "ContactPage": {
     "metaTitle": "Contact",
@@ -253,10 +230,39 @@
     }
   },
   "OpenGraph": {
-    "roleTag": "Front-End Developer & UI/UX Designer"
+    "roleTag": "Front-End Developer"
   },
   "NotFound": {
     "title": "Page not found",
     "description": "The page you're looking for doesn't exist or has been moved."
+  },
+  "CaseStudy": {
+    "backToProjects": "Back to projects",
+    "contextTitle": "The context",
+    "choicesTitle": "Technical choices",
+    "viewCode": "View code",
+    "privateRepoNote": "Source code is private for this project",
+    "items": {
+      "hamuz": {
+        "context": "HAMUZ is a Beninese luxury brand in its pre-launch phase. The main challenge was giving the brand an immediately premium feel, even before the official opening, to convert visitors into private-list signups.",
+        "technicalChoices": "Built with Next.js and TypeScript for reliable code and strong SEO from launch. Tailwind CSS made it possible to iterate quickly on a polished design, with particular attention to animations to reinforce the quality expected of a luxury brand."
+      },
+      "iphone": {
+        "context": "This project was originally commissioned by a client active in iPhone reselling in Cotonou. The client dropped the project midway — I took it over myself to turn it into a full technical showcase rather than leaving it unfinished.",
+        "technicalChoices": "The old React version was fully rebuilt in Next.js and TypeScript. The design was rethought around two trust levers identified with the client before they left: device testing and guarantees, and direct WhatsApp access to an advisor to reduce friction in the buying process."
+      },
+      "madatours": {
+        "context": "MadaTours was entrusted to me by my mentor: a tourism discovery platform for Madagascar, aimed at both local and international audiences.",
+        "technicalChoices": "Built with Next.js and TypeScript, with next-intl handling three languages (French, English, Malagasy) from the project's architecture rather than bolted on afterward. Particular attention was paid to SEO — per-page metadata, sitemap, auto-generated share image — so the platform would be discoverable from launch."
+      },
+      "ecole": {
+        "context": "Site built for a bilingual school in Porto-Novo, aimed at giving families all the information they need to enroll without having to contact school staff for every question.",
+        "technicalChoices": "Built with React, with attention paid to content clarity (programs, teaching philosophy, results) and to the mobile experience, the main channel families use to browse the site."
+      },
+      "edudine": {
+        "context": "The same school was managing enrollments, payments, and administrative tracking by hand. Edudine was built to centralize this data in a single tool.",
+        "technicalChoices": "Desktop application built in C# (WinForms), with a SQL Server database to store enrollment, payment, and school-year data, plus a dashboard to track their evolution over time."
+      }
+    }
   }
 }

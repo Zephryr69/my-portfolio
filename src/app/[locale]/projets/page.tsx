@@ -56,6 +56,7 @@ export default function ProjectsPage() {
         {projectsData.map(({ key, thumbnail, link, tech, colorClass }, idx) => (
           <ProjectCard
             key={key}
+            projectKey={key}
             title={t(`items.${key}.title`)}
             brief={t(`items.${key}.brief`)}
             thumbnail={thumbnail}
@@ -65,6 +66,7 @@ export default function ProjectsPage() {
             colorClass={colorClass}
             ctaLabel={t("ctaLabel")}
             noDemoLabel={t("noDemoLabel")}
+            caseStudyLabel={t("caseStudyLabel")}
             delay={idx * 0.15}
           />
         ))}

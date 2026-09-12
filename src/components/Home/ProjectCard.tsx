@@ -3,9 +3,11 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import type { StaticImageData } from "next/image";
+import { Link } from "@/i18n/routing";
 import styles from "./ProjectsSection.module.css";
 
 interface ProjectCardProps {
+  projectKey: string;
   title: string;
   brief: string;
   thumbnail: StaticImageData;
@@ -15,10 +17,12 @@ interface ProjectCardProps {
   colorClass: "cardColor1" | "cardColor2" | "cardColor3" | "cardColor4" | "cardColor5";
   ctaLabel: string;
   noDemoLabel: string;
+  caseStudyLabel: string;
   delay: number;
 }
 
 export default function ProjectCard({
+  projectKey,
   title,
   brief,
   thumbnail,
@@ -28,6 +32,7 @@ export default function ProjectCard({
   colorClass,
   ctaLabel,
   noDemoLabel,
+  caseStudyLabel,
   delay,
 }: ProjectCardProps) {
   return (
@@ -69,6 +74,9 @@ export default function ProjectCard({
                un badge neutre plutôt qu'un bouton cassé menant nulle part. */
             <span className={styles.noDemoBadge}>{noDemoLabel}</span>
           )}
+          <Link href={`/projets/${projectKey}`} className={styles.caseStudyLink}>
+            {caseStudyLabel}
+          </Link>
         </div>
       </div>
     </motion.div>
