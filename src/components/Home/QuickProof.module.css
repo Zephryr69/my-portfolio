@@ -1,0 +1,48 @@
+.quickProof {
+  padding: 2.5rem 0;
+  text-align: center;
+}
+
+.title {
+  font-size: clamp(1.4rem, 2.2vw, 1.8rem);
+  margin-bottom: 2rem;
+  color: var(--color-text-secondary);
+  font-weight: 600;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.stat {
+  padding: 1.5rem;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.stat strong {
+  display: block;
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--color-primary);
+}
+
+.stat span {
+  display: block;
+  font-weight: 700;
+  margin-top: 0.3rem;
+}
+
+.stat p {
+  margin-top: 0.4rem;
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -183,3 +183,55 @@
   .skillTextLevel span { white-space: normal; overflow: visible; text-overflow: unset; }
   .skillCard { font-size: 0.95rem; }
 }
+
+/* ==========================================================================
+   Format liste (Technologies) — remplace la grille de cartes à barres de
+   progression. SkillCard.tsx et les règles .skillsGrid/.skillCard restent
+   dans le fichier mais ne sont plus utilisées par ce composant (pas
+   supprimées : à retirer explicitement si tu confirmes ne plus en avoir
+   besoin ailleurs).
+   ========================================================================== */
+.techList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-width: 720px;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.techRow {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.15);
+}
+.techRow:last-child {
+  border-bottom: none;
+}
+
+.techIcon {
+  display: inline-flex;
+  align-items: center;
+  font-size: 1.1rem;
+  color: var(--color-primary);
+  align-self: center;
+}
+
+.techName {
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.techDash {
+  color: var(--color-text-secondary);
+}
+
+.techDescription {
+  color: var(--color-text-secondary);
+  font-size: 0.95rem;
+}

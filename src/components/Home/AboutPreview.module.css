@@ -40,6 +40,12 @@
   margin: 0 0 0.6rem;
 }
 
+.intro {
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  margin-bottom: 0.75rem;
+}
+
 .availability {
   color: var(--color-text-secondary);
   line-height: 1.5;

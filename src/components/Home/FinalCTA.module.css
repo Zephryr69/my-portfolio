@@ -1,0 +1,56 @@
+.finalCta {
+  text-align: center;
+  padding: 3.5rem 1.5rem;
+  border-radius: 24px;
+  background: linear-gradient(135deg, rgba(255, 140, 0, 0.14), rgba(255, 179, 71, 0.08));
+  margin: 2rem 0;
+}
+
+.finalCta h2 {
+  font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+  margin-bottom: 0.75rem;
+}
+
+.finalCta p {
+  max-width: 500px;
+  margin: 0 auto 2rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 0.9rem 1.8rem;
+  border-radius: 50px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.primary {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-hover));
+  color: #fff;
+}
+.primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(255, 140, 0, 0.35);
+}
+.secondary {
+  background: #25d366;
+  color: #fff;
+}
+.secondary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(37, 211, 102, 0.35);
+}
+
+.or {
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+}

@@ -35,11 +35,7 @@ export default function Hero() {
           variants={fadeInUp}
           transition={{ duration: 0.6 }}
         >
-          {t("greeting")}{" "}
-          <span className={styles.fancy}>
-            <span className={styles.firstName}>Amandino</span>{" "}
-            <span className={styles.lastName}>AIMINASSO</span>
-          </span>
+          {t("headline")}
         </motion.h1>
 
         <motion.p
@@ -65,6 +61,8 @@ export default function Hero() {
             </Link>
           </motion.div>
         </div>
+
+        <p className={styles.tagline}>{t("tagline")}</p>
       </div>
 
       {/* Plus de délai ni de fondu d'opacité ici : c'est l'élément LCP

@@ -52,6 +52,7 @@ export default function AboutPreview() {
 
       <div className={styles.content}>
         <h2 className={styles.title}>{t("metaTitle")}</h2>
+        <p className={styles.intro}>{t("previewIntro")}</p>
         <p className={styles.availability}>{t("availability")}</p>
 
         {/* Même donnée (3 projets) que le "3" en dur dans AboutView.tsx

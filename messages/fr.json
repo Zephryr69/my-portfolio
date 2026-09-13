@@ -34,13 +34,15 @@
   "Home": {
     "hero": {
       "greeting": "Salut, je suis",
-      "subtitle": "Développeur Front-end freelance, passionné par le design moderne, la performance et l'expérience utilisateur.",
+      "subtitle": "Je conçois et développe des sites modernes, rapides et pensés pour mettre votre activité en valeur, inspirer confiance et faciliter le passage à l'action.",
       "ctaPrimary": "Démarrer un projet",
-      "ctaSecondary": "Voir mes projets",
-      "imageAlt": "Photo d'Amandino"
+      "ctaSecondary": "Voir mes réalisations",
+      "imageAlt": "Photo d'Amandino",
+      "headline": "Je transforme vos idées en expériences web qui donnent envie d'aller plus loin.",
+      "tagline": "Développeur Front-end freelance · Porto-Novo / Remote"
     },
     "skills": {
-      "title": "Mes Compétences clés",
+      "title": "Technologies",
       "cardAriaLabel": "{title} — niveau {level}%",
       "items": {
         "react": {
@@ -103,6 +105,96 @@
       "noDemoLabel": "Application desktop — pas de démo en ligne",
       "metaDescription": "Découvrez les projets web et desktop réalisés par Amandino AIMINASSO : sites vitrines, plateformes touristiques et applications métier en React, Next.js et C#.",
       "caseStudyLabel": "Voir le cas d'étude →"
+    },
+    "quickProof": {
+      "title": "Des projets conçus pour de vraies activités.",
+      "projectsLabel": "Projets réalisés",
+      "projectsDetail": "Sites vitrines · expériences interactives · applications",
+      "experienceValue": "1 an+",
+      "experienceLabel": "D'expérience pratique",
+      "experienceDetail": "Web & UI",
+      "responsiveValue": "Responsive",
+      "responsiveLabel": "Pensé pour tous les écrans",
+      "responsiveDetail": "Mobile, tablette et desktop"
+    },
+    "whoIAm": {
+      "title": "Qui je suis",
+      "text": "Je suis Amandino Aiminasso, développeur Front-end freelance basé à Porto-Novo. J'aide les entrepreneurs et les marques à créer des sites clairs, modernes et orientés résultats. Mon approche allie design soigné, performance et réel objectif business."
+    },
+    "services": {
+      "title": "Ce que je peux construire pour votre activité.",
+      "items": {
+        "showcase": {
+          "title": "Site vitrine",
+          "description": "Présentez votre entreprise avec une présence digitale professionnelle qui inspire confiance dès la première visite."
+        },
+        "modernExperience": {
+          "title": "Expérience web moderne",
+          "description": "Des interfaces soignées, fluides et interactives qui donnent à votre marque une identité numérique mémorable."
+        },
+        "conversion": {
+          "title": "Site orienté conversion",
+          "description": "Une structure pensée pour guider vos visiteurs vers l'action : demande de devis, contact, réservation, inscription ou achat."
+        },
+        "webApp": {
+          "title": "Application web",
+          "description": "Des interfaces adaptées à vos besoins métier, avec une expérience claire et pensée pour vos utilisateurs."
+        }
+      }
+    },
+    "whyWorkTogether": {
+      "title": "Votre site ne devrait pas être seulement beau.",
+      "intro": "Un bon site doit aussi être compréhensible, rapide, accessible et utile à votre activité.",
+      "items": {
+        "userFocused": {
+          "title": "Design pensé pour vos utilisateurs",
+          "description": "Je rends chaque interaction claire et naturelle, sans sacrifier l'identité visuelle de votre marque."
+        },
+        "performance": {
+          "title": "Performance",
+          "description": "Je construis des interfaces rapides et optimisées pour offrir une expérience fluide sur tous les appareils."
+        },
+        "responsive": {
+          "title": "Responsive",
+          "description": "Votre site reste convaincant, que vos clients le consultent depuis un ordinateur, une tablette ou un smartphone."
+        },
+        "modernTech": {
+          "title": "Technologie moderne",
+          "description": "J'utilise React, Next.js et TypeScript pour créer des produits maintenables et évolutifs."
+        }
+      }
+    },
+    "method": {
+      "title": "Un projet clair, étape par étape.",
+      "steps": {
+        "understand": {
+          "title": "Comprendre",
+          "description": "Nous partons de votre activité, de vos objectifs, de vos utilisateurs et des besoins auxquels le projet doit répondre."
+        },
+        "structure": {
+          "title": "Structurer",
+          "description": "Je définis l'organisation du contenu et l'expérience utilisateur pour que chaque élément ait une fonction précise."
+        },
+        "design": {
+          "title": "Concevoir",
+          "description": "Je transforme cette structure en une interface cohérente avec votre identité et votre positionnement."
+        },
+        "develop": {
+          "title": "Développer",
+          "description": "Je construis le produit avec une attention particulière à la performance, au responsive et à la qualité du code."
+        },
+        "deliver": {
+          "title": "Livrer",
+          "description": "Vous disposez d'un produit prêt à être présenté à vos clients et à évoluer avec votre activité."
+        }
+      }
+    },
+    "finalCta": {
+      "title": "Un projet en tête ?",
+      "text": "Vous avez besoin d'un site pour lancer votre activité, présenter votre entreprise ou améliorer votre présence en ligne ? Parlons de votre projet et voyons ensemble ce qu'il est possible de construire.",
+      "ctaPrimary": "Démarrer un projet",
+      "or": "ou",
+      "ctaWhatsapp": "Me contacter sur WhatsApp"
     }
   },
   "AboutPage": {
@@ -180,7 +272,8 @@
       }
     },
     "whyMeCta": "Contactez-moi pour une estimation",
-    "metaDescription": "Amandino AIMINASSO, développeur Front-end basé à Porto-Novo, Bénin. Découvrez mon parcours, ma méthode de travail et mes compétences techniques."
+    "metaDescription": "Amandino AIMINASSO, développeur Front-end basé à Porto-Novo, Bénin. Découvrez mon parcours, ma méthode de travail et mes compétences techniques.",
+    "previewIntro": "Développeur Front-end freelance, en formation active — parti du CSS et du JavaScript pur, je progresse aujourd'hui vers React, Next.js et TypeScript à travers des projets réels."
   },
   "ContactPage": {
     "metaTitle": "Contact",

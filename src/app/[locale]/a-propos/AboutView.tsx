@@ -106,19 +106,6 @@ export default function AboutView() {
         >
           <h2>{t("storyTitle")}</h2>
           <p>{t("storyText")}</p>
-
-          <h4>{t("methodTitle")}</h4>
-          <ol className={styles.process}>
-            <li>
-              <strong>{t("step1Title")}</strong> — {t("step1Text")}
-            </li>
-            <li>
-              <strong>{t("step2Title")}</strong> — {t("step2Text")}
-            </li>
-            <li>
-              <strong>{t("step3Title")}</strong> — {t("step3Text")}
-            </li>
-          </ol>
         </motion.article>
 
         <aside className={`${styles.stats} ${styles.glassmorphic}`}>

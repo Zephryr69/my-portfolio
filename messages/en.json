@@ -34,13 +34,15 @@
   "Home": {
     "hero": {
       "greeting": "Hi, I'm",
-      "subtitle": "Freelance Front-End developer, passionate about modern design, performance, and user experience.",
+      "subtitle": "I design and build modern, fast websites made to showcase your business, build trust, and drive action.",
       "ctaPrimary": "Start a project",
-      "ctaSecondary": "See my projects",
-      "imageAlt": "Photo of Amandino"
+      "ctaSecondary": "See my work",
+      "imageAlt": "Photo of Amandino",
+      "headline": "I turn your ideas into web experiences that make people want to go further.",
+      "tagline": "Freelance Front-End Developer · Porto-Novo / Remote"
     },
     "skills": {
-      "title": "Key Skills",
+      "title": "Technologies",
       "cardAriaLabel": "{title} — level {level}%",
       "items": {
         "react": {
@@ -103,6 +105,96 @@
       "noDemoLabel": "Desktop app — no live demo",
       "metaDescription": "Discover the web and desktop projects built by Amandino AIMINASSO: showcase sites, tourism platforms, and business applications in React, Next.js, and C#.",
       "caseStudyLabel": "See case study →"
+    },
+    "quickProof": {
+      "title": "Projects built for real businesses.",
+      "projectsLabel": "Projects delivered",
+      "projectsDetail": "Showcase sites · interactive experiences · applications",
+      "experienceValue": "1+ year",
+      "experienceLabel": "Of hands-on experience",
+      "experienceDetail": "Web & UI",
+      "responsiveValue": "Responsive",
+      "responsiveLabel": "Built for every screen",
+      "responsiveDetail": "Mobile, tablet, and desktop"
+    },
+    "whoIAm": {
+      "title": "Who I am",
+      "text": "I'm Amandino Aiminasso, a freelance Front-End developer based in Porto-Novo. I help entrepreneurs and brands build clear, modern, results-driven websites. My approach combines polished design, performance, and a real business objective."
+    },
+    "services": {
+      "title": "What I can build for your business.",
+      "items": {
+        "showcase": {
+          "title": "Showcase site",
+          "description": "Present your business with a professional digital presence that builds trust from the first visit."
+        },
+        "modernExperience": {
+          "title": "Modern web experience",
+          "description": "Polished, smooth, interactive interfaces that give your brand a memorable digital identity."
+        },
+        "conversion": {
+          "title": "Conversion-focused site",
+          "description": "A structure designed to guide your visitors toward action: quote requests, contact, booking, signup, or purchase."
+        },
+        "webApp": {
+          "title": "Web application",
+          "description": "Interfaces tailored to your business needs, with a clear experience built for your users."
+        }
+      }
+    },
+    "whyWorkTogether": {
+      "title": "Your website shouldn't just be pretty.",
+      "intro": "A good website also needs to be understandable, fast, accessible, and useful to your business.",
+      "items": {
+        "userFocused": {
+          "title": "Design built for your users",
+          "description": "I make every interaction clear and natural, without sacrificing your brand's visual identity."
+        },
+        "performance": {
+          "title": "Performance",
+          "description": "I build fast, optimized interfaces for a smooth experience on every device."
+        },
+        "responsive": {
+          "title": "Responsive",
+          "description": "Your site stays compelling whether your customers view it on a computer, tablet, or phone."
+        },
+        "modernTech": {
+          "title": "Modern technology",
+          "description": "I use React, Next.js, and TypeScript to build maintainable, scalable products."
+        }
+      }
+    },
+    "method": {
+      "title": "A clear project, step by step.",
+      "steps": {
+        "understand": {
+          "title": "Understand",
+          "description": "We start from your business, your goals, your users, and the needs the project has to address."
+        },
+        "structure": {
+          "title": "Structure",
+          "description": "I define the content organization and user experience so every element has a clear purpose."
+        },
+        "design": {
+          "title": "Design",
+          "description": "I turn that structure into an interface consistent with your identity and positioning."
+        },
+        "develop": {
+          "title": "Develop",
+          "description": "I build the product with close attention to performance, responsiveness, and code quality."
+        },
+        "deliver": {
+          "title": "Deliver",
+          "description": "You get a product ready to show your customers and to grow alongside your business."
+        }
+      }
+    },
+    "finalCta": {
+      "title": "Got a project in mind?",
+      "text": "Need a site to launch your business, present your company, or improve your online presence? Let's talk about your project and see what we can build together.",
+      "ctaPrimary": "Start a project",
+      "or": "or",
+      "ctaWhatsapp": "Contact me on WhatsApp"
     }
   },
   "AboutPage": {
@@ -180,7 +272,8 @@
       }
     },
     "whyMeCta": "Contact me for a quote",
-    "metaDescription": "Amandino AIMINASSO, Front-End developer based in Porto-Novo, Benin. Learn about my background, my working method, and my technical skills."
+    "metaDescription": "Amandino AIMINASSO, Front-End developer based in Porto-Novo, Benin. Learn about my background, my working method, and my technical skills.",
+    "previewIntro": "Freelance Front-End developer, in active training — starting from plain CSS and JavaScript, I'm now progressing toward React, Next.js, and TypeScript through real projects."
   },
   "ContactPage": {
     "metaTitle": "Contact",

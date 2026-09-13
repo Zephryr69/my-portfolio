@@ -198,3 +198,13 @@
   .ctaGroup { justify-content: center; }
   .heroImage img { max-width: 240px; }
 }
+
+/* Ligne de positionnement sous les CTA (rôle · localisation) — ajoutée
+   pour la refonte de contenu de l'accueil. */
+.tagline {
+  margin-top: 1.2rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  letter-spacing: 0.3px;
+}
