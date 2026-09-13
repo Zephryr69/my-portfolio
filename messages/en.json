@@ -73,7 +73,8 @@
           "title": "Framer Motion",
           "description": "Smooth animations and polished transitions to enrich the user experience."
         }
-      }
+      },
+      "intro": "Modern, proven tools, chosen to deliver sites that are fast, reliable, and easy to grow."
     },
     "projects": {
       "title": "Recent Projects",
@@ -195,6 +196,52 @@
       "ctaPrimary": "Start a project",
       "or": "or",
       "ctaWhatsapp": "Contact me on WhatsApp"
+    },
+    "technologies": {
+      "title": "The technologies I use to bring projects to life.",
+      "intro1": "A good website isn't built on a list of technologies. It's built on the right tools, used at the right time, to meet a specific need.",
+      "intro2": "To turn an idea into a fast, smooth, enjoyable web experience, I rely on a set of modern technologies that work together.",
+      "prevLabel": "Previous technology",
+      "nextLabel": "Next technology",
+      "items": {
+        "react": {
+          "title": "React",
+          "tagline": "To turn an interface into a real experience.",
+          "description": "I use it to build dynamic, modular, reactive interfaces, where every interaction stays smooth and consistent."
+        },
+        "nextjs": {
+          "title": "Next.js",
+          "tagline": "To go beyond a simple website.",
+          "description": "Performance, SEO, server-side rendering, and a scalable architecture: Next.js lets me build web experiences designed for both users and search engines."
+        },
+        "typescript": {
+          "title": "TypeScript",
+          "tagline": "To build today without complicating tomorrow.",
+          "description": "Better-structured, more predictable code reduces errors and makes it easier for a project to evolve over time."
+        },
+        "javascript": {
+          "title": "JavaScript",
+          "tagline": "To give interfaces some intelligence.",
+          "description": "Interactions, business logic, and advanced features: JavaScript turns a static page into a genuinely interactive experience."
+        },
+        "git": {
+          "title": "Git",
+          "tagline": "Because a professional project needs to evolve calmly.",
+          "description": "Versioning code, tracking changes, and rolling back when needed makes it possible to work with method, alone or as a team."
+        },
+        "htmlCss": {
+          "title": "HTML & CSS",
+          "tagline": "Because the fundamentals stay fundamental.",
+          "description": "A successful interface starts with a solid, responsive, accessible structure that adapts to every screen."
+        },
+        "framerMotion": {
+          "title": "Framer Motion",
+          "tagline": "So every motion has a reason to exist.",
+          "description": "Animations, transitions, and micro-interactions are used to guide the user, reinforce the visual identity, and make the experience feel more natural."
+        }
+      },
+      "closingTitle": "Technology in service of an experience.",
+      "closingText": "I don't pick a technology because it's trendy. I pick it because it can make the product faster, more reliable, more enjoyable to use, or easier to grow."
     }
   },
   "AboutPage": {

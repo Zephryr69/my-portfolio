@@ -73,7 +73,8 @@
           "title": "Framer Motion",
           "description": "Animations fluides et transitions soignées pour enrichir l'expérience utilisateur."
         }
-      }
+      },
+      "intro": "Des outils modernes et éprouvés, choisis pour livrer des sites rapides, fiables et faciles à faire évoluer."
     },
     "projects": {
       "title": "Projets récents",
@@ -195,6 +196,52 @@
       "ctaPrimary": "Démarrer un projet",
       "or": "ou",
       "ctaWhatsapp": "Me contacter sur WhatsApp"
+    },
+    "technologies": {
+      "title": "Les technologies que j'utilise pour donner vie aux projets.",
+      "intro1": "Un bon site ne repose pas sur une liste de technologies. Il repose sur les bons outils, utilisés au bon moment, pour répondre à un besoin précis.",
+      "intro2": "Pour transformer une idée en une expérience web rapide, fluide et agréable à utiliser, je m'appuie sur un ensemble de technologies modernes qui travaillent ensemble.",
+      "prevLabel": "Technologie précédente",
+      "nextLabel": "Technologie suivante",
+      "items": {
+        "react": {
+          "title": "React",
+          "tagline": "Pour transformer une interface en véritable expérience.",
+          "description": "Je l'utilise pour construire des interfaces dynamiques, modulaires et réactives, où chaque interaction reste fluide et cohérente."
+        },
+        "nextjs": {
+          "title": "Next.js",
+          "tagline": "Pour aller au-delà d'un simple site web.",
+          "description": "Performance, référencement, rendu serveur et architecture évolutive : Next.js me permet de construire des expériences web pensées aussi bien pour les utilisateurs que pour les moteurs de recherche."
+        },
+        "typescript": {
+          "title": "TypeScript",
+          "tagline": "Pour construire aujourd'hui sans compliquer demain.",
+          "description": "Un code mieux structuré et plus prévisible permet de réduire les erreurs et de faciliter l'évolution du projet au fil du temps."
+        },
+        "javascript": {
+          "title": "JavaScript",
+          "tagline": "Pour donner de l'intelligence aux interfaces.",
+          "description": "Interactions, logique métier et fonctionnalités avancées : JavaScript transforme une page statique en expérience réellement interactive."
+        },
+        "git": {
+          "title": "Git",
+          "tagline": "Parce qu'un projet professionnel doit pouvoir évoluer sereinement.",
+          "description": "Versionner le code, suivre les évolutions et revenir sur une modification lorsque nécessaire permet de travailler avec méthode, seul comme en équipe."
+        },
+        "htmlCss": {
+          "title": "HTML & CSS",
+          "tagline": "Parce que les fondamentaux restent fondamentaux.",
+          "description": "Une interface réussie commence par une structure solide, responsive et accessible, capable de s'adapter à chaque écran."
+        },
+        "framerMotion": {
+          "title": "Framer Motion",
+          "tagline": "Pour que chaque mouvement ait une raison d'être.",
+          "description": "Animations, transitions et micro-interactions sont utilisées pour guider l'utilisateur, renforcer l'identité visuelle et rendre l'expérience plus naturelle."
+        }
+      },
+      "closingTitle": "Des technologies au service d'une expérience.",
+      "closingText": "Je ne choisis pas une technologie parce qu'elle est à la mode. Je la choisis parce qu'elle peut rendre le produit plus rapide, plus fiable, plus agréable à utiliser ou plus facile à faire évoluer."
     }
   },
   "AboutPage": {

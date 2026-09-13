@@ -1,29 +1,20 @@
 /* ==========================================================================
-   SkillsSection.module.css — section compétences de Home.css
+   SkillsSection.module.css — section "Technologies", format carrousel.
 
-   Changements :
-   - `.skill-level` n'a plus d'animation CSS ni de dépendance à la variable
-     --level-width jamais définie (c'était le bug des barres toutes à 70%,
-     voir chat) — la largeur est maintenant animée par Framer Motion dans
-     SkillCard.tsx, avec la vraie valeur `level`.
-   - `!important` retirés : plus nécessaires une fois qu'il n'y a plus de
-     règle contradictoire à écraser.
-   - `var(--text-secondary, #666)` → `var(--color-text-secondary)`, qui
-     existe réellement dans tokens.css maintenant.
+   Remplace l'ancien format carte + barre de progression : le nouveau
+   contenu (titre + accroche + paragraphe par techno) est trop long pour
+   une petite carte, un carrousel garde une seule techno bien lisible à
+   la fois, avec navigation flèches, points, et glisser au doigt sur
+   mobile (via Framer Motion drag="x").
    ========================================================================== */
 
 .skillsSection {
   padding: 4rem 2rem;
   text-align: center;
-  /* Avant : max-width: 1000px, ce qui rendait la section plus étroite
-     que Hero et Projets (tous deux calés sur les 1200px du homeWrapper)
-     — d'où l'impression d'espace gaspillé sur les côtés. Elle remplit
-     maintenant la même largeur que le reste de la page. */
   margin: 2rem 0;
   border-radius: 16px;
-  -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
-  transition: background 0.5s ease, color 0.5s ease;
+  -webkit-backdrop-filter: blur(12px);
   box-sizing: border-box;
   scroll-margin-top: var(--navbar-height);
   position: relative;
@@ -39,199 +30,159 @@
   color: var(--color-primary);
 }
 
-.skillsSection h2 {
-  font-size: clamp(1.6rem, 2.6vw, 2.2rem);
-  margin-bottom: 2rem;
-  user-select: none;
-  position: relative;
-  z-index: 1;
-}
-
 .sectionTitle {
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
-}
-
-.skillsGrid {
-  display: grid;
-  /* 10 compétences en 5 colonnes = 2 rangées pleines et régulières,
-     au lieu de auto-fit qui pouvait laisser une dernière rangée
-     incomplète collée à gauche avec du vide à droite. */
-  grid-template-columns: repeat(5, 1fr);
-  gap: 1.5rem;
-  justify-content: center;
-}
-
-.skillCard {
-  position: relative;
-  border-radius: 16px;
-  padding: 1.2rem 1.5rem;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.85rem;
-  font-weight: 600;
-  font-size: 1rem;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.04), 0 12px 30px rgba(0, 0, 0, 0.06);
-  transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
-  transform-style: preserve-3d;
-  overflow: hidden;
-}
-
-:global([data-theme="light"]) .skillCard {
-  background: linear-gradient(180deg, rgba(101, 3, 3, 0.1), rgba(240, 240, 255, 0.08));
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
-  color: var(--color-primary);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-:global([data-theme="dark"]) .skillCard {
-  background: rgba(255, 255, 255, 0.04);
-  -webkit-backdrop-filter: blur(12px);
-  backdrop-filter: blur(12px);
-  color: #ffcd06;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.skillCard::before {
-  content: "";
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  transform: rotate(45deg) translateX(-100%);
-  pointer-events: none;
-  animation: shine 3s infinite ease-in-out;
-  z-index: 0;
-}
-:global([data-theme="light"]) .skillCard::before {
-  background: linear-gradient(120deg, rgba(255, 255, 255, 0.25), rgba(220, 220, 220, 0.05));
-}
-:global([data-theme="dark"]) .skillCard::before {
-  background: linear-gradient(120deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0));
-}
-@keyframes shine {
-  0%, 100% { transform: rotate(45deg) translateX(-100%); }
-  50% { transform: rotate(45deg) translateX(100%); }
-}
-
-.skillCard:hover {
-  transform: translateY(-8px) rotateX(3deg) rotateY(3deg) scale(1.04);
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08), 0 24px 50px rgba(0, 0, 0, 0.12);
-}
-:global([data-theme="light"]) .skillCard:hover {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(245, 245, 255, 0.2));
-}
-:global([data-theme="dark"]) .skillCard:hover {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.12));
-}
-
-.skillIcon {
-  font-size: 2rem;
-  margin-bottom: 0.75rem;
-  align-self: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: transform 0.4s ease, color 0.4s ease;
-  z-index: 1;
-}
-.skillCard:hover .skillIcon { transform: rotate(-10deg) scale(1.15); }
-:global([data-theme="light"]) .skillCard:hover .skillIcon { color: #ff8c00; }
-:global([data-theme="dark"]) .skillCard:hover .skillIcon { color: #fed003; }
-
-.skillTextLevel {
-  width: 100%;
-  z-index: 1;
-}
-.skillTextLevel span {
-  display: block;
-  margin-bottom: 0.4rem;
-}
-
-.skillLevel {
-  height: 6px;
-  border-radius: 4px;
-  background: linear-gradient(90deg, #ff8c00, #ffcc01);
-}
-
-.skillTitle {
-  font-size: 1rem;
-  font-weight: bold;
-  display: block;
-  margin-bottom: 0.3rem;
-}
-
-.skillDescription {
-  font-size: 0.85rem;
-  color: var(--color-text-secondary);
-  display: block;
+  font-size: clamp(1.6rem, 2.6vw, 2.2rem);
   margin-bottom: 0.5rem;
 }
 
-@media (max-width: 768px) {
-  .skillsGrid { grid-template-columns: 1fr; }
+.sectionIntro {
+  max-width: 620px;
+  margin: 0.5rem auto;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
 }
-@media (min-width: 769px) and (max-width: 1024px) {
-  /* 10 / 2 = 5 rangées pleines, au lieu de auto-fit qui pouvait
-     déséquilibrer la dernière rangée à cette taille intermédiaire. */
-  .skillsGrid { grid-template-columns: repeat(2, 1fr); }
-}
-@media (max-width: 480px) {
-  .skillTextLevel span { white-space: normal; overflow: visible; text-overflow: unset; }
-  .skillCard { font-size: 0.95rem; }
+.sectionIntro:last-of-type {
+  margin-bottom: 2rem;
 }
 
-/* ==========================================================================
-   Format liste (Technologies) — remplace la grille de cartes à barres de
-   progression. SkillCard.tsx et les règles .skillsGrid/.skillCard restent
-   dans le fichier mais ne sont plus utilisées par ce composant (pas
-   supprimées : à retirer explicitement si tu confirmes ne plus en avoir
-   besoin ailleurs).
-   ========================================================================== */
-.techList {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  max-width: 720px;
-  margin-inline: auto;
+.carousel {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   gap: 1rem;
+  max-width: 640px;
+  margin: 0 auto;
 }
 
-.techRow {
+.navBtn {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
   display: flex;
-  align-items: baseline;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid rgba(128, 128, 128, 0.15);
+  align-items: center;
+  justify-content: center;
+  background: var(--color-primary);
+  color: #fff;
+  font-size: 1rem;
+  transition: transform 0.2s ease, background 0.2s ease;
 }
-.techRow:last-child {
-  border-bottom: none;
+.navBtn:hover {
+  transform: scale(1.08);
+  background: var(--color-primary-hover);
 }
 
-.techIcon {
+.carouselTrack {
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.techCard {
+  width: 100%;
+  padding: 1.5rem;
+  cursor: grab;
+  touch-action: pan-y;
+}
+.techCard:active {
+  cursor: grabbing;
+}
+
+.techIconBig {
   display: inline-flex;
   align-items: center;
-  font-size: 1.1rem;
-  color: var(--color-primary);
-  align-self: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-hover));
+  color: #fff;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
 }
 
-.techName {
+.techCard h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+}
+
+.tagline {
   font-weight: 700;
-  font-size: 1.05rem;
+  color: var(--color-primary);
+  margin-bottom: 0.75rem;
 }
 
-.techDash {
+.description {
+  max-width: 480px;
+  margin: 0 auto;
+  line-height: 1.6;
   color: var(--color-text-secondary);
 }
 
-.techDescription {
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.dot,
+.dotActive {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+.dot {
+  background: rgba(128, 128, 128, 0.35);
+}
+.dotActive {
+  background: var(--color-primary);
+  transform: scale(1.3);
+}
+
+.closing {
+  max-width: 560px;
+  margin: 2.5rem auto 0;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(128, 128, 128, 0.15);
+}
+.closing h3 {
+  font-size: 1.15rem;
+  margin-bottom: 0.6rem;
+}
+.closing p {
   color: var(--color-text-secondary);
-  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 600px) {
+  .carousel { gap: 0.5rem; }
+  .navBtn { width: 38px; height: 38px; }
+  .carouselTrack { min-height: 320px; }
 }
