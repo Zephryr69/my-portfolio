@@ -1,6 +1,6 @@
 {
   "Header": {
-    "brand": "Mon Portfolio",
+    "brand": "Amandino AIMINASSO",
     "backHome": "Retour à l'accueil",
     "nav": {
       "home": "Accueil",
@@ -11,7 +11,8 @@
     "themeToggle": "Changer le thème du site",
     "openMenu": "Ouvrir le menu de navigation",
     "languageSwitcherLabel": "Changer de langue",
-    "closeMenu": "Fermer le menu de navigation"
+    "closeMenu": "Fermer le menu de navigation",
+    "brandRole": "Front-end Developer"
   },
   "Sidebar": {
     "title": "Menu",
@@ -29,7 +30,14 @@
     "aboutTitle": "À propos",
     "aboutText": "Je suis <strong>Amandino AIMINASSO</strong>, développeur Front-end. J'aide les petites entreprises et revendeurs à lancer des sites clairs, rapides et convertissants — du site vitrine aux applications métiers.",
     "aboutTextSmall": "Disponible pour missions à distance ou sur Porto-Novo (Bénin). Livraison rapide, communication claire et livrables documentés.",
-    "rights": "Tous droits réservés."
+    "rights": "Tous droits réservés.",
+    "servicesTitle": "Services",
+    "services": {
+      "showcase": "Site vitrine",
+      "redesign": "Refonte de site",
+      "conversion": "Site orienté conversion",
+      "customApp": "Application sur mesure"
+    }
   },
   "Home": {
     "hero": {
@@ -38,7 +46,7 @@
       "ctaPrimary": "Démarrer un projet",
       "ctaSecondary": "Voir mes réalisations",
       "imageAlt": "Photo d'Amandino",
-      "headline": "Je transforme vos idées en expériences web qui donnent envie d'aller plus loin.",
+      "headline": "Je transforme vos idées en expériences web qui donnent envie d'agir.",
       "tagline": "Développeur Front-end freelance · Porto-Novo / Remote"
     },
     "skills": {
@@ -127,19 +135,19 @@
       "items": {
         "showcase": {
           "title": "Site vitrine",
-          "description": "Présentez votre entreprise avec une présence digitale professionnelle qui inspire confiance dès la première visite."
+          "description": "Pour lancer ou présenter une activité qui n'a pas encore de présence en ligne, avec un site clair qui inspire confiance dès la première visite."
         },
-        "modernExperience": {
-          "title": "Expérience web moderne",
-          "description": "Des interfaces soignées, fluides et interactives qui donnent à votre marque une identité numérique mémorable."
+        "redesign": {
+          "title": "Refonte de site existant",
+          "description": "Pour moderniser un site vieillissant ou lent. J'ai par exemple entièrement reconstruit Max iPhone, passé de React à Next.js pour de meilleures performances."
         },
         "conversion": {
           "title": "Site orienté conversion",
-          "description": "Une structure pensée pour guider vos visiteurs vers l'action : demande de devis, contact, réservation, inscription ou achat."
+          "description": "Une structure pensée pour guider vos visiteurs vers un objectif précis : demande de devis, contact, réservation ou inscription."
         },
-        "webApp": {
-          "title": "Application web",
-          "description": "Des interfaces adaptées à vos besoins métier, avec une expérience claire et pensée pour vos utilisateurs."
+        "customApp": {
+          "title": "Application web sur mesure",
+          "description": "Un outil interne pensé pour vos besoins métier — dans l'esprit d'Edudine, l'application de gestion que j'ai développée pour un établissement scolaire."
         }
       }
     },
@@ -397,7 +405,7 @@
       },
       "ecole": {
         "context": "Site réalisé pour un établissement scolaire bilingue à Porto-Novo, avec pour objectif de donner aux familles toutes les informations nécessaires pour s'inscrire sans avoir à contacter l'administration pour chaque question.",
-        "technicalChoices": "Construit en React, avec une attention portée à la clarté du contenu (programmes, philosophie pédagogique, résultats) et à l'expérience mobile, canal principal utilisé par les familles pour consulter le site."
+        "technicalChoices": "D'abord construit en React, puis migré vers Next.js et TypeScript pour de meilleures performances et un meilleur référencement — même logique que la refonte de Max iPhone. Attention particulière portée à la clarté du contenu (programmes, philosophie pédagogique, résultats) et à l'expérience mobile, canal principal utilisé par les familles pour consulter le site."
       },
       "edudine": {
         "context": "Le même établissement scolaire gérait ses inscriptions, paiements et suivis administratifs à la main. Edudine a été conçu pour centraliser ces données dans un seul outil.",

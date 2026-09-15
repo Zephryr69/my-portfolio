@@ -201,10 +201,18 @@
 
 @media (max-width: 600px) {
   .footerContent { display: flex; flex-direction: column; gap: 1.8rem; padding: 0 1rem; }
-  .footerSection { width: 100%; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 1rem; }
+  .footerSection {
+    width: 100%;
+    align-items: center;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 1rem;
+  }
   .footerSection:last-child { border-bottom: none; }
+  .footerBrand { align-items: center; }
   .footerNavLinks { flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 1rem; }
   .socialIcons { justify-content: center; }
+  .contactUs p { justify-content: center; }
   .slogan { max-width: 100%; font-size: 0.92rem; }
   .footerBottom { font-size: 0.84rem; padding-top: 1rem; }
 }

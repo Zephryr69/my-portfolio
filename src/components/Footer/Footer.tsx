@@ -95,13 +95,34 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* À propos */}
+        {/* Services — remplace l'ancien bloc "À propos", devenu redondant
+            avec "Qui je suis" + l'aperçu À propos + la page À propos
+            complète (le même pitch répété 4 fois). Renforce plutôt la
+            section Services de l'accueil. */}
         <div className={styles.footerSection}>
-          <h4>{tFooter("aboutTitle")}</h4>
-          <p className={styles.aboutText}>
-            {tFooter.rich("aboutText", { strong: (chunks) => <strong>{chunks}</strong> })}
-          </p>
-          <p className={styles.aboutTextSmall}>{tFooter("aboutTextSmall")}</p>
+          <h4>{tFooter("servicesTitle")}</h4>
+          <ul className={styles.footerNavLinks}>
+            <li>
+              <Link href="/#services" className={styles.footerNavLink}>
+                {tFooter("services.showcase")}
+              </Link>
+            </li>
+            <li>
+              <Link href="/#services" className={styles.footerNavLink}>
+                {tFooter("services.redesign")}
+              </Link>
+            </li>
+            <li>
+              <Link href="/#services" className={styles.footerNavLink}>
+                {tFooter("services.conversion")}
+              </Link>
+            </li>
+            <li>
+              <Link href="/#services" className={styles.footerNavLink}>
+                {tFooter("services.customApp")}
+              </Link>
+            </li>
+          </ul>
         </div>
       </div>
 

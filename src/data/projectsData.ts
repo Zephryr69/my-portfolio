@@ -1,4 +1,4 @@
-import ecoleImg from "../assets/ecole.png";
+import ecoleImg from "../assets/les-jumelles.png";
 import iphoneImg from "../assets/max-iphone.png";
 import cantineImg from "../assets/cantine.png";
 import madatoursImg from "../assets/madatours.png";
@@ -52,8 +52,10 @@ export const projectsData: ProjectDefinition[] = [
   {
     key: "ecole",
     thumbnail: ecoleImg,
-    link: "https://zephryr69.github.io/les-jumelles/",
-    tech: ["HTML", "CSS", "JavaScript", "React"],
+    // Migré vers Next.js + TypeScript, remplace l'ancien déploiement
+    // GitHub Pages en HTML/CSS/JS/React.
+    link: "https://les-jumelles.vercel.app/",
+    tech: ["Next.js", "TypeScript"],
     colorClass: "cardColor1",
     githubUrl: "https://github.com/Zephryr69/les-jumelles",
   },

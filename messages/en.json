@@ -1,6 +1,6 @@
 {
   "Header": {
-    "brand": "My Portfolio",
+    "brand": "Amandino AIMINASSO",
     "backHome": "Back to home",
     "nav": {
       "home": "Home",
@@ -11,7 +11,8 @@
     "themeToggle": "Toggle site theme",
     "openMenu": "Open navigation menu",
     "languageSwitcherLabel": "Switch language",
-    "closeMenu": "Close navigation menu"
+    "closeMenu": "Close navigation menu",
+    "brandRole": "Front-end Developer"
   },
   "Sidebar": {
     "title": "Menu",
@@ -29,7 +30,14 @@
     "aboutTitle": "About",
     "aboutText": "I'm <strong>Amandino AIMINASSO</strong>, a Front-End developer. I help small businesses and resellers launch clear, fast, converting websites — from showcase sites to business applications.",
     "aboutTextSmall": "Available for remote work or on-site in Porto-Novo (Benin). Fast delivery, clear communication, documented deliverables.",
-    "rights": "All rights reserved."
+    "rights": "All rights reserved.",
+    "servicesTitle": "Services",
+    "services": {
+      "showcase": "Showcase site",
+      "redesign": "Site redesign",
+      "conversion": "Conversion-focused site",
+      "customApp": "Custom application"
+    }
   },
   "Home": {
     "hero": {
@@ -38,7 +46,7 @@
       "ctaPrimary": "Start a project",
       "ctaSecondary": "See my work",
       "imageAlt": "Photo of Amandino",
-      "headline": "I turn your ideas into web experiences that make people want to go further.",
+      "headline": "I turn your ideas into web experiences that make people want to act.",
       "tagline": "Freelance Front-End Developer · Porto-Novo / Remote"
     },
     "skills": {
@@ -127,19 +135,19 @@
       "items": {
         "showcase": {
           "title": "Showcase site",
-          "description": "Present your business with a professional digital presence that builds trust from the first visit."
+          "description": "To launch or present a business that doesn't have an online presence yet, with a clear site that builds trust from the first visit."
         },
-        "modernExperience": {
-          "title": "Modern web experience",
-          "description": "Polished, smooth, interactive interfaces that give your brand a memorable digital identity."
+        "redesign": {
+          "title": "Existing site redesign",
+          "description": "To modernize an aging or slow website. I fully rebuilt Max iPhone, for example, moving it from React to Next.js for better performance."
         },
         "conversion": {
           "title": "Conversion-focused site",
-          "description": "A structure designed to guide your visitors toward action: quote requests, contact, booking, signup, or purchase."
+          "description": "A structure designed to guide your visitors toward a specific goal: a quote request, contact, booking, or signup."
         },
-        "webApp": {
-          "title": "Web application",
-          "description": "Interfaces tailored to your business needs, with a clear experience built for your users."
+        "customApp": {
+          "title": "Custom web application",
+          "description": "An internal tool built for your business needs — in the spirit of Edudine, the management application I built for a school."
         }
       }
     },
@@ -397,7 +405,7 @@
       },
       "ecole": {
         "context": "Site built for a bilingual school in Porto-Novo, aimed at giving families all the information they need to enroll without having to contact school staff for every question.",
-        "technicalChoices": "Built with React, with attention paid to content clarity (programs, teaching philosophy, results) and to the mobile experience, the main channel families use to browse the site."
+        "technicalChoices": "Originally built with React, then migrated to Next.js and TypeScript for better performance and SEO — the same approach used for the Max iPhone redesign. Particular attention was paid to content clarity (programs, teaching philosophy, results) and to the mobile experience, the main channel families use to browse the site."
       },
       "edudine": {
         "context": "The same school was managing enrollments, payments, and administrative tracking by hand. Edudine was built to centralize this data in a single tool.",
