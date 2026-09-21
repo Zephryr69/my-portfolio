@@ -73,7 +73,10 @@
 .brandName {
   font-size: 1.35rem;
   font-weight: 700;
-  color: #4c1d95;
+  /* Violet pur et vif (au lieu du bleu-violet plus sombre d'avant),
+     fixe en toute circonstance — demande explicite, pas de variante
+     par thème. */
+  color: #440f9e;
   animation: brandFadeIn 0.5s ease-out both;
 }
 

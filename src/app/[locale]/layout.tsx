@@ -2,9 +2,8 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { Outfit, Rubik, Updock } from "next/font/google";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
-import { getMessages, getTranslations } from "next-intl/server";
+import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
-import Script from "next/script";
 import { routing } from "@/i18n/routing";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import AppShell from "@/components/AppShell";
@@ -19,7 +18,11 @@ import "../globals.css";
    C'était la cause principale du mauvais score LCP sur la photo du Hero. */
 const outfit = Outfit({
   subsets: ["latin"],
-  weight: ["300", "400", "600"],
+  // 700 ajouté : absent jusqu'ici, alors que font-weight:700 est demandé
+  // à plusieurs endroits (dont le nom dans le Header) — sans cette
+  // graisse chargée, le navigateur retombe sur la plus proche (600) et
+  // le texte ne paraît pas vraiment gras.
+  weight: ["300", "400", "600", "700"],
   variable: "--font-outfit",
   display: "swap",
 });
@@ -103,6 +106,11 @@ export default async function LocaleLayout({
     notFound();
   }
 
+  // Indique à next-intl la locale de cette requête pour le rendu statique :
+  // sans ça, les Server Components qui appellent useTranslations() sans
+  // locale explicite retombent sur la langue par défaut (fr) — même sur /en.
+  setRequestLocale(locale);
+
   // `getMessages()` sans argument s'appuie sur un contexte de requête
   // implicite (AsyncLocalStorage côté next-intl) pour deviner la locale —
   // et dans cette combinaison Next.js 16 (Turbopack) + next-intl 4.13, ce
@@ -138,20 +146,15 @@ export default async function LocaleLayout({
             thème est déterminé côté client (via [data-theme="dark"]). */}
         <meta name="color-scheme" content="only light" />
 
-        {/* next/script avec strategy="beforeInteractive" (au lieu d'une
-            balise <script> brute) : s'exécute avant l'hydratation React,
-            comme voulu pour lire isDarkMode et poser data-theme sans flash
-            — mais via le mécanisme officiel de Next.js, qui sait où
-            l'insérer correctement. Une <script> brute directement dans le
-            JSX déclenche l'avertissement React "Encountered a script tag
-            while rendering" (React ne l'exécute jamais lui-même côté
-            client), alors que next/script est prévu précisément pour ça. */}
-        <Script id="theme-init" strategy="beforeInteractive">
-          {`try {
-            var saved = localStorage.getItem("isDarkMode");
-            if (saved === "true") document.documentElement.setAttribute("data-theme", "dark");
-          } catch (e) {}`}
-        </Script>
+        {/* Le script d'initialisation du thème (avant hydratation) a été
+            retiré : bug connu de compatibilité entre Next.js 16 et React 19
+            avec next/script en stratégie "beforeInteractive" (déclenche
+            l'avertissement "Encountered a script tag while rendering" à
+            chaque page, même avec la syntaxe officielle recommandée). Le
+            thème réel est de toute façon posé juste après par
+            ThemeContext.tsx — le compromis (un flash à peine perceptible
+            au tout premier chargement) est préférable à une erreur
+            console permanente. */}
       </head>
       <body>
         <NextIntlClientProvider locale={locale} messages={messages}>

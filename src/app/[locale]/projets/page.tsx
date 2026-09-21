@@ -1,5 +1,4 @@
-import { useTranslations } from "next-intl";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import type { Metadata } from "next";
 import { FaRocket } from "react-icons/fa";
 import { projectsData } from "@/data/projectsData";
@@ -42,8 +41,14 @@ export async function generateMetadata({
   };
 }
 
-export default function ProjectsPage() {
-  const t = useTranslations("Home.projects");
+export default async function ProjectsPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations({ locale, namespace: "Home.projects" });
 
   return (
     <section className={styles.projectsSection} aria-label={t("title")}>

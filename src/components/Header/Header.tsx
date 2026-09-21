@@ -56,7 +56,7 @@ export default function Header({ onMenuClick = () => {}, isMenuOpen = false }: H
     <header className={styles.navbar}>
       <Link href="/" className={styles.headerLink} aria-label={t("backHome")}>
         <div className={styles.header}>
-          <span className={styles.brand}>{t("brand")}</span>
+          <span className={styles.brandName}>{t("brand")}</span>
         </div>
       </Link>
 

@@ -49,10 +49,34 @@
 }
 
 .heroTitle {
-  font-size: clamp(2.5rem, 5vw, 4rem);
+  /* Réduit : clamp(2.5rem, 5vw, 4rem) donnait un titre "géant" sur
+     grand écran (jusqu'à 64px). Plafond ramené à 2.75rem (~44px). */
+  font-size: clamp(1.9rem, 3.4vw, 2.75rem);
   font-weight: 700;
-  line-height: 1.2;
+  line-height: 1.25;
   margin-bottom: 1rem;
+}
+
+.highlight {
+  position: relative;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-primary-hover), var(--color-primary));
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  /* Filet de sécurité si background-clip:text n'est pas supporté —
+     même logique que .firstName plus bas dans ce fichier. */
+  color: var(--color-primary);
+  animation: gradientSweep 3s ease-in-out infinite;
+}
+
+@keyframes gradientSweep {
+  0%, 100% { background-position: 0% center; }
+  50% { background-position: 100% center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .highlight { animation: none; }
 }
 
 .fancy { display: inline-block; }
@@ -153,6 +177,10 @@
 .heroImage {
   position: relative;
   z-index: 1;
+  /* Nécessaire pour que rotateX/rotateY (posés par Framer Motion en
+     JS, voir Hero.tsx) produisent un vrai effet de profondeur 3D sur
+     l'image, plutôt qu'une simple déformation plate. */
+  perspective: 800px;
 }
 
 .heroImage img,
