@@ -126,12 +126,19 @@ export default async function LocaleLayout({
   const messages = await getMessages({ locale });
 
   return (
-    // suppressHydrationWarning : ThemeContext pose l'attribut data-theme
-    // côté client après le premier rendu (voir ThemeContext.tsx), donc un
-    // écart HTML serveur/client est attendu ici, pas une vraie erreur.
+    // data-theme="light" posé dès le rendu serveur : c'est le thème par
+    // défaut, et plusieurs CSS Modules (cartes de projets, Sidebar,
+    // section Compétences) n'ont de style clair QUE via
+    // [data-theme="light"] — sans cet attribut au premier chargement, ces
+    // styles ne s'appliquaient pas (menu mobile sans fond, cartes sans
+    // dégradé) tant que le thème n'avait pas été basculé une fois.
+    // suppressHydrationWarning : ThemeContext remplace ensuite cet
+    // attribut par le thème réellement enregistré (voir ThemeContext.tsx),
+    // donc un écart HTML serveur/client est attendu ici, pas une erreur.
     <html
       lang={locale}
       suppressHydrationWarning
+      data-theme="light"
       data-scroll-behavior="smooth"
       className={`${outfit.variable} ${rubik.variable} ${updock.variable}`}
     >
@@ -151,10 +158,10 @@ export default async function LocaleLayout({
             avec next/script en stratégie "beforeInteractive" (déclenche
             l'avertissement "Encountered a script tag while rendering" à
             chaque page, même avec la syntaxe officielle recommandée). Le
-            thème réel est de toute façon posé juste après par
-            ThemeContext.tsx — le compromis (un flash à peine perceptible
-            au tout premier chargement) est préférable à une erreur
-            console permanente. */}
+            thème enregistré est lu et appliqué juste après l'hydratation
+            par ThemeContext.tsx — le compromis (un bref flash clair pour
+            les visiteurs qui avaient choisi le mode sombre) est préférable
+            à une erreur console permanente. */}
       </head>
       <body>
         <NextIntlClientProvider locale={locale} messages={messages}>

@@ -45,7 +45,9 @@ export default function AboutView() {
   const t = useTranslations("AboutPage");
 
   return (
-    <main className={styles.aboutPage}>
+    // <div> et non <main> : AppShell fournit déjà le <main> de la page,
+    // deux <main> imbriqués sont invalides.
+    <div className={styles.aboutPage}>
       {/* INTRO */}
       <section className={`${styles.intro} ${styles.glassmorphic}`} aria-labelledby="about-hello">
         <div>
@@ -53,6 +55,7 @@ export default function AboutView() {
             id="about-hello"
             initial="hidden"
             whileInView="visible"
+            viewport={{ once: true }}
             variants={fadeInUp}
             transition={{ duration: 0.6 }}
           >
@@ -63,6 +66,7 @@ export default function AboutView() {
             className={styles.lead}
             initial="hidden"
             whileInView="visible"
+            viewport={{ once: true }}
             variants={fadeInUp}
             transition={{ duration: 0.6, delay: 0.08 }}
           >
@@ -101,6 +105,7 @@ export default function AboutView() {
           className={`${styles.story} ${styles.glassmorphic}`}
           initial="hidden"
           whileInView="visible"
+          viewport={{ once: true }}
           variants={fadeInUp}
           transition={{ duration: 0.6 }}
         >
@@ -146,7 +151,7 @@ export default function AboutView() {
               viewport={{ once: true }}
               transition={{ duration: 0.45, delay: i * 0.06 }}
             >
-              <div className={styles.skillLeft}>
+              <div>
                 <span className={styles.skillIcon} aria-hidden="true">
                   <Icon />
                 </span>
@@ -198,6 +203,6 @@ export default function AboutView() {
           </Link>
         </motion.div>
       </section>
-    </main>
+    </div>
   );
 }

@@ -55,10 +55,9 @@ export default function AboutPreview() {
         <p className={styles.intro}>{t("previewIntro")}</p>
         <p className={styles.availability}>{t("availability")}</p>
 
-        {/* Même donnée (3 projets) que le "3" en dur dans AboutView.tsx
-            (aside .stats) — pas de clé de traduction dédiée pour ce
-            nombre côté AboutPage, donc même choix ici pour rester
-            cohérent entre les deux endroits où il s'affiche. */}
+        {/* Le nombre de projets vient de projectsData.length, comme dans
+            AboutView.tsx (aside .stats) : les deux endroits restent
+            cohérents et suivent l'ajout d'un projet. */}
         <div className={styles.statsRow}>
           <div className={styles.stat}>
             <strong>{projectsData.length}</strong>

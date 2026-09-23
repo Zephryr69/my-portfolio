@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
-import { siteConfig, baseOpenGraph } from "@/lib/siteConfig";
+import { buildPageSeo } from "@/lib/seo";
 import ContactView from "./ContactView";
 
 /* page.tsx (/contact) — Server Component, même split que About :
@@ -15,19 +15,16 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "ContactPage" });
-  const url = `${siteConfig.url}/${locale}/contact`;
 
   return {
     title: t("metaTitle"),
     description: t("metaDescription"),
-    alternates: { canonical: url },
-    openGraph: {
-      ...baseOpenGraph,
+    ...buildPageSeo({
+      locale,
+      path: "/contact",
       title: t("metaTitle"),
       description: t("metaDescription"),
-      url,
-      locale: locale === "fr" ? "fr_FR" : "en_US",
-    },
+    }),
   };
 }
 
@@ -68,7 +65,9 @@ export default async function ContactPage({
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        // Le "<" est échappé : un "</script>" dans une réponse de la FAQ
+        // fermerait la balise et casserait la page.
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd).replace(/</g, "\\u003c") }}
       />
       <ContactView faqItems={faqItems} />
     </>

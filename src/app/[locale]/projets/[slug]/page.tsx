@@ -5,7 +5,7 @@ import Image from "next/image";
 import { FaGithub, FaArrowLeft } from "react-icons/fa";
 import { Link } from "@/i18n/routing";
 import { projectsData } from "@/data/projectsData";
-import { siteConfig, baseOpenGraph } from "@/lib/siteConfig";
+import { buildPageSeo } from "@/lib/seo";
 import styles from "./page.module.css";
 
 /* page.tsx (/projets/[slug]) — page de détail (« cas d'étude ») par
@@ -31,13 +31,11 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: "Home.projects" });
   const title = t(`items.${slug}.title`);
   const description = t(`items.${slug}.brief`);
-  const url = `${siteConfig.url}/${locale}/projets/${slug}`;
 
   return {
     title,
     description,
-    alternates: { canonical: url },
-    openGraph: { ...baseOpenGraph, title, description, url, locale: locale === "fr" ? "fr_FR" : "en_US" },
+    ...buildPageSeo({ locale, path: `/projets/${slug}`, title, description }),
   };
 }
 
@@ -66,7 +64,7 @@ export default async function CaseStudyPage({
         alt={t("thumbnailAlt", { title: t(`items.${slug}.title`) })}
         className={styles.heroImage}
         sizes="(max-width: 768px) 95vw, 800px"
-        priority
+        preload
       />
 
       <div className={styles.techRow}>

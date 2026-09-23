@@ -5,11 +5,13 @@
    Ce qui a dû changer par rapport à l'original, et pourquoi :
 
    1. La lecture de localStorage se fait en DEUX temps :
-      - un script bloquant posé dans <head> (voir layout.tsx) lit
-        localStorage et pose data-theme sur <html> AVANT le premier
-        rendu React → tout le CSS piloté par [data-theme] dans
-        tokens.css est déjà correct au premier paint, donc pas de flash
-        clair→sombre visible à l'écran.
+      - layout.tsx pose data-theme="light" (thème par défaut) dès le
+        rendu serveur, donc les styles clairs sont là au premier paint.
+        Un script bloquant dans <head> avait été tenté puis retiré (bug
+        Next 16 / React 19 avec next/script) : à la place, l'effet de
+        montage plus bas relit localStorage après l'hydratation et
+        remplace data-theme si l'utilisateur avait choisi le mode
+        sombre (bref flash clair possible pour ces visiteurs).
       - isDarkMode vient de useSyncExternalStore (voir plus bas), qui
         sait nativement gérer "valeur différente entre le rendu serveur
         et le rendu client" sans déclencher d'avertissement d'hydratation
@@ -45,7 +47,14 @@
       dès qu'il y a de l'interactivité/du state côté navigateur).
 */
 
-import { createContext, useContext, useSyncExternalStore, useCallback, type ReactNode } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useSyncExternalStore,
+  useCallback,
+  type ReactNode,
+} from "react";
 
 interface ThemeContextValue {
   isDarkMode: boolean;
@@ -55,8 +64,8 @@ interface ThemeContextValue {
 const ThemeContext = createContext<ThemeContextValue | undefined>(undefined);
 
 // Store externe minimal : la "source de vérité" est l'attribut
-// data-theme du DOM lui-même (déjà posé par le script bloquant), pas une
-// copie dans une variable React. listeners permet à useSyncExternalStore
+// data-theme du DOM lui-même (posé par layout.tsx puis par l'effet de
+// montage de ThemeProvider), pas une copie dans une variable React. listeners permet à useSyncExternalStore
 // de savoir quand redemander un instantané (voir emitThemeChange, appelé
 // par toggleTheme plus bas).
 let listeners: Array<() => void> = [];
@@ -74,8 +83,8 @@ function getThemeSnapshot() {
 
 // Instantané utilisé pendant le rendu SERVEUR (et pendant l'hydratation
 // client, jusqu'à ce que React puisse confirmer le vrai snapshot) :
-// toujours `false`, pour matcher ce que le script bloquant applique par
-// défaut avant toute lecture de localStorage.
+// toujours `false`, pour matcher le thème clair que layout.tsx applique
+// par défaut avant toute lecture de localStorage.
 function getServerThemeSnapshot() {
   return false;
 }
@@ -87,10 +96,30 @@ function emitThemeChange() {
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const isDarkMode = useSyncExternalStore(subscribeToTheme, getThemeSnapshot, getServerThemeSnapshot);
 
+  // Au montage : applique le thème enregistré. Avant, rien ne relisait
+  // localStorage — le choix était écrit par toggleTheme mais jamais
+  // relu, donc le site repassait en clair à chaque rechargement.
+  // Pas de setState ici (la source de vérité est l'attribut du DOM) :
+  // on modifie le DOM puis on prévient useSyncExternalStore.
+  useEffect(() => {
+    let saved: string | null = null;
+    try {
+      saved = localStorage.getItem("isDarkMode");
+    } catch {
+      // localStorage indisponible (navigation privée stricte...) : thème clair.
+    }
+    document.documentElement.setAttribute("data-theme", saved === "true" ? "dark" : "light");
+    emitThemeChange();
+  }, []);
+
   const toggleTheme = useCallback(() => {
     const nextMode = !isDarkMode;
     document.documentElement.setAttribute("data-theme", nextMode ? "dark" : "light");
-    localStorage.setItem("isDarkMode", String(nextMode));
+    try {
+      localStorage.setItem("isDarkMode", String(nextMode));
+    } catch {
+      // Le thème change quand même pour cette session, il ne sera juste pas mémorisé.
+    }
     // Prévient useSyncExternalStore que la source externe a changé, pour
     // qu'il relise getThemeSnapshot() et re-render avec la bonne valeur.
     emitThemeChange();

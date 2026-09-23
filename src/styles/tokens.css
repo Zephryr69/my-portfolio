@@ -77,9 +77,16 @@
      juste avec une échelle propre et documentée une seule fois. */
   --z-decor: 0;         /* fond animé décoratif */
   --z-content: 1;        /* contenu normal */
-  --z-sidebar: 500;       /* menu mobile — sous la navbar, comme dans l'original (1000 < 3000) */
   --z-header: 800;        /* navbar */
   --z-header-panel: 810;  /* sous-éléments de la navbar (burger, dropdown) */
+  /* --z-sidebar : CORRIGÉ (était 500, sous --z-header=800). Le panneau
+     mobile est en position:fixed; top:0; height:100vh, donc son en-tête
+     (titre "Menu" + bouton fermer) occupe la même bande verticale que
+     le navbar. Avec 500 < 800, cet en-tête se rendait sous le navbar :
+     invisible et non cliquable. Le commentaire "comme dans l'original"
+     décrivait juste l'ordre relatif copié depuis Sidebar.css/Header.css
+     d'origine (1000 < 3000) sans vérifier ce chevauchement réel. */
+  --z-sidebar: 830;
   --z-sticky-cta: 850;     /* barre CTA fixe mobile — au-dessus de la navbar, sous le bouton scroll-to-top */
   --z-scroll-top-btn: 900; /* bouton "remonter en haut", doit rester au-dessus de tout */
 }

@@ -174,9 +174,6 @@
   border-radius: 999px;
 }
 
-.aboutText { font-size: 0.95rem; line-height: 1.5; opacity: 0.95; color: inherit; }
-.aboutTextSmall { font-size: 0.95rem; line-height: 1.5; opacity: 0.8; color: inherit; }
-
 .footerBottom {
   max-width: 1200px;
   margin: 1rem auto 0;

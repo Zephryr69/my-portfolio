@@ -4,16 +4,16 @@
 
    Changements par rapport à l'original :
    1. `Link`/`NavLink` de react-router → `Link`/`usePathname` de
-      "@/i18n/navigation" (générés par next-intl dans routing.ts).
+      "@/i18n/routing" (générés par next-intl dans routing.ts).
       Avantage : ce Link gère automatiquement le préfixe /fr ou /en,
       pas besoin d'y penser dans le composant.
    2. Plus de prop `isActive` fournie par NavLink : Next.js n'a pas
       d'équivalent direct, donc on compare nous-mêmes `pathname` à la
-      route du lien.
+      route du lien (voir isActivePath dans lib/navigation.ts).
    3. Textes en dur → `useTranslations("Header")`, lus depuis
       messages/fr.json et messages/en.json.
-   4. Les icônes viennent de public/icons/ (voir note en bas) et
-      passent par next/image, qui exige des dimensions explicites.
+   4. Les icônes viennent de src/assets/ et passent par next/image, qui
+      lit leurs dimensions à l'import statique.
    5. Les routes restent en français pour les deux langues pour l'instant
       (/projets, /a-propos, /contact) — seul le contenu change de langue.
       Si tu veux aussi des URLs traduites (/en/projects), on ajoutera un
@@ -25,6 +25,7 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/routing";
 import { useTheme } from "@/contexts/ThemeContext";
+import { NAV_ITEMS, isActivePath } from "@/lib/navigation";
 import { FaXmark } from "react-icons/fa6";
 import LanguageSwitcher from "./LanguageSwitcher";
 import styles from "./Header.module.css";
@@ -40,13 +41,6 @@ interface HeaderProps {
   isMenuOpen?: boolean;
 }
 
-const NAV_ITEMS = [
-  { href: "/", key: "home" },
-  { href: "/projets", key: "projects" },
-  { href: "/a-propos", key: "about" },
-  { href: "/contact", key: "contact" },
-] as const;
-
 export default function Header({ onMenuClick = () => {}, isMenuOpen = false }: HeaderProps) {
   const { isDarkMode, toggleTheme } = useTheme();
   const t = useTranslations("Header");
@@ -57,12 +51,13 @@ export default function Header({ onMenuClick = () => {}, isMenuOpen = false }: H
       <Link href="/" className={styles.headerLink} aria-label={t("backHome")}>
         <div className={styles.header}>
           <span className={styles.brandName}>{t("brand")}</span>
+          <span className={styles.brandRole}>{t("brandRole")}</span>
         </div>
       </Link>
 
       <ul className={styles.navList}>
         {NAV_ITEMS.map(({ href, key }) => {
-          const isActive = pathname === href;
+          const isActive = isActivePath(pathname, href);
           return (
             <li key={href}>
               <Link
@@ -113,8 +108,3 @@ export default function Header({ onMenuClick = () => {}, isMenuOpen = false }: H
     </header>
   );
 }
-
-/* À faire avant de tester ce composant :
-   Ajouter le namespace "Header" dans messages/fr.json et
-   messages/en.json (contenu fourni dans le zip).
-*/

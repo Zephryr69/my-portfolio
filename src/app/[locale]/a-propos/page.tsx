@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
-import { siteConfig, baseOpenGraph } from "@/lib/siteConfig";
+import { buildPageSeo } from "@/lib/seo";
 import AboutView from "./AboutView";
 
 /* page.tsx (/a-propos) — Server Component.
@@ -18,19 +18,16 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "AboutPage" });
-  const url = `${siteConfig.url}/${locale}/a-propos`;
 
   return {
     title: t("metaTitle"),
     description: t("metaDescription"),
-    alternates: { canonical: url },
-    openGraph: {
-      ...baseOpenGraph,
+    ...buildPageSeo({
+      locale,
+      path: "/a-propos",
       title: t("metaTitle"),
       description: t("metaDescription"),
-      url,
-      locale: locale === "fr" ? "fr_FR" : "en_US",
-    },
+    }),
   };
 }
 

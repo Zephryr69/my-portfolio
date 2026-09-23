@@ -114,7 +114,10 @@ export default async function OpengraphImage({
             fontSize: 30,
             fontWeight: 700,
             color: "#3d2506",
-            width: "fit-content",
+            // Satori (moteur d'ImageResponse) ne comprend pas
+            // width:"fit-content" (avertissement au build) → le badge
+            // s'étirait sur toute la largeur. alignSelf le fait épouser son texte.
+            alignSelf: "flex-start",
           }}
         >
           {t("roleTag")}

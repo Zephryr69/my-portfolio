@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { FaRocket } from "react-icons/fa";
 import { projectsData } from "@/data/projectsData";
 import ProjectCard from "@/components/Home/ProjectCard";
-import { siteConfig, baseOpenGraph } from "@/lib/siteConfig";
+import { buildPageSeo } from "@/lib/seo";
 import styles from "@/components/Home/ProjectsSection.module.css";
 
 /* page.tsx (/projets) — liste complète des projets.
@@ -25,19 +25,16 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Home.projects" });
-  const url = `${siteConfig.url}/${locale}/projets`;
 
   return {
     title: t("title"),
     description: t("metaDescription"),
-    alternates: { canonical: url },
-    openGraph: {
-      ...baseOpenGraph,
+    ...buildPageSeo({
+      locale,
+      path: "/projets",
       title: t("title"),
       description: t("metaDescription"),
-      url,
-      locale: locale === "fr" ? "fr_FR" : "en_US",
-    },
+    }),
   };
 }
 
@@ -73,6 +70,7 @@ export default async function ProjectsPage({
             noDemoLabel={t("noDemoLabel")}
             caseStudyLabel={t("caseStudyLabel")}
             delay={idx * 0.15}
+            headingLevel="h2"
           />
         ))}
       </div>

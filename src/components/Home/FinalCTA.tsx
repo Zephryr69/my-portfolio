@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
+import { contact } from "@/lib/siteConfig";
 import styles from "./FinalCTA.module.css";
 
 export default function FinalCTA() {
@@ -25,7 +26,7 @@ export default function FinalCTA() {
         </Link>
         <span className={styles.or}>{t("or")}</span>
         <a
-          href="https://wa.me/2290169118745"
+          href={contact.whatsappUrl}
           target="_blank"
           rel="noopener noreferrer"
           className={`${styles.btn} ${styles.secondary}`}

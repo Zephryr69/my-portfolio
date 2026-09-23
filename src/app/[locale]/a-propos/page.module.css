@@ -147,15 +147,6 @@
   font-size: 1.2rem;
   color: var(--color-primary);
 }
-.process {
-  padding-left: 1.2rem;
-  margin-top: 0.5rem;
-}
-.process li {
-  margin-bottom: 0.6rem;
-  line-height: 1.5;
-}
-
 .stats {
   display: flex;
   flex-direction: column;
@@ -356,12 +347,10 @@
 
 @media (max-width: 1024px) {
   .skillsGrid { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
-  .value { max-width: 100%; }
 }
 @media (max-width: 768px) {
   .skillsGrid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 480px) {
   .skillsGrid { grid-template-columns: 1fr; }
-  .value { padding: 1.5rem; }
 }

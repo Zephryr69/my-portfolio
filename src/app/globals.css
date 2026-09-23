@@ -62,6 +62,16 @@ body::before {
   }
 }
 
+@media (max-width: 420px) {
+  /* Redéfinit --navbar-height ici (pas juste .navbar dans Header.module.css)
+     pour que .content (ci-dessus) et .navbar (min-height, voir
+     Header.module.css) restent forcément alignés — une seule valeur
+     source pour les deux, plus de calc() dupliqué qui pouvait diverger. */
+  :root {
+    --navbar-height: 62px;
+  }
+}
+
 /* -------------------------
    Composants génériques (portés depuis index.css)
    ------------------------- */

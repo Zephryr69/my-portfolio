@@ -27,9 +27,6 @@
     "socialLabel": "Social media",
     "contactTitle": "Contact",
     "navTitle": "Navigation",
-    "aboutTitle": "About",
-    "aboutText": "I'm <strong>Amandino AIMINASSO</strong>, a Front-End developer. I help small businesses and resellers launch clear, fast, converting websites — from showcase sites to business applications.",
-    "aboutTextSmall": "Available for remote work or on-site in Porto-Novo (Benin). Fast delivery, clear communication, documented deliverables.",
     "rights": "All rights reserved.",
     "servicesTitle": "Services",
     "services": {
@@ -48,41 +45,6 @@
       "imageAlt": "Photo of Amandino",
       "headline": "I turn your ideas into web experiences that make people want to <highlight>act</highlight>.",
       "tagline": "Freelance Front-End Developer · Porto-Novo / Remote"
-    },
-    "skills": {
-      "title": "Technologies",
-      "cardAriaLabel": "{title} — level {level}%",
-      "items": {
-        "react": {
-          "title": "React",
-          "description": "Building dynamic, modern, high-performance web interfaces."
-        },
-        "nextjs": {
-          "title": "Next.js",
-          "description": "React applications with server-side rendering (SSR) and static generation (SSG), advanced routing, and built-in SEO optimization."
-        },
-        "typescript": {
-          "title": "TypeScript",
-          "description": "Strict typing to reduce bugs and make code easier to maintain over time."
-        },
-        "javascript": {
-          "title": "JavaScript",
-          "description": "Automation and advanced interactivity for web features."
-        },
-        "git": {
-          "title": "Git & version control",
-          "description": "Efficient tracking and coordination of collaborative project versions."
-        },
-        "htmlCss": {
-          "title": "HTML (advanced) & CSS (proficient)",
-          "description": "Building responsive, accessible, polished web pages."
-        },
-        "framerMotion": {
-          "title": "Framer Motion",
-          "description": "Smooth animations and polished transitions to enrich the user experience."
-        }
-      },
-      "intro": "Modern, proven tools, chosen to deliver sites that are fast, reliable, and easy to grow."
     },
     "projects": {
       "title": "Recent Projects",
@@ -265,13 +227,6 @@
     "storyAriaLabel": "Background and method",
     "storyTitle": "My background",
     "storyText": "I hold a Bachelor's degree in SIL (Institut Universitaire Les Cours Sonou), and started with plain CSS and vanilla JavaScript before moving, through active training, toward React, Next.js, and TypeScript — building real projects at every step rather than stopping at theory. Alongside that, I run coding-challenge series for French-speaking learners on Facebook and WhatsApp — a way to stay sharp on the fundamentals while helping others grow. I'm actively continuing this training (internships, online courses) to strengthen these skills, always with the same goal: clear websites that genuinely speak to your customers.",
-    "methodTitle": "My 3-step method",
-    "step1Title": "Discovery",
-    "step1Text": "Brief, goals, and success metrics.",
-    "step2Title": "Prototype",
-    "step2Text": "Interactive mockups, quick UX validation.",
-    "step3Title": "Delivery",
-    "step3Text": "Deployment, documentation, and support.",
     "stat1Label": "Projects completed",
     "stat2Value": "1 year",
     "stat2Label": "Hands-on experience",
@@ -335,7 +290,6 @@
     "title": "Contact me",
     "intro": "A question, a project, or a freelance opportunity? I'd love to hear from you.",
     "whatsappLabel": "Chat on WhatsApp",
-    "formAriaLabel": "Contact form",
     "nameLabel": "Name",
     "namePlaceholder": "Your full name",
     "phoneFieldLabel": "WhatsApp number",

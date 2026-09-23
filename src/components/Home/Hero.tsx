@@ -23,11 +23,6 @@ import styles from "./Hero.module.css";
 
 import profileImg from "../../assets/profile.png";
 
-const fadeInUp = {
-  hidden: { opacity: 0, y: 18 },
-  visible: { opacity: 1, y: 0 },
-};
-
 export default function Hero() {
   const t = useTranslations("Home.hero");
   const imageWrapRef = useRef<HTMLDivElement>(null);
@@ -57,27 +52,22 @@ export default function Hero() {
   return (
     <section className={styles.hero}>
       <div className={styles.heroText}>
-        <motion.h1
-          className={styles.heroTitle}
-          initial="hidden"
-          animate="visible"
-          variants={fadeInUp}
-          transition={{ duration: 0.6 }}
-        >
+        {/* h1/p en dur, sans motion : ce sont les deux éléments du LCP
+            (contenu principal visible au premier écran). Avec
+            initial="hidden" + animate="visible", Framer Motion les
+            rendait à opacity:0 dans le HTML serveur lui-même — le titre
+            de la page restait invisible jusqu'à l'hydratation JS,
+            retardant le LCP (surtout sur connexion lente). Même
+            raisonnement que le commentaire déjà présent plus bas pour
+            la photo : au-dessus de la ligne de flottaison, pas de fondu
+            au chargement. */}
+        <h1 className={styles.heroTitle}>
           {t.rich("headline", {
             highlight: (chunks) => <span className={styles.highlight}>{chunks}</span>,
           })}
-        </motion.h1>
+        </h1>
 
-        <motion.p
-          className={styles.heroSubtitle}
-          initial="hidden"
-          animate="visible"
-          variants={fadeInUp}
-          transition={{ duration: 0.8, delay: 0.12 }}
-        >
-          {t("subtitle")}
-        </motion.p>
+        <p className={styles.heroSubtitle}>{t("subtitle")}</p>
 
         <div className={styles.ctaGroup}>
           <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.98 }}>
@@ -115,7 +105,7 @@ export default function Hero() {
           alt={t("imageAlt")}
           width={320}
           height={400}
-          priority
+          preload
           sizes="(max-width: 768px) 240px, 320px"
           className={styles.heroImg}
         />

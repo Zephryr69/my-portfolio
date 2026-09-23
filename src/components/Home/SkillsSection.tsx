@@ -95,13 +95,14 @@ export default function SkillsSection() {
         {t(`items.${current.key}.title`)}
       </p>
 
-      <div className={styles.dots} role="tablist" aria-label={t("title")}>
+      {/* Simple groupe de boutons : role="tablist"/"tab" annonçait un
+          motif d'onglets sans tabpanel ni navigation aux flèches. */}
+      <div className={styles.dots} role="group" aria-label={t("title")}>
         {skillsData.map((s, i) => (
           <button
             key={s.key}
             type="button"
-            role="tab"
-            aria-selected={i === index}
+            aria-current={i === index ? "true" : undefined}
             aria-label={t(`items.${s.key}.title`)}
             className={i === index ? styles.dotActive : styles.dot}
             onClick={() => setState([i, i > index ? 1 : -1])}

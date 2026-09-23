@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { siteConfig } from "@/lib/siteConfig";
+import { projectsData } from "@/data/projectsData";
 
 /* sitemap.ts — convention de fichier Next.js : génère automatiquement
    /sitemap.xml à partir de ce tableau.
@@ -15,7 +16,15 @@ import { siteConfig } from "@/lib/siteConfig";
    chaque entrée dit aux moteurs "voici l'équivalent fr et l'équivalent
    en de cette page" — symétrique dans les deux sens). */
 
-const routes = ["", "/projets", "/a-propos", "/contact"];
+// Les pages « cas d'étude » (/projets/[slug]) étaient absentes du sitemap :
+// on les dérive de projectsData pour qu'un nouveau projet y apparaisse seul.
+const routes = [
+  "",
+  "/projets",
+  "/a-propos",
+  "/contact",
+  ...projectsData.map(({ key }) => `/projets/${key}`),
+];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return routes.flatMap((route) =>

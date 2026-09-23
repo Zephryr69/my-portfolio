@@ -27,9 +27,6 @@
     "socialLabel": "Réseaux sociaux",
     "contactTitle": "Contact",
     "navTitle": "Navigation",
-    "aboutTitle": "À propos",
-    "aboutText": "Je suis <strong>Amandino AIMINASSO</strong>, développeur Front-end. J'aide les petites entreprises et revendeurs à lancer des sites clairs, rapides et convertissants — du site vitrine aux applications métiers.",
-    "aboutTextSmall": "Disponible pour missions à distance ou sur Porto-Novo (Bénin). Livraison rapide, communication claire et livrables documentés.",
     "rights": "Tous droits réservés.",
     "servicesTitle": "Services",
     "services": {
@@ -48,41 +45,6 @@
       "imageAlt": "Photo d'Amandino",
       "headline": "Je transforme vos idées en expériences web qui donnent envie <highlight>d'agir</highlight>.",
       "tagline": "Développeur Front-end freelance · Porto-Novo / Remote"
-    },
-    "skills": {
-      "title": "Technologies",
-      "cardAriaLabel": "{title} — niveau {level}%",
-      "items": {
-        "react": {
-          "title": "React",
-          "description": "Création d'interfaces web dynamiques, modernes et performantes."
-        },
-        "nextjs": {
-          "title": "Next.js",
-          "description": "Applications React avec rendu serveur (SSR) et génération statique (SSG), routing avancé et optimisation SEO intégrée."
-        },
-        "typescript": {
-          "title": "TypeScript",
-          "description": "Typage strict du code pour limiter les bugs et faciliter la maintenance sur la durée."
-        },
-        "javascript": {
-          "title": "JavaScript",
-          "description": "Automatisation, enrichissement d'interactivité et fonctionnalités web avancées."
-        },
-        "git": {
-          "title": "Git & gestion de versions",
-          "description": "Suivi et coordination efficaces des versions de projets collaboratifs."
-        },
-        "htmlCss": {
-          "title": "HTML (avancé) & CSS (maîtrisé)",
-          "description": "Création de pages web responsives, esthétiques et accessibles."
-        },
-        "framerMotion": {
-          "title": "Framer Motion",
-          "description": "Animations fluides et transitions soignées pour enrichir l'expérience utilisateur."
-        }
-      },
-      "intro": "Des outils modernes et éprouvés, choisis pour livrer des sites rapides, fiables et faciles à faire évoluer."
     },
     "projects": {
       "title": "Projets récents",
@@ -265,13 +227,6 @@
     "storyAriaLabel": "Parcours et méthode",
     "storyTitle": "Mon parcours",
     "storyText": "Titulaire d'une Licence en SIL (Institut Universitaire Les Cours Sonou), j'ai commencé par du CSS et du JavaScript vanille avant de me lancer, en formation active, vers React, Next.js et TypeScript — en construisant à chaque étape des projets réels plutôt qu'en m'arrêtant à la théorie. En parallèle, j'anime des séries de défis de code pour des apprenants francophones sur Facebook et WhatsApp : une manière de rester rigoureux sur les fondamentaux tout en aidant d'autres à progresser. Je poursuis activement cette formation (stages, cours en ligne) pour renforcer ces compétences, avec toujours le même objectif : des sites clairs, qui parlent vraiment à vos clients.",
-    "methodTitle": "Ma méthode en 3 étapes",
-    "step1Title": "Découverte",
-    "step1Text": "Brief, objectifs et indicateurs de succès.",
-    "step2Title": "Prototype",
-    "step2Text": "Maquettes interactives, validation UX rapide.",
-    "step3Title": "Livraison",
-    "step3Text": "Déploiement, documentation et support.",
     "stat1Label": "Projets réalisés",
     "stat2Value": "1 an",
     "stat2Label": "Expérience pratique",
@@ -335,7 +290,6 @@
     "title": "Contactez-moi",
     "intro": "Une question, un projet ou une mission freelance ? Je suis à votre écoute.",
     "whatsappLabel": "Discuter sur WhatsApp",
-    "formAriaLabel": "Formulaire de contact",
     "nameLabel": "Nom",
     "namePlaceholder": "Votre nom complet",
     "phoneFieldLabel": "Numéro WhatsApp",

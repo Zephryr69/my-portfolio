@@ -19,6 +19,9 @@ interface ProjectCardProps {
   noDemoLabel: string;
   caseStudyLabel: string;
   delay: number;
+  // h3 par défaut (sous le h2 de la section d'accueil) ; /projets passe "h2"
+  // car sa page n'a qu'un h1 — évite de sauter directement de h1 à h3.
+  headingLevel?: "h2" | "h3";
 }
 
 export default function ProjectCard({
@@ -34,6 +37,7 @@ export default function ProjectCard({
   noDemoLabel,
   caseStudyLabel,
   delay,
+  headingLevel: Heading = "h3",
 }: ProjectCardProps) {
   return (
     <motion.div
@@ -53,7 +57,7 @@ export default function ProjectCard({
       />
 
       <div className={styles.projectInfo}>
-        <h3>{title}</h3>
+        <Heading>{title}</Heading>
         <p>{brief}</p>
 
         <div className={styles.projectTech}>

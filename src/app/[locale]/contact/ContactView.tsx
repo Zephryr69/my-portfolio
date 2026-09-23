@@ -4,6 +4,7 @@ import { useState, type FormEvent, type ChangeEvent } from "react";
 import { useTranslations } from "next-intl";
 import { FaWhatsapp, FaEnvelope, FaPhoneAlt } from "react-icons/fa";
 import styles from "./page.module.css";
+import { contact } from "@/lib/siteConfig";
 
 interface FaqItem {
   question: string;
@@ -28,6 +29,14 @@ export default function ContactView({ faqItems }: { faqItems: FaqItem[] }) {
     setFormData({ ...formData, [e.target.id]: e.target.value });
   };
 
+  // « Envoyer un autre message » : repart d'un formulaire vide (avant, les
+  // anciennes valeurs restaient dans les champs).
+  const handleSendAnother = () => {
+    setFormData({ name: "", phone: "", message: "" });
+    setTouched({});
+    setStatus("idle");
+  };
+
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     setTouched({ name: true, phone: true, message: true });
@@ -38,7 +47,7 @@ export default function ContactView({ faqItems }: { faqItems: FaqItem[] }) {
     const body = encodeURIComponent(
       `${t("mailName")}: ${formData.name}\n${t("mailWhatsapp")}: ${formData.phone}\n\n${t("mailMessage")}:\n${formData.message}`
     );
-    window.location.href = `mailto:amandinoaiminasso@gmail.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:${contact.email}?subject=${subject}&body=${body}`;
 
     // On ne peut pas savoir si l'utilisateur a réellement envoyé depuis son
     // client mail (mailto ne le confirme jamais) — on affiche quand même un
@@ -57,7 +66,7 @@ export default function ContactView({ faqItems }: { faqItems: FaqItem[] }) {
 
         <div className={styles.methodsList}>
           <a
-            href="https://wa.me/2290169118745"
+            href={contact.whatsappUrl}
             className={styles.methodRow}
             target="_blank"
             rel="noopener noreferrer"
@@ -68,17 +77,17 @@ export default function ContactView({ faqItems }: { faqItems: FaqItem[] }) {
             </span>
             {t("whatsappLabel")}
           </a>
-          <a href="tel:+2290169118745" className={styles.methodRow}>
+          <a href={contact.telHref} className={styles.methodRow}>
             <span className={`${styles.methodIcon} ${styles.phone}`}>
               <FaPhoneAlt aria-hidden="true" />
             </span>
-            +229 01 69 11 87 45
+            {contact.phoneDisplay}
           </a>
-          <a href="mailto:amandinoaiminasso@gmail.com" className={styles.methodRow}>
+          <a href={`mailto:${contact.email}`} className={styles.methodRow}>
             <span className={`${styles.methodIcon} ${styles.email}`}>
               <FaEnvelope aria-hidden="true" />
             </span>
-            amandinoaiminasso@gmail.com
+            {contact.email}
           </a>
         </div>
 
@@ -90,14 +99,13 @@ export default function ContactView({ faqItems }: { faqItems: FaqItem[] }) {
           <div className={styles.sentPanel} role="status">
             <h3>{t("sentTitle")}</h3>
             <p>{t("sentText")}</p>
-            <button type="button" className={styles.heroBtnSecondary} onClick={() => setStatus("idle")}>
+            <button type="button" className={styles.heroBtnSecondary} onClick={handleSendAnother}>
               {t("sendAnother")}
             </button>
           </div>
         ) : (
           <form
             className={styles.contactForm}
-            aria-label={t("formAriaLabel")}
             aria-labelledby="contact-title"
             onSubmit={handleSubmit}
             noValidate
@@ -111,8 +119,13 @@ export default function ContactView({ faqItems }: { faqItems: FaqItem[] }) {
               onChange={handleChange}
               onBlur={() => setTouched({ ...touched, name: true })}
               aria-invalid={touched.name && !!errors.name}
+              aria-describedby={touched.name && errors.name ? "name-error" : undefined}
             />
-            {touched.name && errors.name && <span className={styles.fieldError}>{errors.name}</span>}
+            {touched.name && errors.name && (
+              <span id="name-error" className={styles.fieldError}>
+                {errors.name}
+              </span>
+            )}
 
             <label htmlFor="phone">{t("phoneFieldLabel")}</label>
             <input
@@ -123,8 +136,13 @@ export default function ContactView({ faqItems }: { faqItems: FaqItem[] }) {
               onChange={handleChange}
               onBlur={() => setTouched({ ...touched, phone: true })}
               aria-invalid={touched.phone && !!errors.phone}
+              aria-describedby={touched.phone && errors.phone ? "phone-error" : undefined}
             />
-            {touched.phone && errors.phone && <span className={styles.fieldError}>{errors.phone}</span>}
+            {touched.phone && errors.phone && (
+              <span id="phone-error" className={styles.fieldError}>
+                {errors.phone}
+              </span>
+            )}
 
             <label htmlFor="message">{t("messageLabel")}</label>
             <textarea
@@ -135,8 +153,13 @@ export default function ContactView({ faqItems }: { faqItems: FaqItem[] }) {
               onChange={handleChange}
               onBlur={() => setTouched({ ...touched, message: true })}
               aria-invalid={touched.message && !!errors.message}
+              aria-describedby={touched.message && errors.message ? "message-error" : undefined}
             />
-            {touched.message && errors.message && <span className={styles.fieldError}>{errors.message}</span>}
+            {touched.message && errors.message && (
+              <span id="message-error" className={styles.fieldError}>
+                {errors.message}
+              </span>
+            )}
 
             <button type="submit" className={styles.heroBtnSecondary} disabled={status === "sending"}>
               {status === "sending" ? t("sendingLabel") : t("submitLabel")}

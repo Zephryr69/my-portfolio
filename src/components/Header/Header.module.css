@@ -71,7 +71,13 @@
    page change, pas la charte. Légère animation d'apparition au
    chargement, cohérente avec le reste du Header. */
 .brandName {
-  font-size: 1.35rem;
+  /* clamp() plutôt qu'une taille fixe : sur les très petits écrans
+     (< 360px), 1.35rem + le rôle en dessous tenaient tout juste dans
+     les 62px du navbar réduit (voir @media 420px plus bas), sans
+     marge pour une police système légèrement plus grande ou un zoom
+     d'accessibilité. clamp() réduit le texte en douceur au lieu de
+     déborder net à la limite. */
+  font-size: clamp(1.05rem, 4.2vw, 1.35rem);
   font-weight: 700;
   /* Violet pur et vif (au lieu du bleu-violet plus sombre d'avant),
      fixe en toute circonstance — demande explicite, pas de variante
@@ -85,7 +91,10 @@
   font-weight: 600;
   letter-spacing: 0.4px;
   text-transform: uppercase;
-  color: var(--color-text-secondary, #6b7280);
+  /* Fixe, comme .navLink et .brandName : le navbar reste blanc dans les
+     deux thèmes. var(--color-text-secondary) devient presque blanc
+     (#e6eef8) en mode sombre → rôle invisible sur fond blanc. */
+  color: #5b6b7d;
   animation: brandFadeIn 0.5s ease-out 0.1s both;
 }
 
@@ -141,10 +150,12 @@
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
 }
 
-.navLink:focus {
+/* :focus-visible (clavier) et non :focus : après un simple clic souris,
+   :focus faisait sauter la forme du lien de « pilule » à 8px de rayon.
+   Pas de border-radius ici : l'outline suit celui de .navLink. */
+.navLink:focus-visible {
   outline: 3px solid rgba(255, 140, 0, 0.12);
   outline-offset: 3px;
-  border-radius: 8px;
 }
 
 .toggleIcon {
@@ -202,6 +213,13 @@
   }
   .navbar {
     padding: 8px 12px;
-    height: calc(var(--navbar-height) - 8px);
+    /* min-height (pas height) sur --navbar-height, redéfini ci-dessous
+       dans globals.css pour cette même largeur d'écran. Avant : ce
+       calc() local rétrécissait uniquement .navbar, tandis que
+       .content gardait son padding-top basé sur la valeur non modifiée
+       de --navbar-height (globals.css) — un écart de 8px entre le bas
+       du navbar et le début du contenu. Les deux partagent maintenant
+       la même variable, donc ils ne peuvent plus se désynchroniser. */
+    min-height: var(--navbar-height);
   }
 }

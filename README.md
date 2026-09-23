@@ -4,7 +4,7 @@ Portfolio personnel d'**Amandino AIMINASSO**, développeur Front-end basé à Po
 
 Refonte complète de la version précédente (Vite + React) vers **Next.js 16** avec TypeScript, pensée pour être plus rapide, plus accessible, correctement internationalisée, et bâtie sur une architecture CSS qui ne se marche plus dessus.
 
-🔗 **Démo en ligne :** _à ajouter une fois déployé_
+🔗 **Démo en ligne :** https://my-portfolio-nine-roan-27.vercel.app
 
 ---
 
@@ -58,7 +58,7 @@ Cette refonte migre vers **Next.js (App Router)**, introduit **TypeScript** part
 | **Rubik** | Titres de section | Formes légèrement arrondies, apporte du caractère sur les titres sans nuire à la lisibilité |
 | **Updock** | Accent ponctuel (prénom en hero) | Police manuscrite, réservée à un seul mot pour une touche personnelle — jamais utilisée pour du texte long |
 
-Les trois sont chargées **une seule fois** dans `src/app/globals.css`. Dans l'ancienne version, la même police (Updock) était importée trois fois depuis trois fichiers CSS différents.
+Les trois sont chargées **une seule fois** via `next/font/google` dans `src/app/[locale]/layout.tsx` : téléchargées au build et auto-hébergées (plus de requête vers Google à chaque visite). Dans l'ancienne version, la même police (Updock) était importée trois fois depuis trois fichiers CSS différents.
 
 ### Couleurs
 
@@ -101,7 +101,7 @@ my-portfolio/
 │   │   │   ├── projets/
 │   │   │   ├── a-propos/
 │   │   │   └── contact/
-│   │   └── globals.css         # Reset, décor de fond, imports de police
+│   │   └── globals.css         # Reset, décor de fond
 │   ├── components/
 │   │   ├── Header/
 │   │   ├── Sidebar/             # Menu mobile

@@ -24,18 +24,12 @@ import { FaXmark } from "react-icons/fa6";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/routing";
+import { NAV_ITEMS, isActivePath } from "@/lib/navigation";
 import styles from "./Sidebar.module.css";
 
 interface SidebarProps {
   closeSidebar: () => void;
 }
-
-const NAV_ITEMS = [
-  { href: "/", key: "home" },
-  { href: "/projets", key: "projects" },
-  { href: "/a-propos", key: "about" },
-  { href: "/contact", key: "contact" },
-] as const;
 
 export default function Sidebar({ closeSidebar }: SidebarProps) {
   const pathname = usePathname();
@@ -90,7 +84,7 @@ export default function Sidebar({ closeSidebar }: SidebarProps) {
 
         <ul className={styles.sidebarLinks}>
           {NAV_ITEMS.map(({ href, key }) => {
-            const isActive = pathname === href;
+            const isActive = isActivePath(pathname, href);
             return (
               <li key={href}>
                 <Link

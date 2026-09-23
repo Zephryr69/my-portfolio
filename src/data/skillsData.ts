@@ -4,7 +4,8 @@ import type { IconType } from "react-icons";
 
 /* skillsData.ts — données structurelles des compétences (icône, niveau,
    délai d'apparition). Le texte (titre, description) vient des fichiers
-   de traduction sous la clé Home.skills.items.<key> — voir SkillsSection.tsx.
+   de traduction sous les clés Home.technologies.items.<key> et
+   AboutPage.skillItems.<key> — voir SkillsSection.tsx.
    `key` doit correspondre exactement à une entrée de messages/fr.json et en.json.
 
    Liste resserrée sur le front-end suite au retour du mentor : Laravel,

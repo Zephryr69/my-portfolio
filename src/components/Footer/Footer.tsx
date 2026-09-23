@@ -5,30 +5,24 @@
    "dark"/"light" — mais on a vu que cette classe ne correspondait à
    aucun sélecteur CSS réel (voir les notes dans Footer.module.css).
    Le thème est maintenant géré à 100% en CSS via [data-theme], donc
-   Footer n'a plus besoin d'aucun state/hook côté client : c'est un
-   Server Component, rendu une fois côté serveur, zéro JS envoyé au
-   navigateur pour ce composant.
+   Footer n'a plus besoin d'aucun state/hook qui lui soit propre.
+   Attention : il n'est pas pour autant un Server Component — il est
+   importé par AppShell (Client Component), donc il est bien inclus dans
+   le JavaScript envoyé au navigateur.
 */
 
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
+import { NAV_ITEMS } from "@/lib/navigation";
+import { contact, socialLinks } from "@/lib/siteConfig";
 import {
-  FaFacebookF,
   FaLinkedinIn,
   FaGithub,
-  FaYoutube,
   FaMapMarkerAlt,
   FaEnvelope,
   FaPhoneAlt,
 } from "react-icons/fa";
 import styles from "./Footer.module.css";
-
-const NAV_ITEMS = [
-  { href: "/", key: "home" },
-  { href: "/projets", key: "projects" },
-  { href: "/a-propos", key: "about" },
-  { href: "/contact", key: "contact" },
-] as const;
 
 export default function Footer() {
   const t = useTranslations("Header");
@@ -46,23 +40,15 @@ export default function Footer() {
           </Link>
           <p className={styles.slogan}>{tFooter("slogan")}</p>
 
-          <div className={styles.socialIcons} aria-label={tFooter("socialLabel")}>
-            <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-              <FaFacebookF />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/amandino-a%C3%AFminasso-68034a224"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn"
-            >
+          {/* Facebook et YouTube retirés : les liens étaient des
+              placeholders (facebook.com tout court, youtube.com/tonchaine).
+              À rajouter ici avec les vraies URLs des pages/chaînes. */}
+          <div className={styles.socialIcons} role="group" aria-label={tFooter("socialLabel")}>
+            <a href={socialLinks.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
               <FaLinkedinIn />
             </a>
-            <a href="https://github.com/Zephryr69" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <a href={socialLinks.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
               <FaGithub />
-            </a>
-            <a href="https://youtube.com/tonchaine" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
-              <FaYoutube />
             </a>
           </div>
         </div>
@@ -71,13 +57,13 @@ export default function Footer() {
         <div className={`${styles.footerSection} ${styles.contactUs}`}>
           <h4>{tFooter("contactTitle")}</h4>
           <p>
-            <FaMapMarkerAlt /> Porto-Novo, Bénin
+            <FaMapMarkerAlt /> {contact.city}
           </p>
           <p>
-            <FaPhoneAlt /> +229 01 69 11 87 45
+            <FaPhoneAlt /> {contact.phoneDisplay}
           </p>
           <p>
-            <FaEnvelope /> <a href="mailto:amandinoaiminasso@gmail.com">amandinoaiminasso@gmail.com</a>
+            <FaEnvelope /> <a href={`mailto:${contact.email}`}>{contact.email}</a>
           </p>
         </div>
 

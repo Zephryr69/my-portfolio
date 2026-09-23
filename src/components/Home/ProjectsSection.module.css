@@ -111,6 +111,7 @@
   gap: 0.7rem;
   flex-grow: 1;
 }
+.projectInfo h2,
 .projectInfo h3 { font-size: 1.15rem; margin: 0; }
 .projectInfo p { font-size: 0.9rem; color: var(--color-text-secondary); flex-grow: 1; }
 

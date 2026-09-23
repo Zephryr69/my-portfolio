@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
-import { siteConfig, baseOpenGraph } from "@/lib/siteConfig";
+import { buildPageSeo } from "@/lib/seo";
 import Hero from "@/components/Home/Hero";
 import QuickProof from "@/components/Home/QuickProof";
 import WhoIAm from "@/components/Home/WhoIAm";
@@ -26,18 +26,10 @@ export async function generateMetadata({
 
   const title = t("brand");
   const description = tHero("subtitle");
-  const url = `${siteConfig.url}/${locale}`;
 
   return {
     description,
-    alternates: { canonical: url },
-    openGraph: {
-      ...baseOpenGraph,
-      title,
-      description,
-      url,
-      locale: locale === "fr" ? "fr_FR" : "en_US",
-    },
+    ...buildPageSeo({ locale, title, description }),
   };
 }
 
