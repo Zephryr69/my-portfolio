@@ -83,7 +83,20 @@
      marge pour une police système légèrement plus grande ou un zoom
      d'accessibilité. clamp() réduit le texte en douceur au lieu de
      déborder net à la limite. */
-  font-size: clamp(1.05rem, 4.2vw, 1.35rem);
+  /* nowrap : « Amandino AIMINASSO » (une seule chaîne) ne passe plus à la
+     ligne. Pour qu'il tienne sans déborder, la taille est calculée sur la
+     largeur RÉELLEMENT libre : écran moins l'espace pris par le sélecteur
+     de langue, le thème, le burger, les marges et les écarts
+     (--brand-reserved, défini par palier plus bas). Le diviseur 11 vient
+     de la largeur mesurée du nom en Outfit Bold (~10,6 em), avec ~4 % de
+     marge. Sur grand écran, --brand-reserved vaut 0 : le plafond 1.35rem
+     s'applique, comme avant. */
+  white-space: nowrap;
+  font-size: clamp(
+    var(--brand-min, 1.05rem),
+    calc((100vw - var(--brand-reserved, 0px)) / 11),
+    1.35rem
+  );
   font-weight: 700;
   /* Violet pur et vif (au lieu du bleu-violet plus sombre d'avant),
      fixe en toute circonstance — demande explicite, pas de variante
@@ -93,7 +106,15 @@
 }
 
 .brandRole {
-  font-size: 0.7rem;
+  /* nowrap + taille calculée comme .brandName : le rôle (~12 em + espacement
+     des lettres) est plus large que le nom à petite taille ; sans ça, il
+     imposerait la largeur du bloc et ferait déborder le navbar. */
+  white-space: nowrap;
+  font-size: clamp(
+    0.55rem,
+    calc((100vw - var(--brand-reserved, 0px) - 10px) / 12.2),
+    0.7rem
+  );
   font-weight: 600;
   letter-spacing: 0.4px;
   text-transform: uppercase;
@@ -239,10 +260,23 @@
     width: 100%;
     z-index: var(--z-header);
     will-change: transform;
+    /* Place prise par le reste du navbar (voir .brandName). */
+    --brand-reserved: 245px;
+    --brand-min: 0.65rem;
   }
 
   .navList { display: none; }
   .burger { display: flex; }
+}
+
+/* 421–480px : écarts resserrés (8px au lieu de 12px) et sélecteur de langue
+   un peu plus étroit (voir LanguageSwitcher.module.css) pour laisser plus de
+   place au nom. */
+@media (max-width: 480px) {
+  .navbar {
+    gap: 8px;
+    --brand-reserved: 225px;
+  }
 }
 
 @media (max-width: 420px) {
@@ -262,6 +296,7 @@
        du navbar et le début du contenu. Les deux partagent maintenant
        la même variable, donc ils ne peuvent plus se désynchroniser. */
     min-height: var(--navbar-height);
+    --brand-reserved: 205px;
   }
 }
 
