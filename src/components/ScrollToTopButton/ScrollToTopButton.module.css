@@ -22,7 +22,15 @@
   z-index: var(--z-scroll-top-btn);
 }
 
-.scrollToTop:hover {
+/* Effets de survol réservés aux appareils qui ont un vrai survol (souris) :
+   sur écran tactile, :hover reste « collé » après un tap. Le retour visuel
+   au toucher est assuré par :active, placé juste après. */
+@media (hover: hover) {
+  .scrollToTop:hover {
+    transform: scale(1.2) rotate(10deg);
+  }
+}
+.scrollToTop:active {
   transform: scale(1.2) rotate(10deg);
 }
 

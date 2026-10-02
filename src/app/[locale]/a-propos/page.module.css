@@ -85,7 +85,16 @@
   background: var(--color-primary);
   color: #fff;
 }
-.primary:hover {
+/* Effets de survol réservés aux appareils qui ont un vrai survol (souris) :
+   sur écran tactile, :hover reste « collé » après un tap. Le retour visuel
+   au toucher est assuré par :active, placé juste après. */
+@media (hover: hover) {
+  .primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(255, 140, 0, 0.5);
+  }
+}
+.primary:active {
   transform: translateY(-3px);
   box-shadow: 0 6px 20px rgba(255, 140, 0, 0.5);
 }
@@ -94,7 +103,13 @@
   border: 2px solid var(--color-primary);
   color: var(--color-primary);
 }
-.ghost:hover {
+@media (hover: hover) {
+  .ghost:hover {
+    background: rgba(255, 140, 0, 0.1);
+    transform: translateY(-2px);
+  }
+}
+.ghost:active {
   background: rgba(255, 140, 0, 0.1);
   transform: translateY(-2px);
 }
@@ -111,12 +126,15 @@
   height: 260px;
   border-radius: 20px;
   object-fit: cover;
+  object-position: center top;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.introPortrait:hover .portraitImg {
-  transform: translateY(-6px) scale(1.05);
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6);
+@media (hover: hover) {
+  .introPortrait:hover .portraitImg {
+    transform: translateY(-6px) scale(1.05);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6);
+  }
 }
 .introPortrait figcaption {
   font-size: 0.9rem;
@@ -134,7 +152,7 @@
 }
 .story h2 {
   margin-top: 0;
-  font-size: 1.9rem;
+  font-size: clamp(1.5rem, 1.1rem + 2vw, 1.9rem);
   color: var(--color-primary);
 }
 .story p {
@@ -159,13 +177,15 @@
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.stat:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+@media (hover: hover) {
+  .stat:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  }
 }
 .stat strong {
   display: block;
-  font-size: 1.6rem;
+  font-size: clamp(1.3rem, 1rem + 1.6vw, 1.6rem);
   color: var(--color-primary);
   margin-bottom: 0.25rem;
 }
@@ -221,10 +241,12 @@
   align-items: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
 }
-.skillCard:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-  background: rgba(255, 255, 255, 0.1);
+@media (hover: hover) {
+  .skillCard:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    background: rgba(255, 255, 255, 0.1);
+  }
 }
 
 .skillIcon {
@@ -238,9 +260,11 @@
   border-radius: 12px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.skillCard:hover .skillIcon {
-  transform: scale(1.2);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+@media (hover: hover) {
+  .skillCard:hover .skillIcon {
+    transform: scale(1.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
 }
 
 /* Couleurs des icônes — palette du site (orange/marine) en 2 tons
@@ -302,9 +326,11 @@
   transition: transform 0.35s ease, box-shadow 0.35s ease;
   text-align: left;
 }
-.whyMeCard:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.16);
+@media (hover: hover) {
+  .whyMeCard:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.16);
+  }
 }
 
 .whyMeIcon {

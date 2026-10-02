@@ -16,14 +16,19 @@
   left: 0;
   width: 260px;
   height: 100vh;
+  /* dvh = hauteur réellement visible sur mobile : la barre d'adresse qui
+     se replie ne fait plus « sauter » le panneau. 100vh reste le repli
+     pour les navigateurs qui ne connaissent pas dvh. */
+  height: 100dvh;
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
   z-index: var(--z-sidebar);
-  transform-style: preserve-3d;
-  transition: transform 0.45s cubic-bezier(0.2, 0.9, 0.3, 1), box-shadow 0.45s ease;
-  will-change: transform;
-  transform: translateZ(0);
+  /* Le glissement (x) et le fondu sont pilotés par Framer Motion (voir
+     Sidebar.tsx). Volontairement aucun transform/transition CSS dessus :
+     les deux se battraient à chaque frame. Plus de preserve-3d ni de
+     will-change non plus : coûteux sur mobile, aucun gain visible. */
+  transition: box-shadow 0.45s ease;
   border-top-right-radius: 14px;
   border-bottom-right-radius: 14px;
   overflow: hidden;
@@ -60,14 +65,11 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-  transform-origin: left center;
-  transition: transform 0.45s cubic-bezier(0.2, 0.9, 0.3, 1), opacity 0.45s ease;
   z-index: 0;
 }
 
 .sidebar::before {
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.02));
-  transform: translateZ(-20px) scale(1.02);
   opacity: 0.9;
   border-top-right-radius: 14px;
   border-bottom-right-radius: 14px;
@@ -76,7 +78,6 @@
 .sidebar::after {
   background: linear-gradient(120deg, rgba(255, 255, 255, 0.025), rgba(0, 0, 0, 0));
   mix-blend-mode: overlay;
-  transform: translateZ(10px) scale(1);
   opacity: 0.7;
   border-top-right-radius: 14px;
   border-bottom-right-radius: 14px;
@@ -113,8 +114,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
+  /* 44px : taille minimale recommandée pour une cible tactile. */
+  width: 44px;
+  height: 44px;
   flex-shrink: 0;
   border-radius: 50%;
   border: none;
@@ -123,7 +125,16 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
   transition: transform 0.2s ease, background 0.2s ease;
 }
-.closeButton:hover {
+/* Effets de survol réservés aux appareils qui ont un vrai survol (souris) :
+   sur écran tactile, :hover reste « collé » après un tap. Le retour visuel
+   au toucher est assuré par :active, placé juste après. */
+@media (hover: hover) {
+  .closeButton:hover {
+    transform: scale(1.08);
+    background: var(--color-primary-hover, #ffb347);
+  }
+}
+.closeButton:active {
   transform: scale(1.08);
   background: var(--color-primary-hover, #ffb347);
 }
@@ -136,7 +147,7 @@
 }
 
 .sidebarTitle {
-  font-size: 1.35rem;
+  font-size: clamp(1.15rem, 1rem + 1vw, 1.35rem);
   font-weight: 700;
   letter-spacing: 0.6px;
 }
@@ -155,28 +166,38 @@
   padding: 0.35rem;
   border-radius: 10px;
   transition: transform 0.28s ease, box-shadow 0.28s ease, background 0.28s ease;
-  transform-style: preserve-3d;
 }
 
 .sidebarLinks a {
-  display: block;
+  display: flex;
+  align-items: center;
+  /* Cible tactile d'au moins 44px de haut. */
+  min-height: 44px;
   text-decoration: none;
   padding: 0.6rem 0.85rem;
   border-radius: 8px;
+  font-size: clamp(1rem, 0.9rem + 1.2vw, 1.15rem);
   font-weight: 600;
   color: inherit;
-  transform: translateZ(22px);
-  transition: transform 0.28s cubic-bezier(0.2, 0.9, 0.3, 1), color 0.2s ease, background 0.2s ease;
+  transition: color 0.2s ease, background 0.2s ease;
 }
 
-.sidebarLinks li:hover {
-  transform: translateX(6px) translateZ(14px) scale(1.01);
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+@media (hover: hover) {
+  .sidebarLinks li:hover {
+    transform: translateX(6px) scale(1.01);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+  }
 }
 
 /* Glow orange au survol — manquait, contrairement à la navbar desktop
    qui a le même effet sur .navLink:hover dans Header.module.css. */
-.sidebarLinks a:hover {
+@media (hover: hover) {
+  .sidebarLinks a:hover {
+    color: #ffffff;
+    background: linear-gradient(90deg, #ff8c00, #ffb347);
+  }
+}
+.sidebarLinks a:active {
   color: #ffffff;
   background: linear-gradient(90deg, #ff8c00, #ffb347);
 }
@@ -185,25 +206,23 @@
   color: #ffffff;
   background: linear-gradient(90deg, #ff8c00, #ffb347);
   box-shadow: inset 0 -6px 18px rgba(0, 0, 0, 0.06);
-  transform: translateZ(30px) scale(1.01);
+  transform: scale(1.01);
 }
 
 @media (max-width: 980px) {
   .sidebar { width: 220px; padding: 1rem; }
-  .sidebarTitle { font-size: 1.2rem; }
-  .sidebarLinks a { font-size: 1rem; padding: 0.55rem 0.7rem; }
+  .sidebarLinks a { padding: 0.55rem 0.7rem; }
 }
 
 @media (max-width: 600px) {
   .sidebar {
     width: 100%;
-    height: 100vh;
     border-radius: 0;
     left: 0;
     top: 0;
   }
-  .sidebar::before { transform: translateZ(-10px) scale(1.01); opacity: 0.95; }
-  .sidebar::after { transform: translateZ(6px); opacity: 0.6; }
+  .sidebar::before { opacity: 0.95; }
+  .sidebar::after { opacity: 0.6; }
   .sidebarLinks { padding-top: 1.2rem; }
   .sidebarLinks li { padding-left: 0.3rem; padding-right: 0.3rem; }
 }
@@ -211,4 +230,16 @@
 .sidebarLinks a:focus {
   outline: 3px solid rgba(255, 140, 0, 0.14);
   outline-offset: 4px;
+}
+
+/* Respecte le réglage « réduire les animations » du système. Le glissement
+   du panneau est déjà géré par <MotionConfig reducedMotion="user"> dans
+   AppShell.tsx ; ici on coupe les transitions CSS restantes. */
+@media (prefers-reduced-motion: reduce) {
+  .sidebar,
+  .closeButton,
+  .sidebarLinks li,
+  .sidebarLinks a {
+    transition: none;
+  }
 }

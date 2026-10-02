@@ -11,7 +11,7 @@
 
 .code {
   font-family: var(--font-fancy);
-  font-size: 6rem;
+  font-size: clamp(3.5rem, 2rem + 10vw, 6rem);
   line-height: 1;
   color: var(--color-primary);
   margin: 0;
@@ -19,7 +19,7 @@
 
 .title {
   font-family: var(--font-primary);
-  font-size: 1.75rem;
+  font-size: clamp(1.4rem, 1rem + 2vw, 1.75rem);
   color: var(--color-text);
   margin: 0;
 }
@@ -41,6 +41,14 @@
   transition: background var(--transition-fast);
 }
 
-.cta:hover {
+/* Effets de survol réservés aux appareils qui ont un vrai survol (souris) :
+   sur écran tactile, :hover reste « collé » après un tap. Le retour visuel
+   au toucher est assuré par :active, placé juste après. */
+@media (hover: hover) {
+  .cta:hover {
+    background: var(--color-primary-hover);
+  }
+}
+.cta:active {
   background: var(--color-primary-hover);
 }

@@ -24,7 +24,15 @@
   transition: opacity var(--transition-fast), background var(--transition-fast), color var(--transition-fast);
 }
 
-.localeLink:hover {
+/* Effets de survol réservés aux appareils qui ont un vrai survol (souris) :
+   sur écran tactile, :hover reste « collé » après un tap. Le retour visuel
+   au toucher est assuré par :active, placé juste après. */
+@media (hover: hover) {
+  .localeLink:hover {
+    opacity: 1;
+  }
+}
+.localeLink:active {
   opacity: 1;
 }
 
@@ -37,4 +45,12 @@
 .localeLink:focus-visible {
   outline: 2px solid rgba(255, 140, 0, 0.5);
   outline-offset: 2px;
+}
+
+/* Cibles tactiles plus grandes sur mobile (les liens faisaient ~26px). */
+@media (max-width: 768px) {
+  .localeLink {
+    min-width: 40px;
+    min-height: 40px;
+  }
 }

@@ -72,7 +72,16 @@
   font-size: 1rem;
   transition: transform 0.2s ease, background 0.2s ease;
 }
-.navBtn:hover {
+/* Effets de survol réservés aux appareils qui ont un vrai survol (souris) :
+   sur écran tactile, :hover reste « collé » après un tap. Le retour visuel
+   au toucher est assuré par :active, placé juste après. */
+@media (hover: hover) {
+  .navBtn:hover {
+    transform: scale(1.08);
+    background: var(--color-primary-hover);
+  }
+}
+.navBtn:active {
   transform: scale(1.08);
   background: var(--color-primary-hover);
 }

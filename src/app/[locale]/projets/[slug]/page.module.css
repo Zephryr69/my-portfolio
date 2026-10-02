@@ -14,7 +14,15 @@
   margin-bottom: 1.5rem;
   transition: color 0.25s ease;
 }
-.backLink:hover {
+/* Effets de survol réservés aux appareils qui ont un vrai survol (souris) :
+   sur écran tactile, :hover reste « collé » après un tap. Le retour visuel
+   au toucher est assuré par :active, placé juste après. */
+@media (hover: hover) {
+  .backLink:hover {
+    color: var(--color-primary);
+  }
+}
+.backLink:active {
   color: var(--color-primary);
 }
 
@@ -24,7 +32,10 @@
 }
 
 .heroImage {
+  display: block;
   width: 100%;
+  /* Hauteur automatique : l'image garde son format d'origine et reste
+     entièrement visible, sans recadrage. */
   height: auto;
   border-radius: 16px;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
@@ -65,7 +76,13 @@
   text-decoration: none;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
-.primaryLink:hover {
+@media (hover: hover) {
+  .primaryLink:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 140, 0, 0.35);
+  }
+}
+.primaryLink:active {
   transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(255, 140, 0, 0.35);
 }
@@ -80,7 +97,12 @@
   border-bottom: 2px solid transparent;
   transition: border-color 0.25s ease;
 }
-.githubLink:hover {
+@media (hover: hover) {
+  .githubLink:hover {
+    border-color: var(--color-primary);
+  }
+}
+.githubLink:active {
   border-color: var(--color-primary);
 }
 

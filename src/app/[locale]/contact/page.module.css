@@ -43,7 +43,7 @@
 }
 
 .contactTitle {
-  font-size: 2rem;
+  font-size: clamp(1.6rem, 1.2rem + 2vw, 2rem);
   font-weight: 700;
   letter-spacing: 0.5px;
   margin: 0;
@@ -81,9 +81,14 @@
   backdrop-filter: blur(6px);
   transition: transform 0.25s ease, background 0.25s ease;
 }
-.methodRow:hover {
-  transform: translateX(4px);
-  background: rgba(255, 255, 255, 0.16);
+/* Effets de survol réservés aux appareils qui ont un vrai survol (souris) :
+   sur écran tactile, :hover reste « collé » après un tap. Le retour visuel
+   au toucher est assuré par :active, placé juste après. */
+@media (hover: hover) {
+  .methodRow:hover {
+    transform: translateX(4px);
+    background: rgba(255, 255, 255, 0.16);
+  }
 }
 
 .methodIcon {
@@ -188,7 +193,14 @@
   box-shadow: 0 4px 14px rgba(255, 140, 0, 0.4);
   font-size: 1rem;
 }
-.heroBtnSecondary:hover:not(:disabled) {
+@media (hover: hover) {
+  .heroBtnSecondary:hover:not(:disabled) {
+    background: linear-gradient(135deg, #ff9c33, #ffc066);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 18px rgba(255, 140, 0, 0.5);
+  }
+}
+.heroBtnSecondary:active:not(:disabled) {
   background: linear-gradient(135deg, #ff9c33, #ffc066);
   transform: translateY(-3px);
   box-shadow: 0 6px 18px rgba(255, 140, 0, 0.5);

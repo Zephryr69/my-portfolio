@@ -80,29 +80,64 @@
 :global([data-theme="dark"]) .cardColor4 { background: linear-gradient(135deg, rgba(10, 26, 47, 0.85), rgba(255, 179, 71, 0.18)); }
 :global([data-theme="dark"]) .cardColor5 { background: linear-gradient(135deg, rgba(212, 175, 55, 0.22), rgba(10, 26, 47, 0.8)); }
 
-:global([data-theme="light"]) .projectCard.cardColor1:hover { background: linear-gradient(135deg, rgba(255, 140, 0, 0.24), rgba(255, 246, 233, 0.75)); box-shadow: 0 0 22px rgba(255, 140, 0, 0.22); }
-:global([data-theme="light"]) .projectCard.cardColor2:hover { background: linear-gradient(135deg, rgba(255, 179, 71, 0.26), rgba(255, 246, 233, 0.7)); box-shadow: 0 0 22px rgba(255, 179, 71, 0.24); }
-:global([data-theme="light"]) .projectCard.cardColor3:hover { background: linear-gradient(135deg, rgba(31, 45, 61, 0.14), rgba(255, 140, 0, 0.2)); box-shadow: 0 0 22px rgba(31, 45, 61, 0.14); }
-:global([data-theme="light"]) .projectCard.cardColor4:hover { background: linear-gradient(135deg, rgba(255, 140, 0, 0.18), rgba(31, 45, 61, 0.1)); box-shadow: 0 0 22px rgba(255, 140, 0, 0.18); }
-:global([data-theme="light"]) .projectCard.cardColor5:hover { background: linear-gradient(135deg, rgba(212, 175, 55, 0.26), rgba(255, 246, 233, 0.7)); box-shadow: 0 0 22px rgba(212, 175, 55, 0.24); }
+/* Effets de survol réservés aux appareils qui ont un vrai survol (souris) :
+   sur écran tactile, :hover reste « collé » après un tap. Le retour visuel
+   au toucher est assuré par :active, placé juste après. */
+@media (hover: hover) {
+  :global([data-theme="light"]) .projectCard.cardColor1:hover { background: linear-gradient(135deg, rgba(255, 140, 0, 0.24), rgba(255, 246, 233, 0.75)); box-shadow: 0 0 22px rgba(255, 140, 0, 0.22); }
+}
+@media (hover: hover) {
+  :global([data-theme="light"]) .projectCard.cardColor2:hover { background: linear-gradient(135deg, rgba(255, 179, 71, 0.26), rgba(255, 246, 233, 0.7)); box-shadow: 0 0 22px rgba(255, 179, 71, 0.24); }
+}
+@media (hover: hover) {
+  :global([data-theme="light"]) .projectCard.cardColor3:hover { background: linear-gradient(135deg, rgba(31, 45, 61, 0.14), rgba(255, 140, 0, 0.2)); box-shadow: 0 0 22px rgba(31, 45, 61, 0.14); }
+}
+@media (hover: hover) {
+  :global([data-theme="light"]) .projectCard.cardColor4:hover { background: linear-gradient(135deg, rgba(255, 140, 0, 0.18), rgba(31, 45, 61, 0.1)); box-shadow: 0 0 22px rgba(255, 140, 0, 0.18); }
+}
+@media (hover: hover) {
+  :global([data-theme="light"]) .projectCard.cardColor5:hover { background: linear-gradient(135deg, rgba(212, 175, 55, 0.26), rgba(255, 246, 233, 0.7)); box-shadow: 0 0 22px rgba(212, 175, 55, 0.24); }
+}
 
-:global([data-theme="dark"]) .projectCard.cardColor1:hover { background: linear-gradient(135deg, rgba(255, 140, 0, 0.4), rgba(10, 26, 47, 0.9)); box-shadow: 0 0 28px rgba(255, 140, 0, 0.35); }
-:global([data-theme="dark"]) .projectCard.cardColor2:hover { background: linear-gradient(135deg, rgba(255, 179, 71, 0.32), rgba(10, 26, 47, 0.92)); box-shadow: 0 0 28px rgba(255, 179, 71, 0.3); }
-:global([data-theme="dark"]) .projectCard.cardColor3:hover { background: linear-gradient(135deg, rgba(31, 45, 61, 1), rgba(255, 140, 0, 0.22)); box-shadow: 0 0 28px rgba(31, 45, 61, 0.4); }
-:global([data-theme="dark"]) .projectCard.cardColor4:hover { background: linear-gradient(135deg, rgba(10, 26, 47, 0.95), rgba(255, 179, 71, 0.28)); box-shadow: 0 0 28px rgba(255, 179, 71, 0.28); }
-:global([data-theme="dark"]) .projectCard.cardColor5:hover { background: linear-gradient(135deg, rgba(212, 175, 55, 0.32), rgba(10, 26, 47, 0.92)); box-shadow: 0 0 28px rgba(212, 175, 55, 0.3); }
+@media (hover: hover) {
+  :global([data-theme="dark"]) .projectCard.cardColor1:hover { background: linear-gradient(135deg, rgba(255, 140, 0, 0.4), rgba(10, 26, 47, 0.9)); box-shadow: 0 0 28px rgba(255, 140, 0, 0.35); }
+}
+@media (hover: hover) {
+  :global([data-theme="dark"]) .projectCard.cardColor2:hover { background: linear-gradient(135deg, rgba(255, 179, 71, 0.32), rgba(10, 26, 47, 0.92)); box-shadow: 0 0 28px rgba(255, 179, 71, 0.3); }
+}
+@media (hover: hover) {
+  :global([data-theme="dark"]) .projectCard.cardColor3:hover { background: linear-gradient(135deg, rgba(31, 45, 61, 1), rgba(255, 140, 0, 0.22)); box-shadow: 0 0 28px rgba(31, 45, 61, 0.4); }
+}
+@media (hover: hover) {
+  :global([data-theme="dark"]) .projectCard.cardColor4:hover { background: linear-gradient(135deg, rgba(10, 26, 47, 0.95), rgba(255, 179, 71, 0.28)); box-shadow: 0 0 28px rgba(255, 179, 71, 0.28); }
+}
+@media (hover: hover) {
+  :global([data-theme="dark"]) .projectCard.cardColor5:hover { background: linear-gradient(135deg, rgba(212, 175, 55, 0.32), rgba(10, 26, 47, 0.92)); box-shadow: 0 0 28px rgba(212, 175, 55, 0.3); }
+}
 
-.projectCard:hover {
-  transform: translateY(-10px) rotateX(2deg) rotateY(2deg) scale(1.03);
+@media (hover: hover) {
+  .projectCard:hover {
+    transform: translateY(-10px) rotateX(2deg) rotateY(2deg) scale(1.03);
+  }
 }
 
 .projectImg {
+  display: block;
   width: 100%;
-  height: 160px;
-  object-fit: cover;
+  /* Cadre de taille constante (aspect-ratio) pour que toutes les cartes
+     restent alignées, quelle que soit la largeur de l'écran. */
+  aspect-ratio: 16 / 10;
+  height: auto;
+  /* contain (et non cover) : l'image est toujours entièrement visible,
+     jamais rognée ; si son format diffère du cadre, des marges apparaissent
+     au lieu d'une coupure. object-position la garde centrée. */
+  object-fit: contain;
+  object-position: center;
   transition: transform 0.3s ease;
 }
-.projectCard:hover .projectImg { transform: scale(1.05); }
+@media (hover: hover) {
+  .projectCard:hover .projectImg { transform: scale(1.05); }
+}
 
 .projectInfo {
   padding: 1.2rem;
@@ -131,8 +166,10 @@
   background: var(--color-primary);
   transition: all 0.3s ease;
 }
-.techBadges:hover {
-  box-shadow: 0 0 12px rgba(255, 199, 77, 0.7);
+@media (hover: hover) {
+  .techBadges:hover {
+    box-shadow: 0 0 12px rgba(255, 199, 77, 0.7);
+  }
 }
 
 .projectLinks {
@@ -148,7 +185,13 @@
   text-decoration: none;
   transition: all 0.3s ease;
 }
-.projectCta:hover {
+@media (hover: hover) {
+  .projectCta:hover {
+    text-decoration: underline;
+    transform: translateY(-2px);
+  }
+}
+.projectCta:active {
   text-decoration: underline;
   transform: translateY(-2px);
 }
@@ -167,7 +210,13 @@
   border-bottom: 1px dashed var(--color-text-secondary);
   transition: color 0.3s ease, border-color 0.3s ease;
 }
-.caseStudyLink:hover {
+@media (hover: hover) {
+  .caseStudyLink:hover {
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+  }
+}
+.caseStudyLink:active {
   color: var(--color-primary);
   border-color: var(--color-primary);
 }
@@ -188,7 +237,13 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
-.projectsBtn:hover {
+@media (hover: hover) {
+  .projectsBtn:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  }
+}
+.projectsBtn:active {
   transform: translateY(-3px) scale(1.03);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }

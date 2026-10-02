@@ -84,9 +84,14 @@ body::before {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.card:hover {
-  transform: translateY(-5px) scale(1.02);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+/* Effets de survol réservés aux appareils qui ont un vrai survol (souris) :
+   sur écran tactile, :hover reste « collé » après un tap. Le retour visuel
+   au toucher est assuré par :active, placé juste après. */
+@media (hover: hover) {
+  .card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+  }
 }
 
 .btn {
@@ -103,7 +108,13 @@ body::before {
      fidèle au rendu actuel. Dis-moi si tu veux que j'en active un vrai. */
   transition: transform 0.2s ease, box-shadow 0.3s ease;
 }
-.btn:hover {
+@media (hover: hover) {
+  .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
+  }
+}
+.btn:active {
   transform: translateY(-3px);
   box-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
 }

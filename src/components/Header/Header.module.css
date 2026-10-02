@@ -52,7 +52,13 @@
   display: inline-flex;
   transition: transform var(--transition-fast);
 }
-.headerLink:hover { transform: scale(1.05); }
+/* Effets de survol réservés aux appareils qui ont un vrai survol (souris) :
+   sur écran tactile, :hover reste « collé » après un tap. Le retour visuel
+   au toucher est assuré par :active, placé juste après. */
+@media (hover: hover) {
+  .headerLink:hover { transform: scale(1.05); }
+}
+.headerLink:active { transform: scale(1.05); }
 
 .header {
   display: flex;
@@ -136,8 +142,21 @@
     transform var(--transition-fast);
 }
 
-.navLink:hover,
 .navLink:focus-visible {
+  opacity: 1;
+  transform: translateY(-2px);
+  color: #ffffff;
+  background: linear-gradient(90deg, #ff8c00, #ffb347);
+}
+@media (hover: hover) {
+  .navLink:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+    color: #ffffff;
+    background: linear-gradient(90deg, #ff8c00, #ffb347);
+  }
+}
+.navLink:active {
   opacity: 1;
   transform: translateY(-2px);
   color: #ffffff;
@@ -169,8 +188,19 @@
   border: none;
   padding: 0;
   transition: transform var(--transition-normal);
+  position: relative;
 }
-.toggleIcon:hover { transform: rotate(15deg) scale(1.05); }
+/* Zone de toucher agrandie à 44×44px sans changer la taille visible de
+   l'icône (30px de base, 26px sous 420px : voir plus bas). */
+.toggleIcon::after {
+  content: "";
+  position: absolute;
+  inset: -7px;
+}
+@media (hover: hover) {
+  .toggleIcon:hover { transform: rotate(15deg) scale(1.05); }
+}
+.toggleIcon:active { transform: rotate(15deg) scale(1.05); }
 
 .burger {
   display: none;
@@ -178,18 +208,28 @@
   border: none;
   cursor: pointer;
   padding: 0.5rem;
+  min-width: 44px;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
   z-index: var(--z-header-panel);
   border-radius: 10px;
   transition: background var(--transition-fast), transform var(--transition-fast);
 }
-.burger:hover { background: rgba(0, 0, 0, 0.04); transform: translateY(-2px); }
+@media (hover: hover) {
+  .burger:hover { background: rgba(0, 0, 0, 0.04); transform: translateY(-2px); }
+}
+.burger:active { background: rgba(0, 0, 0, 0.04); transform: translateY(-2px); }
 
 .customMenuIcon {
   width: 28px;
   height: 28px;
   transition: transform var(--transition-fast);
 }
-.burger:hover .customMenuIcon { transform: scale(1.15); }
+@media (hover: hover) {
+  .burger:hover .customMenuIcon { transform: scale(1.15); }
+}
+.burger:active .customMenuIcon { transform: scale(1.15); }
 
 @media (max-width: 768px) {
   .navbar {
@@ -211,6 +251,7 @@
     width: 26px;
     height: 26px;
   }
+  .toggleIcon::after { inset: -9px; }
   .navbar {
     padding: 8px 12px;
     /* min-height (pas height) sur --navbar-height, redéfini ci-dessous
@@ -221,5 +262,20 @@
        du navbar et le début du contenu. Les deux partagent maintenant
        la même variable, donc ils ne peuvent plus se désynchroniser. */
     min-height: var(--navbar-height);
+  }
+}
+
+/* Respecte le réglage « réduire les animations » du système. */
+@media (prefers-reduced-motion: reduce) {
+  .brandName,
+  .brandRole {
+    animation: none;
+  }
+  .headerLink,
+  .navLink,
+  .toggleIcon,
+  .burger,
+  .customMenuIcon {
+    transition: none;
   }
 }

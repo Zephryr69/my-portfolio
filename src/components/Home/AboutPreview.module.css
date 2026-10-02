@@ -21,12 +21,18 @@
   height: 220px;
   border-radius: 20px;
   object-fit: cover;
+  object-position: center top;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.portraitWrap:hover .portrait {
-  transform: translateY(-6px) scale(1.05);
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6);
+/* Effets de survol réservés aux appareils qui ont un vrai survol (souris) :
+   sur écran tactile, :hover reste « collé » après un tap. Le retour visuel
+   au toucher est assuré par :active, placé juste après. */
+@media (hover: hover) {
+  .portraitWrap:hover .portrait {
+    transform: translateY(-6px) scale(1.05);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6);
+  }
 }
 
 .content {
@@ -62,7 +68,7 @@
   flex-direction: column;
 }
 .stat strong {
-  font-size: 1.6rem;
+  font-size: clamp(1.3rem, 1rem + 1.6vw, 1.6rem);
   font-weight: 700;
   color: var(--color-primary);
 }
@@ -78,7 +84,13 @@
   text-decoration: none;
   transition: transform 0.25s ease;
 }
-.cta:hover {
+@media (hover: hover) {
+  .cta:hover {
+    text-decoration: underline;
+    transform: translateY(-2px);
+  }
+}
+.cta:active {
   text-decoration: underline;
   transform: translateY(-2px);
 }

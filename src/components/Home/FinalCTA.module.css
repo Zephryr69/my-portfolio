@@ -37,7 +37,16 @@
   background: linear-gradient(135deg, var(--color-primary), var(--color-primary-hover));
   color: #fff;
 }
-.primary:hover {
+/* Effets de survol réservés aux appareils qui ont un vrai survol (souris) :
+   sur écran tactile, :hover reste « collé » après un tap. Le retour visuel
+   au toucher est assuré par :active, placé juste après. */
+@media (hover: hover) {
+  .primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 140, 0, 0.35);
+  }
+}
+.primary:active {
   transform: translateY(-3px);
   box-shadow: 0 8px 20px rgba(255, 140, 0, 0.35);
 }
@@ -45,7 +54,13 @@
   background: #25d366;
   color: #fff;
 }
-.secondary:hover {
+@media (hover: hover) {
+  .secondary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.35);
+  }
+}
+.secondary:active {
   transform: translateY(-3px);
   box-shadow: 0 8px 20px rgba(37, 211, 102, 0.35);
 }

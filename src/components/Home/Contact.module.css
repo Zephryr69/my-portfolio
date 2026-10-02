@@ -42,7 +42,16 @@
     box-shadow 0.25s ease,
     background 0.25s ease;
 }
-.contactCard:hover {
+/* Effets de survol réservés aux appareils qui ont un vrai survol (souris) :
+   sur écran tactile, :hover reste « collé » après un tap. Le retour visuel
+   au toucher est assuré par :active, placé juste après. */
+@media (hover: hover) {
+  .contactCard:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  }
+}
+.contactCard:active {
   transform: translateY(-4px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
@@ -50,10 +59,20 @@
   font-size: 1.2rem;
   color: var(--color-primary);
 }
-.whatsapp:hover {
+@media (hover: hover) {
+  .whatsapp:hover {
+    background: rgba(37, 211, 102, 0.12);
+  }
+}
+.whatsapp:active {
   background: rgba(37, 211, 102, 0.12);
 }
-.email:hover {
+@media (hover: hover) {
+  .email:hover {
+    background: rgba(255, 140, 0, 0.1);
+  }
+}
+.email:active {
   background: rgba(255, 140, 0, 0.1);
 }
 
@@ -115,7 +134,13 @@
   cursor: pointer;
   transition: all 0.25s ease;
 }
-.heroBtnSecondary:hover:not(:disabled) {
+@media (hover: hover) {
+  .heroBtnSecondary:hover:not(:disabled) {
+    background: var(--color-primary);
+    color: #fff;
+  }
+}
+.heroBtnSecondary:active:not(:disabled) {
   background: var(--color-primary);
   color: #fff;
 }

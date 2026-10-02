@@ -108,7 +108,17 @@
   color: #fff;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
 }
-.primary:hover {
+/* Effets de survol réservés aux appareils qui ont un vrai survol (souris) :
+   sur écran tactile, :hover reste « collé » après un tap. Le retour visuel
+   au toucher est assuré par :active, placé juste après. */
+@media (hover: hover) {
+  .primary:hover {
+    background: linear-gradient(135deg, var(--color-primary-hover), var(--color-primary));
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  }
+}
+.primary:active {
   background: linear-gradient(135deg, var(--color-primary-hover), var(--color-primary));
   transform: translateY(-2px) scale(1.03);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
@@ -119,7 +129,13 @@
   border: 2px solid var(--color-primary);
   color: var(--color-primary);
 }
-.secondary:hover {
+@media (hover: hover) {
+  .secondary:hover {
+    background: var(--color-primary);
+    color: #fff;
+  }
+}
+.secondary:active {
   background: var(--color-primary);
   color: #fff;
 }
@@ -141,6 +157,8 @@
 
 .heroImage img,
 .heroImg {
+  display: block;
+  margin-inline: auto;
   width: 100%;
   max-width: 320px;
   height: auto;
@@ -191,4 +209,86 @@
   font-weight: 600;
   color: var(--color-text-secondary);
   letter-spacing: 0.3px;
+}
+
+/* ==========================================================================
+   Ambiance « cinéma » : vignette, projecteur, halo du portrait.
+   Décor pur : aucune de ces couches ne porte de contenu (aria-hidden) et
+   elles ne captent jamais le pointeur. On n'anime que transform/opacity
+   (composité par le GPU), pas de blur ni de mix-blend-mode : coûteux sur
+   les téléphones modestes.
+   ========================================================================== */
+
+/* Couleurs des effets, par thème. Un seul endroit à retoucher.
+   - Clair : lumière blanc crème sur le fond orange pâle (le fond de page
+     est #fff6e9), vignette brun chaud discrète.
+   - Sombre : le blanc éblouissait (le hero y devient un brun-orange sombre
+     sur fond marine #0a1a2f). On passe à une lumière ambre, moins intense,
+     et à une vignette marine qui se fond dans le fond de page. */
+.hero {
+  --fx-spot: rgba(255, 246, 228, 0.6);
+  --fx-halo: rgba(255, 236, 200, 0.75);
+  --fx-vignette: rgba(90, 38, 0, 0.22);
+}
+
+:global([data-theme="dark"]) .hero {
+  --fx-spot: rgba(255, 179, 71, 0.3);
+  --fx-halo: rgba(255, 140, 0, 0.32);
+  --fx-vignette: rgba(4, 10, 20, 0.5);
+}
+
+/* Bords légèrement assombris (teinte chaude, pas du noir pur) : le regard
+   est ramené vers le centre, comme sur une image de film. */
+.vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at 50% 45%,
+    transparent 55%,
+    var(--fx-vignette) 100%
+  );
+}
+
+/* Le projecteur : centré par défaut (inset + margin:auto), déplacé par
+   Framer Motion via transform pour suivre la souris. */
+.spot {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: min(70%, 560px);
+  aspect-ratio: 1;
+  z-index: 0;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.spotInner {
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, var(--fx-spot) 0%, transparent 65%);
+}
+
+/* Halo derrière le portrait (z-index négatif : reste sous l'image, dans le
+   contexte d'empilement de .heroImage). */
+.halo {
+  position: absolute;
+  inset: -22%;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(circle, var(--fx-halo) 0%, transparent 62%);
+}
+
+/* Écran tactile (pas de souris) : le projecteur dérive lentement tout
+   seul, pour garder un peu de vie. Coupé si « réduire les animations ». */
+@media (hover: none) and (prefers-reduced-motion: no-preference) {
+  .spotInner {
+    animation: spotDrift 14s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes spotDrift {
+  from { transform: translate3d(-18%, -10%, 0); }
+  to   { transform: translate3d(18%, 10%, 0); }
 }
